@@ -12,7 +12,7 @@
 <h2 id="开始">开始</h2><h3 id="最终结果">最终结果</h3><ul>
 <li>在执行 <code>hexo new [layout] &lt;title&gt;</code> 后，自动在一个设定的目录创建以 <code>&lt;title&gt;</code> 命名的子目录，然后把文章用到的截图全部放到这个文件夹。通过工具自动同步到图床。图床的存储路径必须满足统一前缀。例如，我的截图是 <code>youpath/title/name.png</code> ,上传到图床后，网络路径必须是 <code>http://yoursite/title/name.png</code> 类型。</li>
 <li>在gvim写作的时候，每次保存会自动转换:<ol>
-<li><code>![pic4](http://7xsj4f.com2.z0.glb.clouddn.com/2016-05-02-hexo-img-solution/4.png)</code> 替换为 <code>![pic4](http://yoursite/title/4.png)</code></li>
+<li><code>![pic4](4.png)</code> 替换为 <code>![pic4](http://yoursite/title/4.png)</code></li>
 <li><code>![pic4][4]</code> 自动在文章末尾增加 <code>![4](http://yoursite/title/4.png)</code></li>
 </ol>
 </li>
