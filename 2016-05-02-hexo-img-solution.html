@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo写博客怎么优雅地插入图片 | Hm&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写hexo博客的时候优雅地插入图片。
+环境我的环境:win10 gvim7.4 hexo3.1.1, 此方案对环境无要求。 
+用gvim 编写markdown。
+开始最终结果
+在执行 hexo new [layout] &amp;lt;title&amp;gt; 后，自动在一个设定的目录创建以 &amp;lt;title&amp;gt; 命">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo写博客怎么优雅地插入图片">
+<meta property="og:url" content="http://huangming.github.io/2016-05-02-hexo-img-solution.html">
+<meta property="og:site_name" content="Hm's Blog">
+<meta property="og:description" content="发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写hexo博客的时候优雅地插入图片。
+环境我的环境:win10 gvim7.4 hexo3.1.1, 此方案对环境无要求。 
+用gvim 编写markdown。
+开始最终结果
+在执行 hexo new [layout] &amp;lt;title&amp;gt; 后，自动在一个设定的目录创建以 &amp;lt;title&amp;gt; 命">
+<meta property="og:updated_time" content="2016-05-19T15:38:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo写博客怎么优雅地插入图片">
+<meta name="twitter:description" content="发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写hexo博客的时候优雅地插入图片。
+环境我的环境:win10 gvim7.4 hexo3.1.1, 此方案对环境无要求。 
+用gvim 编写markdown。
+开始最终结果
+在执行 hexo new [layout] &amp;lt;title&amp;gt; 后，自动在一个设定的目录创建以 &amp;lt;title&amp;gt; 命">
+<meta name="twitter:creator" content="@hmorz">
+  
+    <link rel="alternative" href="/atom.xml" title="Hm&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="http://huangming.github.io/stylesheets/font-awesome.min.css">
+  <link href="http://huangming.github.io/stylesheets/font-quigleywiggly.css" rel="Stylesheet" type="text/css" />
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
+  <script src="/js/girls.js" type="text/javascript"></script>
+  <script type="text/javascript" charset="utf-8" src="http://huangming.github.io/js/weather.js"></script> 
+  <link href="http://huangming.github.io/stylesheets/main.css" rel="stylesheet" media="all"/>
+  <link href="http://huangming.github.io/images/weather/default/julying-weather.css" rel="stylesheet" media="all"/>
+  <!-- 
+ -->
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hm&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">I am here</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/vimwiki">Wiki</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <div id="search-form-wrap">
+          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://huangming.github.io"></form>
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-hexo-img-solution" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-05-02-hexo-img-solution.html" class="article-date">
+  <time datetime="2016-05-02T02:05:47.000Z" itemprop="datePublished">2016-05-02</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexo写博客怎么优雅地插入图片
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-05-02-hexo-img-solution.html" class="article-date">
+  <time datetime="2016-05-02T02:05:47.000Z" itemprop="datePublished">2016-05-02</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写<a href="http://hexo.io" target="_blank" rel="external">hexo</a>博客的时候优雅地插入图片。</p>
+<h2 id="环境">环境</h2><p>我的环境:<code>win10</code> <code>gvim7.4</code> <code>hexo3.1.1</code>, 此方案对环境无要求。 </p>
+<p>用<a href="http://www.vim.org/" target="_blank" rel="external">gvim</a> 编写markdown。</p>
+<h2 id="开始">开始</h2><h3 id="最终结果">最终结果</h3><ul>
+<li>在执行 <code>hexo new [layout] &lt;title&gt;</code> 后，自动在一个设定的目录创建以 <code>&lt;title&gt;</code> 命名的子目录，然后把文章用到的截图全部放到这个文件夹。通过工具自动同步到图床。图床的存储路径必须满足统一前缀。例如，我的截图是 <code>youpath/title/name.png</code> ,上传到图床后，网络路径必须是 <code>http://yoursite/title/name.png</code> 类型。</li>
+<li>在gvim写作的时候，每次保存会自动转换:<ol>
+<li><code>![pic4](http://7xsj4f.com2.z0.glb.clouddn.com/2016-05-02-hexo-img-solution/4.png)</code> 替换为 <code>![pic4](http://yoursite/title/4.png)</code></li>
+<li><code>![pic4][4]</code> 自动在文章末尾增加 <code>![4](http://yoursite/title/4.png)</code></li>
+</ol>
+</li>
+</ul>
+<a id="more"></a>
+<h3 id="vim配置">vim配置</h3><p>vim配置很简单，在你的配置文件vimrc里面添加下面的内容即可(网址请改为自己的图床，这里我用的是七牛图床)。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">autocmd! BufWritePost *.md,*.mkd,*.markdown :silent!call Insertimg()&lt;CR&gt;</span><br><span class="line">function! Insertimg()</span><br><span class="line">    " 转换![name] (num)</span><br><span class="line">    :%s#\(!\[[^\]]*\](\)\(\w\&#123;,10&#125;\))#\=submatch(1).'http://7xsj4f.com2.z0.glb.clouddn.com/'.expand("%:r").'/'.submatch(2).'.png)'#</span><br><span class="line">    </span><br><span class="line">    " 转换 ![name][num]</span><br><span class="line">    let lnum = 1</span><br><span class="line">    let lst = []</span><br><span class="line">    while lnum &lt;= line("$")</span><br><span class="line">        let line = getline(lnum)</span><br><span class="line">        call substitute(line, '\(!\[[^\]]*\]\[\)\(\d\&#123;,2&#125;\)\]', '\=add(lst, submatch(2))', 'g')</span><br><span class="line">        let lnum += 1</span><br><span class="line">    endwhile</span><br><span class="line">    let unduplst=sort(filter(copy(lst),'index(lst, v:val, v:key+1)==-1'))</span><br><span class="line">    let line = getline(line("$"))</span><br><span class="line">    let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    :ks</span><br><span class="line">    while flag != ''</span><br><span class="line">        exe "normal G"</span><br><span class="line">        exe "normal dd"</span><br><span class="line">        let line = getline(line("$"))</span><br><span class="line">        let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    endwhile</span><br><span class="line">    exe "normal 's"</span><br><span class="line"></span><br><span class="line">    for name in unduplst</span><br><span class="line">      if len(name)&gt;0</span><br><span class="line">          call append(line("$"), "[".name."]: http://7xsj4f.com2.z0.glb.clouddn.com/".expand("%:r")."/".name.".png")</span><br><span class="line">      endif</span><br><span class="line">    endfor</span><br><span class="line">    :w</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
+<h3 id="hexo_配置">hexo 配置</h3><p>这个配置起来有点小麻烦，要改hexo的一个模块代码。文件路径在<code>yourpath\hexo\node_modules\hexo\lib\hexo\post.js</code> 更改内容:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@@ -<span class="number">63</span>,<span class="number">7</span> +<span class="number">63</span>,<span class="number">7</span> @@ Post.prototype.create = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">       <span class="comment">// Write content to file</span></span><br><span class="line">       fs.writeFile(path, content),</span><br><span class="line">       <span class="comment">// Create asset folder</span></span><br><span class="line">-      createAssetFolder(path, config.post_asset_folder)</span><br><span class="line">+      createAssetFolder(pathFn.resolve(config.post_asset_folder,pathFn.basename(path)), config.post_asset_folder)</span><br><span class="line">     ]).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       ctx.emit(<span class="string">'new'</span>, result);</span><br><span class="line">     &#125;).thenReturn(result);</span><br><span class="line">@@ -<span class="number">213</span>,<span class="number">7</span> +<span class="number">213</span>,<span class="number">7</span> @@ Post.prototype.publish = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">     <span class="comment">// Remove the original draft file</span></span><br><span class="line">     <span class="keyword">return</span> fs.unlink(src);</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">-    <span class="keyword">if</span> (!config.post_asset_folder) <span class="keyword">return</span>;</span><br><span class="line">+    <span class="keyword">if</span> (config.post_asset_folder !== <span class="literal">true</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>然后在 <code>yourpath\hexo\_config.yml</code> 中配置 <code>post_asset_folder</code> 路径，路径可随意:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: .\static\images\</span><br></pre></td></tr></table></figure>
+<p>当每次用 <code>hexo new [layout] &lt;title&gt;</code> 命令的时候就会自动在配置的路径生成一个跟 <code>title</code> 同名的文件夹。并且此文件夹内的内容不会上传到github。</p>
+<h3 id="自动同步到图床">自动同步到图床</h3><ul>
+<li><a href="https://github.com/beyondskyway/QiniuSync" target="_blank" rel="external">QiniuSync</a></li>
+<li><a href="https://github.com/tiann/markdown-img-upload" target="_blank" rel="external">markdown-img-upload</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="ciodwvlyn0007ugj1n0txasn2" class="article-share-link">Share</a> -->
+      
+        
+<nav id="article-nav">
+  
+  
+    <a href="/2015-09-28-juban.html" id="article-nav-older" class="article-nav-link-wrap">
+      <!-- <strong class="article-nav-caption">Older</strong> -->
+      <div class="article-nav-title">羁绊&raquo;</div>
+    </a>
+  
+</nav>
+
+
+        
+
+      
+      
+        
+          <a href="http://huangming.github.io/2016-05-02-hexo-img-solution.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+<section id="comments">
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+    </div>
+  
+</section>
+
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+    <aside id="sidebar" class="outer">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016-05-02-hexo-img-solution.html">Hexo写博客怎么优雅地插入图片</a>
+          </li>
+        
+          <li>
+            <a href="/2015-09-28-juban.html">羁绊</a>
+          </li>
+        
+          <li>
+            <a href="/2015-07-10-hello-world.html">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2012-04-25-vimrc.html">我的vimrc</a>
+          </li>
+        
+          <li>
+            <a href="/2012-03-11-qq-kongjian-qianyi.html">QQ空间日记迁移声明</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Mingo<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/vimwiki" class="mobile-nav-link">Wiki</a>
+  
+</nav>
+    
+<script>
+  var disqus_shortname = 'huangming';
+  
+  var disqus_url = 'http://huangming.github.io/2016-05-02-hexo-img-solution.html';
+  
+
+  var disqus_config = function () {
+  this.page.url = PAGE_URL; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  
+  s.src = '//'+disqus_shortname + '.disqus.com/embed.js';
+  
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+</script>
+
+
+
+
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> -->
+
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+<script type="text/javascript">
+var myDate = new Date()
+var m = myDate.getMinutes()
+m = m % 10
+document.body.style.background = '#333 url("/css/images/bgr'+m+'.jpg") top left'
+document.getElementById('wrap').style.background='#333 url("/css/images/bgr'+m+'.jpg") top left' 
+</script>
+
+  </div>
+  <div id="spig" class="spig">
+    <div id="message">正在加载中……</div>
+    <div id="mumu" class="mumu"></div>
+  </div>
+</body>
+</html>

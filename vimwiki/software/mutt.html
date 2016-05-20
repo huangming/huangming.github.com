@@ -1,0 +1,716 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<title>配置Mutt+getmail4+msmtp+procmail-wiki@HM </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+    <link rel="Stylesheet" type="text/css" href="../css/style.css" />
+		<!-- blog ico -->
+		<link type="image/x-icon" rel="icon" href="../favicon.png" />
+		<link type="image/x-icon" rel="shortcut icon" href="../favicon.png" /> 
+		<!-- weather -->
+    <script src="../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript" charset="utf-8" src="http://huangming.org/javascripts/weather.js"></script>
+	  <link href="http://huangming.org/stylesheets/main.css" rel="stylesheet" media="all"/> <link href="http://huangming.org/images/weather/default/julying-weather.css" rel="stylesheet" media="all"/>  
+	</head> 
+	<body id="top"> 
+		<div id=header>
+			<nav role="navigation">
+			<span class="label success"><a href="/" class="fn-left">博客</a></span> 
+			<span class="label success"><a href="/vimwiki/" class="fn-left">WiKi</a></span> 
+			</nav>	
+		</div>
+		<div id="cse"></div>
+		<div id="main"> 
+<div class="toc">
+<ul>
+<li><a href="#toc_1">Mutt+getmail4+msmtp+procmail</a>
+<ul>
+<li><a href="#toc_1.1">Install</a>
+<li><a href="#toc_1.2">我的配置</a>
+<ul>
+<li><a href="#toc_1.2.1">mutt配置文件</a>
+<ul>
+<li><a href="#toc_1.2.1.1">总配置文件doc_muttrc</a>
+<li><a href="#toc_1.2.1.2">路径配置dir.rc</a>
+<li><a href="#toc_1.2.1.3">颜色配置color.rc</a>
+<li><a href="#toc_1.2.1.4">快捷键配置bindings.rc</a>
+<li><a href="#toc_1.2.1.5">第三方处理程序mailcap</a>
+<li><a href="#toc_1.2.1.6">自动填写邮件头header.rc</a>
+<li><a href="#toc_1.2.1.7">gpg.rc</a>
+</ul>
+<li><a href="#toc_1.2.2">收件getmailrc配置</a>
+<li><a href="#toc_1.2.3">过滤procmail的配置</a>
+<li><a href="#toc_1.2.4">发件msmtp的配置</a>
+</ul>
+<li><a href="#toc_1.3">Solarized配色</a>
+<li><a href="#toc_1.4">使用gnupg加密或者签名邮件</a>
+</ul>
+</ul>
+</div>
+<p>
+<a href="../index.html">首页</a> - <a href="index.html">software</a>
+</p>
+<h1 id="toc_1">Mutt+getmail4+msmtp+procmail</h1>
+<hr />
+<p>
+你之所以看到这篇文章，应该是已经了解过mutt的强大，或许还有疑惑。如果只是偶然看到，我建议你最好先了解一下mutt：<a href="http://docs.huihoo.com/homepage/shredderyin/mutt_frame.html">Mutt email 程序使用入门</a>,他能让你处理邮件变得随心所欲。我写这篇文章不再介绍mutt，主要记录一下mutt及其搭配程序如getmail4,msmtp,procmail等的安装及配置。
+</p>
+
+<p>
+Mutt 只是一个邮件客户端，它只负责从 <code>/var/spool/mail</code>
+里读取特定用户的信件，并按照用户安排的方式进行处理。所以，我们要一个收件程序从邮件服务器把邮件收进<code>/var/spool/mail</code>,给mutt处理。同时要有一个发件程序，让mutt写好邮件后调用他把邮件发到服务器上。
+</p>
+
+<p>
+收发件程序常见的有fetchmail,getmail4,esmtp,msmtp,exim,postfix,等等好几个，我选择的是：mutt + getmail4 + msmtp + procmail。其中procmail是用来过滤和分捡收到的邮件的，getmail4从服务器收到信后调用procmail把邮件过滤分捡到mutt的信箱里面。我之所以这样选择，是因为一些前辈们的经验，你可以参考一下：
+</p>
+
+<ol>
+<li>
+<a href="http://www.fwolf.com/blog/post/379">[Mutt]用msmtp替代esmtp作发信代理</a>
+
+<li>
+<a href="http://pyropus.ca/software/getmail/faq.html\#faq-about-why">Why did you write getmail? Why not just use fetchmail?</a>
+
+</ol>
+
+<h2 id="toc_1.1">Install</h2>
+<pre>
+sudo apt-get install mutt msmtp getmail4 wv w3m
+# wv是为了把一些邮件中的附件word转换成html，w3m是为了邮件中的html能在终端里面阅读。
+# 在ubuntu11.10安装mutt的时候可能会一起安装postfix，如果有洁癖可以安装后再把它卸载。
+</pre>
+<p>
+这样就安装好了。比较困难的是配置。如果你比较懒或者对一大堆的设置表示恐惧，你也可以先直接拿别人贡献的作品来使用,在使用的过程中慢慢把配置的习惯改成自己的。
+</p>
+
+<p>
+选配置的时候最好选那种多个配置文件分类的，这样自己要改也比较容易找选项位置。mutt的配置文件里面支持<code>source ~/.mutt/gpg.rc</code>这样引用外部的配置(具体看后面介绍)，可以把配置分类在多个文件中再集中到muttrc里面。
+</p>
+
+<p>
+如果你想偷懒照搬，我不推荐你使用通过搜索引擎找到的博客上的一些配置，这些都要自己改很多东西才能用的,适用于你参考其中部分而已。
+</p>
+
+<p>
+github上面有好多个配置都是直接拿来就能用。具体可以自己到github页面搜索mutt即可,
+或者点击：<a href="https://github.com/search?langOverride=&amp;q=mutt&amp;repo=&amp;start_value=1&amp;type=Repositories&amp;utf8=%E2%9C%93">Search · mutt</a>
+</p>
+
+<p>
+当你更改或者创作自己的配置的时候，最好察看官方说明文档。官方说明文档是最好的攻略。如果e文不好，这里有一份翻译自官方手册的中文说明文档：<a href="http://xhc.me/wp-content/uploads/mutt/manual_1.5.19_zh.html">Mutt中文手册</a>
+</p>
+
+<h2 id="toc_1.2">我的配置</h2>
+
+<p>
+下面开始介绍的这个mutt配置是根据 <a href="http://suchang.net/slack/Mutt.html">http://suchang.net/slack/Mutt.html</a> 做大量个人设定修改而成，感谢原创作者。我的配置项目的github地址： <a href="https://github.com/huangming/mutt">https://github.com/huangming/mutt</a> 。如果你觉得不错的话可以按照项目说明文档的操作步骤安装使用。
+</p>
+
+<p>
+先看看总体配置目录：
+</p>
+<pre>
+~/.getmail/             # getmail(用于收邮件)配置文件目录
+~/Mail/                 # 把收取下来的邮件保存到的主目录
+~/.msmtprc              # msmtp(用于发送邮件)配置文件
+~/.mutt/                # mutt配置文件目录
+~/.muttrc               # mutt配置文件（由 ~/.mutt/dot_muttrc ln而成）
+~/.procmailrc           # procmail(用于过滤收取到的邮件)配置文件
+</pre>
+<h3 id="toc_1.2.1">mutt配置文件</h3>
+
+<p>
+mutt的配置文件总共有：
+</p>
+<pre>
+~/.mutt/doc_muttrc   # 总配置文件，里面必须有source语句把所有配置包括进来，并且把此文件ln到 ~/.muttrc
+~/.mutt/gpg.rc       # 用于邮件pgp加密的，详情见后面
+~/.mutt/dir.rc       # 用于配置所有有关路径的设定选项，可根据个人喜欢更改
+~/.mutt/header.rc    # 用于配置发邮件自动根据各种条件填写相应的邮件头（发件人，收件人抄送等所有）
+~/Mail/alias         # 地址簿
+~/.mutt/bindings.rc  # 快捷键设定
+~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc #配色
+~/.mutt/colors.rc    # 配色
+</pre>
+<p>
+下面分析每个配置文件
+</p>
+
+<h4 id="toc_1.2.1.1">总配置文件doc_muttrc</h4>
+
+<p>
+此文件几乎没有包含任何有关私人设定，都是常用的配置，可以不用做任何更改就能使用。我们的使用习惯的设定都在分类设定的文件里面设定。
+</p>
+<pre>
+# vim: filetype=muttrc
+# dot_muttrc
+# MIME settings
+
+ auto_view application/ms-tnef text/x-vcard
+ auto_view application/x-chess application/x-lotus-notes
+ auto_view text/html application/x-gzip application/x-gunzip
+ auto_view application/rtf application/x-rath
+ auto_view application/msword
+ auto_view image/*
+
+alternative_order text/plain text/enriched text/html application/pgp application/postscript image/*
+
+# read the config file and set scores
+
+# PGP command configuration
+# source ~/.mutt/pgp2.rc
+ source ~/.mutt/gpg.rc
+
+# source non-public stuff, (hooks, alternates, ...)
+source ~/.mutt/dir.rc
+source ~/.mutt/header.rc
+source ~/Mail/alias
+source ~/.mutt/bindings.rc
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+#source ~/.mutt/colors.rc
+
+# My scores about mails
+#score "~N" +4
+score "~f mum"  +3
+score "~f 3to32" +2
+score "~D"  -5
+score "~O" +1
+score "~s 广告" -10
+score "~s 先生" -10
+
+# attributes when using a mono terminal
+#mono header underline ^(From|Subject):
+mono quoted bold
+mono  index bold ~F
+mono  body  bold '\*[^*]+\*'
+mono  body  underline '_[^_]+_'
+
+# The header weed list
+
+ignore delivered-to
+ignore content- errors-to in-reply-to mime-version
+ignore lines precedence status
+ignore nntp-posting-host path old-return-path received references
+ignore priority &gt;received &gt;&gt;received
+
+ignore resent- return-path xref path
+ignore x400 importance sensitivity autoforward original-encoded-information
+ignore x- thread-
+
+ignore list- comments posted-to approved-by
+
+unignore x-spam x-url x-mailer
+#
+# Various settings
+set alias_file=~/Mail/alias
+set   abort_nosubject=no        # Let me send messages with an empty subject
+set   abort_unmodified=no       # Let me send empty messages
+set   allow_8bit=yes            # Produce correct MIME
+unset arrow_cursor          # Use the bar cursor
+set   askcc=no              # Don't ask me about CCs
+set   beep=no               # I don't like the beep
+set   beep_new=no           # I use xbiff instead of beep
+unset bounce_delivered      # Don't include Delivered-to with bounces
+set   confirmcreate=yes     # Ask me about creating new files
+unset confirmappend         # Don't ask me about appending to files
+set   delete=yes            # Don't ask me whether or not I meant to delete messages
+set   edit_hdrs=no          # I want to edit the headers.
+set editor="vim -c 'set tw=72 et ft=mail'+:silent+?^$"
+set   envelope_from=yes         # set messages' envelope-from header.
+set   fast_reply=yes            # when press "r" then don't use to fill address
+set   fcc_clear                 # Store local copies of messages in the clear.
+set   followup_to               # Create Mail-Followup-To headers.
+unset   force_name              # Create save folders which don't exist.
+set   forward_decode            # Decode messages when forwarding.
+set   forward_decrypt           # Decrypt messages when forwarding.
+set   help=yes              # No help line.
+set   include=yes           # Always include a copy when replying.
+set   mark_old              # Distinguish between seen (but unread) and new messages
+unset metoo                 # Remove me from CC headers.
+set   mime_fwd=ask-no       # Ask me whether or not to create a MIME-encapsulated forward
+set   move=no               # use mbox, that's i'd love to
+set   pager_stop            # Don't fall through to the next message in the pager
+set   pager_index_lines=4       # The pager index is ugly to someone.
+set   pgp_replyencrypt          # Encrypt when replying to encrypted messages.
+set   pgp_replysignencrypted    # Sign when replying to encrypted messages.
+set   pgp_show_unusable="no"    # Don't display unusable keys.
+set   pgp_sort_keys="keyid"     # Sort keys by key ID
+set   pgp_replysign             # Sign when replying to signed messages.
+set   pgp_timeout=3600          # Forget the PGP passphrase after an hour.
+set   pipe_decode               # Decode messages I pipe to commands,typically to patch(1).
+unset   print=ask-no            # Don't waste paper
+set   print_cmd="enscript -Email -2 -r -G" # Two columns, landscape, fancy header.
+set   print_split=yes           # Invoke enscript once per message
+set   quit=ask-yes              # Don't ask me whether or not I want to quit.
+set   quote_regexp="^ *[a-zA-Z]*[&gt;|][&gt;:|]*" # Recognize quotes in the pager.
+set   read_inc=50               # Progress indicator when reading folders.
+set   recall=ask-no             # When I say "compose", ask me whether I want to continue composing a postponed message.
+set   reply_to=ask-yes          # Ask me whether I want to honor users' reply-to headers.
+set   reverse_alias             # Use aliases to display real names on the index.
+set   reverse_name=yes          # 用哪个邮箱收的信, 就用哪个邮箱回信
+set   save_name=yes             # Save copies by name.  Together with $record and $save_name, this means that when a folder exists, copies of outgoing messages are written to ~/Mail/&lt;name&gt;, otherwise they go to ~/Mail/archive/now
+set   sig_dashes            # Add dashes above my signature
+set   smart_wrap            # Try to be smart when wrapping around lines in the pager
+set   sort=score            # sort by score
+set   sort=threads          # then by threads
+set   sort_aux='reverse-last-date-received'         # then by date
+unset strict_threads        # don't be strict about threads
+set   suspend=no            # I run the mutt in gnome-terminal
+set   tilde                 # Indicate empty lines in the pager.
+set   to_chars=" +TCFL "    # Don't tag list mail in the index
+unset use_domain            # Don't append a domain to addresses.
+set   write_inc=50          # Progress indicator when writing folders.
+set   query_command="lbdbq %s"      # Use the Little Brother's Database with the external query feature.
+set   sendmail_wait=-1              # Put sendmail (i.e., postfix) to the background.
+set   encode_from           # "From " in the beginning of a line triggers quoted-printable
+set   nowait_key            # Return immediately from external programs
+set   forw_format="[fwd] %s (from: %a)" # A different subject for forwarded messages
+set   nobeep                # Shut up. ;-)
+set   reply_regexp="^((re([                                                          \\ [0-9 \\ ]+])*|aw):[ \t]*)+[ \t]*"  # A regular expression to detect replies
+set   header=no             # Include the message header when replying.
+set   ignore_list_reply_to=no       # Ignore Reply-To headers pointing to mailing lists.
+set   index_format="%4C %Z %{%b %d} %-15.15L (%4c) %s"  # Somewhat different index format, which works nicely with maildir folders.
+set   text_flowed           # Generate text/plain; format=flowed
+unset use_ipv6              # Don't try to use IPv6 - it doesn't work here.
+set   keep_flagged          # don't move flagged messages to mbox
+
+set status_format="-%r-+(%v) %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]----%&gt;-(%P)---"
+#set compose_format="--+(%v) Compose  [Approx. msg size: %l   Atts: %a]%&gt;-"
+#set pager_format="-%Z- %C/%m: %.20n %&gt; %s"
+#set smileys="^$"
+
+# Identify  mailing lists I subscribe to
+subscribe	opera-linux@opera.com 
+subscribe	opera-linux-request@opera.com
+
+# locale
+set charset = UTF-8
+set locale  = zh_CN.UTF-8
+# hook charset
+charset-hook !UTF-8 gbk
+charset-hook "^us-ascii$" "utf-8"
+# send charset
+set send_charset="us-ascii:iso-8859-1:utf-8:gbk"
+set rfc2047_parameters=yes
+# 定义别名的字符集
+charset-hook alias charset 
+iconv-hook charset local-charset
+
+#EOF
+</pre>
+<h4 id="toc_1.2.1.2">路径配置dir.rc</h4>
+
+<p>
+我设定收件箱草稿箱跟发件箱都是同一个目录inbox，这样做的好处是邮件折叠浏览的时候一目了然，具体可以察看 <a href="http://xhc.me/wp-content/uploads/mutt/manual_1.5.19_zh.html\#threads">Threaded模式</a>。
+</p>
+<pre class="brush: bash">
+# muttrc dir part
+# vim: filetype=muttrc
+# 所有信箱文件夹必须有{cur,new,tmp}这三个子目录，请手动建。 
+  set folder="~/Mail"	       # 主目录		
+  set mbox_type=Maildir        # 邮件存放形式，推荐设置，没什么好说的
+  set move=no	  			   # 新邮件阅读后自动保存到下面设定的路径
+  set mbox=+inbox	           # 已读新邮件自动归档位置
+  set record=+inbox	           # 已发送邮件保存位置  
+  set trash=~/Mail/trash       # 放已删除邮件
+  set postponed=+postponed     # 放草稿("+"指主目录/)
+  set postpone=yes             # 已编辑但最后关头取消的邮件直接放草稿
+  set spoolfile="~/Mail/inbox" # mutt启动后打开的信箱
+  set tmpdir= ~/.mutt/.tmp     
+  set header_cache=~/Mail/.header_cache/ # 缓存邮件头位置，设定后邮件大量的话能提高第二次以后的打开速度
+  set maildir_header_cache_verify=no
+  set mailcap_path="~/.mutt/mailcap"	# mailcap的路径，mailcap下面介绍
+  set signature="~/Mail/.signature"     # 写邮件用到的签名
+
+# Mailboxes in Maildir (automatic update) # mutt监视的信箱，即里面的邮件文件会被mutt读取。
+  mailboxes `cd ~/Mail; /bin/ls -1|sed -e 's/^/+/' | tr "\n" " "` #主目录下所有文件夹
+  unmailboxes Maillog *.ev-summary  #上一条设定可能包括了一些不是信箱的文件夹，可以在这里取消
+# set   sendmail="/usr/bin/msmtp" # 发件程序 跟下一条配置的区别后面会讲。此时还没配置发件程序msmtp，所以还不能发件。
+set   sendmail="~/.mutt/msmtp-enqueue.sh" # 发件程序
+</pre>
+
+<h4 id="toc_1.2.1.3">颜色配置color.rc</h4>
+
+<p>
+因为我用了<code>Solarized</code>主题配色，所以在主配置里面我注释了引用这个颜色配置文件。solarized后面有介绍。
+</p>
+<pre>
+# vim: filetype=muttrc
+# Colors
+color normal white black
+color hdrdefault red black
+color quoted yellow black
+color signature red black
+color indicator black green
+color error brightred black
+color status yellow blue
+color tree magenta black	# the thread tree in the index menu
+color tilde magenta black
+color message brightcyan black
+color markers brightcyan black
+color attachment brightmagenta black
+color search black green	# how to hilite search patterns in the pager
+
+color header brightred default ^(From|Subject):
+# color body brightblue black "(ftp|http)://[^ ]+"	# point out URLs
+
+# email addresses
+color body brightblue  black "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+mono  body bold              "[-a-z_0-9.%$]+@[-a-z_0-9.]+\\.[-a-z][-a-z]+"
+
+# color underline brightgreen black
+color index yellow default ~p              # 发给我的，黄色
+color index blue default ~P                # 我发的，蓝色
+color index brightyellow default ~N        # 新的，黄色粗体
+color index brightgreen default "~N ~p"    # 新发给我的，绿色粗体
+</pre>
+<h4 id="toc_1.2.1.4">快捷键配置bindings.rc</h4>
+<pre class="brush: bash">
+# 用G调用执行收件,S调用执行发件
+macro generic  S "!~/.mutt/msmtp-runqueue.sh -q -n &amp; \n"
+macro index    G "!~/.getmail/getmail -q -n &amp; \n"   "Invoke getmail"
+macro pager    G "!~/.getmail/getmail -q -n &amp; \n"   "Invoke getmail"
+
+# 跳转各个信箱
+macro index  I  "c!\n" "Go to Inbox"
+macro pager  I  "c!\n" "Go to Inbox"
+macro index  F  "c=friends\r"
+macro pager  F  "c=friends\r"
+macro index  J  "c=job\r"
+macro pager  J  "c=job\r"
+</pre>
+<h4 id="toc_1.2.1.5">第三方处理程序mailcap</h4>
+<pre>
+text/enriched;  enriched.sh  ; copiousoutput
+
+image/*;  	anytopnm %s | pnmscale -xsize 80 -ysize 50 | ppmtopgm | pgmtopbm | pbmtoascii ; copiousoutput
+
+application/x-gunzip;   gzcat; copiousoutput
+application/x-tar-gz; gunzip -c %s | tar -tf - ; copiousoutput
+application/postscript; ps2ascii %s; copiousoutput
+
+application/pgp-keys;		pgp -f &lt; %s ; copiousoutput
+
+# 让mutt调用 wvHtml 在自己的窗口 里直接显示转换的 doc 文档
+application/msword; wvHtml %s - | w3m -dump -T text/html;copiousoutput
+#text html
+text/html; w3m -dump -ppc 9 -I %{charset} -T text/html %s|uniq; copiousoutput
+# Send excel spreadsheets to my NT box
+application/ms-excel; open.pl %s
+</pre>
+<h4 id="toc_1.2.1.6">自动填写邮件头header.rc</h4>
+<pre class="brush: bash">
+# header settings   #发邮件的时候发信人和回信人自动填写的内容
+# vim: filetype=muttrc
+
+# 默认
+hdr_order from to cc date subject reply-to mail-followup-to # mail head order
+my_hdr From: 		 NICK &lt;xxxxx@163.com&gt; 
+my_hdr Reply-to:	 NICK &lt;xxxxx@163.com&gt; 	    # my Reply address:w
+#my_hdr Organization: A Really Big Company, Anytown, USA
+
+# 快捷键设定发件人
+# ESC+1切换到gmail邮箱账户
+macro generic "&lt;esc&gt;1" ":set from='NICK &lt;XXXXX@gmail.com&gt;'"
+# ESC+2切换到QQ邮箱账户
+macro generic "&lt;esc&gt;2" ":set from='NICK &lt;XXXXX@qq.com&gt;'"
+
+# send hook 当收到的邮件发件人为gmail邮箱时，你的回覆邮箱设为456@gmail.com
+send-hook '~t .*@gmail\.com$' 'my_hdr from:456@gmail.com'
+send-hook '~t .*@gmail\.com$' 'my_hdr reply-to:456@gmail.com'
+send-hook '~t .*@gmail\.com$' 'set sendmail="~/.mutt/msmtp-enqueue.sh -a 456:gmail"'
+
+reply-hook '~t .*@gmail\.com$' 'my_hdr from:456@gmail.com'
+reply-hook '~t .*@gmail\.com$' 'my_hdr reply-to:456@gmail.com'
+reply-hook '~t .*@gmail\.com$' 'set sendmail="~/.mutt/msmtp-enqueue.sh -a 456:gmail"'
+</pre>
+
+<h4 id="toc_1.2.1.7">gpg.rc</h4>
+ 
+<p>
+因为不是每个人都需要邮件加密的。后面再介绍这个。
+</p>
+<pre>
+# GnuPG config
+# vim:ft=config
+set pgp_decode_command="gpg %?p?--passphrase-fd 0? --no-verbose --batch --output - %f"
+set pgp_verify_command="gpg --no-verbose --batch --output - --verify %s %f"
+set pgp_decrypt_command="gpg --passphrase-fd 0 --no-verbose --batch --output - %f"
+set pgp_sign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --detach-sign --textmode %?a?-u %a? %f"
+set pgp_clearsign_command="gpg --no-verbose --batch --output - --passphrase-fd 0 --armor --textmode --clearsign %?a?-u %a? %f"
+set pgp_encrypt_only_command="/usr/lib/mutt/pgpewrap gpg --batch --quiet --no-verbose --output - --encrypt --textmode --armor --always-trust --encrypt-to 0xCDB98F72 -- -r %r -- %f"
+set pgp_encrypt_sign_command="/usr/lib/mutt/pgpewrap gpg --passphrase-fd 0 --batch --quiet --no-verbose --textmode --output - --encrypt --sign %?a?-u %a? --armor --always-trust --encrypt-to 0xCDB98F72 -- -r %r -- %f"
+set pgp_import_command="gpg --no-verbose --import -v %f"
+set pgp_export_command="gpg --no-verbose --export --armor %r"
+set pgp_verify_key_command="gpg --no-verbose --batch --fingerprint --check-sigs %r"
+set pgp_list_pubring_command="gpg --no-verbose --batch --with-colons --list-keys %r" 
+set pgp_list_secring_command="gpg --no-verbose --batch --with-colons --list-secret-keys %r" 
+set pgp_autosign=yes
+set pgp_sign_as=0xCDB98F72
+set pgp_replyencrypt=yes
+set pgp_timeout=3600
+set pgp_good_sign="^gpg: Good signature from"
+# set pgp_use_gpg_agent=yes
+</pre>
+
+<h3 id="toc_1.2.2">收件getmailrc配置</h3>
+
+<p>
+上面已经配置mutt，到现在mutt只是完成了界面和处理邮件的各个功能，配置好这个getmail才能从邮件服务器上收到邮件。
+</p>
+
+<p>
+如果你只有一个收件邮箱，那么配置是非常简单的。随便搜索引擎搜一下有很多，我这里直接说一下多个号的配置。
+</p>
+
+<p>
+多帐号是通过对应的多个配置文件来配置的。我的getmail的所有配置来自：<a href="http://www.debian.org/doc/manuals/debian-reference/ch06.en.html\#_getmail_configuration">getmail configuration（英文）</a>
+</p>
+
+<p>
+在 <code>~/.getmail/</code>新建 <code>config</code> 和 <code>log</code> 文件夹，分别存放配置文件和日志文件。现在假设你用这两个邮箱：123@163.com，456@gmial.com 在<code>log</code>文件夹新建空白的日志文件163.log、gmail.log（其实名字可随意，在配置文件里面写上对应的即可）。再新建如下<code>两个</code>配置文件：
+</p>
+<pre class="brush: bash">
+# ~/.getmamil/config/getmailrc.163
+# vim: filetype=getmailrc
+[options]
+verbose = 1
+read_all = false
+message_log = ~/.getmail/log/163.log
+
+[retriever]
+type = SimplePOP3Retriever
+server = pop3.163.com
+username = 123@163.com
+password = ***********
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail    # 这个是说收到的邮件送给procmail这个程序处理。如果填的是一个文件夹路径，那么就不会做任何处理直接把邮件存到那个路径上。
+unixfrom = true
+</pre>
+<pre>
+# ~/.getmamil/config/getmailrc.gmail
+# vim: filetype=getmailrc
+[retriever]
+type = SimplePOP3SSLRetriever
+server = pop.gmail.com
+#port = 995
+username = 456@gmail.com
+password = ************
+
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+unixfrom = true
+
+[options]
+verbose = 1
+delete = false
+message_log = ~/.getmail/log/gmail.log
+</pre>
+<p>
+配置文件的名字前面的getmailrc一定要，后面的可随意。例如你有第二个163邮箱，可再建立一个getmailrc.163_2。
+</p>
+
+<p>
+因为配置文件里面含有明文密码，所以出于安全考虑最好设定一下权限：
+</p>
+<pre>
+$ chmod 0600 $HOME/.getmail/config/*
+</pre>
+<p>
+此时要mutt调用收件程序（看快捷键G的设定），还要在<code>~/.getmail</code>文件夹下建立一个名为<code>getmail</code>的bash脚本。
+</p>
+<pre class="brush: bash">
+#!/bin/sh
+set -e
+if [ -f $HOME/.getmail/running ]; then
+  echo &gt; ~/.getmail/log/getmail.running 2&gt;&amp;1 &amp;
+  pgrep -l "getmai[l]"
+  exit 1
+else
+  echo &gt; ~/.getmail/log/getmail.running 2&gt;&amp;1 &amp; 
+fi
+if [ -f $HOME/.getmail/stop ]; then
+  echo "do not run getmail ... (if not, remove $HOME/.getmail/stop)" &gt;&amp;2
+  exit
+fi
+if [ "x$1" = "x-l" ]; then
+  exit
+fi
+rcfiles="/usr/bin/getmail"
+for file in $HOME/.getmail/config/* ; do
+  rcfiles="$rcfiles --rcfile $file"
+done
+date -u &gt; $HOME/.getmail/running
+eval "$rcfiles $@"
+rm $HOME/.getmail/running
+</pre>
+<p>
+到这里收信getmail已经配置好。到<code>mutt（终端执行mutt）</code>里面试试按G吧~
+</p>
+
+<p>
+你也可以通过<code>crontab</code>程序设置按时执行脚本收信：
+</p>
+<pre>
+sudo crontab -e -u &lt;user_name&gt;   # &lt;user_name&gt;为你电脑当前用户名
+</pre>
+<p>
+上面的命令后选择编辑器会打开一个配置文件，添加下面一行：
+</p>
+<pre>
+5,20,35,50 * * * * /usr/local/bin/getmails --quiet # 表示隔15分钟运行一次，你也可以设定各种频率，具体请 man crontab
+</pre>
+<h3 id="toc_1.2.3">过滤procmail的配置</h3>
+
+<p>
+过滤规则的写法自己搜索吧~
+</p>
+<pre>
+PATH=/bin:/sbin:/usr/bin:/usr/sbin/:/usr/local/bin:/usr/local/sbin
+MAILDIR=$HOME/Mail
+DEFAULT=$MAILDIR/inbox/     # 默认转发到的信箱
+VERBOSE=off
+LOGFILE=$HOME/Mail/log/procmail.log
+# 根据邮件标题过滤，把标题含有某些内容的邮件扔到垃圾箱
+:0
+* 1^0 ^X-Advertisement
+* 1^0 ^Subject:.*BUSINESS PROPOSAL
+* 1^0 ^Subject:.*URGENT.*ASISSTANCE
+* 1^0 ^Subject: *I NEED YOUR ASSISTANCE
+trash/
+
+# 其他过滤规则
+# ……
+
+# 上面所有过滤规则过滤后剩下的转存入inbox信箱
+:0
+* .*
+inbox/
+</pre>
+
+<h3 id="toc_1.2.4">发件msmtp的配置</h3>
+<pre class="brush: bash">
+#Set default values for all following accounts
+# vim: filetype=msmtprc
+ defaults
+ logfile Mail/log/msmtp.log  # 发件日志
+#tls on
+ tls_trust_file /etc/ssl/certs/ca-certificates.crt
+
+# Gmail service
+account gmail           
+host smtp.gmail.com
+port 587
+auth on
+tls on
+
+# 163 service
+account job@163
+host smtp.163.com 
+auth login
+tls on
+
+# 126 service
+account 126  
+host smtp.126.com  
+tls off  
+auth login  
+
+# QQ service
+account qq
+host smtp.qq.com  
+tls off  
+auth login
+
+#上面的是服务器方面的设置，下面通过 account 456 : gmail 这种继承方式（帐号456继承上面的gmail）配置帐号。
+
+account 456 : gmail
+from 456@gmail.com
+user "456@gmail.com"
+password *********
+ 
+account job : 163
+from job@163.com
+user "job"
+password "******"
+
+account friends : 163
+from friends@163.com
+user "friends"
+password "******"
+
+account 123 : 126
+from 123@126.com
+user "123"
+password "*******"
+
+account 123456 : qq
+from 123456@qq.com
+user "123456"
+password "123456"
+
+account 654321 : qq
+from 654321@qq.com
+user "654321"
+password "*******"
+
+#Default account
+account default : friends : 163
+</pre>
+<p>
+发件的程序是在 <code>/usr/bin/msmtp</code> ，他的工作原理是<code>mutt</code>写好邮件按<code>y</code>发送，此时邮件被<code>msmtp</code>接收并返回发送成功的提示。但是此时邮件并没有发送出去，只是把信件保存在<code>QUEUEDIR</code>里,<code>msmtp</code>然后启动<code>msmtp-runqueue.sh</code>,这时候如果网络连接正常，<code>QUEUEDIR</code>里面的邮件才会被发送出去，并且把发送出去的邮件从<code>QUEUEDIR</code>里面删除。如果网络链接异常或者别的什么故障导致发件失败，邮件会保留在<code>QUEUEDIR</code>等待下一次启动<code>msmtp-runqueue.sh</code>
+</p>
+
+<p>
+也就是说，如果你发送过一封邮件因为故障而搁置，这封邮件会等待你下一次发信的时候再次发送。如果确定网络链接正常，我们可以利用<code>bash脚本</code>直接调用<code>msmtp-runqueue.sh</code>发件。并且可以通过<code>crontab</code>定时启动那个脚本发送<code>QUEUEDIR</code>里面等待发送的邮件。
+</p>
+
+<p>
+msmtpqueue已经随msmtp安装上了，放在<code>/usr/share/doc/msmtp/examples</code>下，按照这里README文件的说明，把<code>msmtp-enqueue.sh</code>和<code>msmtp-runqueue.sh</code>两个文件加上执行属性，然后<code>ln</code>到<code>~/.mutt</code>下，再在<code>~/Mail/</code>创建一个新目录<code>msmtpqueue</code>，<code>ln</code>成<code>~/.msmtpqueue</code>(两个脚本默认的QUEUEDIR)，最后修改muttrc中的sendmail(在<code>~/.mutt/dir.rc</code>注释第22行，取消注释第23行)。同时在快捷键设定里面(在<code>~/.mutt/bindings.rc</code>第二行）按上面所示配置
+</p>
+
+<p>
+到这里发件程序也已经配置好了。此时mutt已经能满足几乎所有要求。下面还有一些补充。
+</p>
+
+<h2 id="toc_1.3">Solarized配色</h2>
+
+<p>
+<a href="http://ethanschoonover.com/solarized">Soalrized</a> 是个非常流行的配色项目，支持很多软件。mutt只是其中之一，<a href="http://ethanschoonover.com/solarized\#mutt">这里</a> 有截图。github项目地址：<a href="https://github.com/altercation/mutt-colors-solarized">https://github.com/altercation/mutt-colors-solarized</a> 
+安装过程也简单，项目里有4个配色，其中2个需要终端256位支持，把需要的配色copy到<code>~/.mutt/</code>并且在<code>doc_muttrc</code>里面<code>source</code>进来。
+</p>
+
+<h2 id="toc_1.4">使用gnupg加密或者签名邮件</h2>
+
+<p>
+因为用的人不是很多，而且这东西操作过程有点复杂，我就只大概写一下，具体可参考下面的一些文章：
+</p>
+
+<ol>
+<li>
+<a href="http://man.chinaunix.net/linux/debian/reference/ch-gnupg.zh-cn.html">Debian 参考手册 第14章-GnuPG</a>
+
+<li>
+<a href="http://www.fwolf.com/blog/post/302">在mutt中使用gnupg</a> 
+
+</ol>
+
+<p>
+操作步骤是：1.安装gnupg。2.生成新的公钥密钥对。3.把公钥上传到服务器。4.到github上找一份mutt里面配置gpg的文件然后source进muttrc。
+</p>
+ </div> 
+		<div id="footer">
+			<p><a href="http://huangming.org/blog/about/">HM</a>&nbsp;&copy;&nbsp;2011-2012&nbsp;wiki.huangming.org<br>Generated by <a href="http://www.vim.org" target="_blank">Vim</a> &amp;<a href="http://code.google.com/p/vimwiki/" target="_blank">Vimwiki</a></p> 
+		</div> 
+    <div id="goTop" style="display: block">
+      <a href="#top"" title="返回顶部" onclick="window.scroll(0,0);"><img src="http://huangming.org/images/gotoTop.png" height="24" width="24" border="0" alt="go to Top"/>
+      </a>
+    </div>
+    <script src="../js/vimwiki.js" type="text/javascript"></script>
+    <script>window.jQuery || document.write('<script src="../js/jquery-1.4.2.min.js"><\/script>')</script>
+ </body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+	<head>
+		<title>Ubuntu更新命令-Wiki@HM</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+    <link rel="Stylesheet" type="text/css" href="../../css/style.css" />
+		<!-- blog ico -->
+		<link type="image/x-icon" rel="icon" href="../../favicon.png" />
+		<link type="image/x-icon" rel="shortcut icon" href="../../favicon.png" /> 
+		<!-- weather -->
+    <script src="../../js/jquery-1.4.2.min.js" type="text/javascript"></script>
+		<script type="text/javascript" charset="utf-8" src="http://huangming.org/javascripts/weather.js"></script>
+	  <link href="http://huangming.org/stylesheets/main.css" rel="stylesheet" media="all"/> <link href="http://huangming.org/images/weather/default/julying-weather.css" rel="stylesheet" media="all"/>  
+	</head> 
+	<body id="top"> 
+		<div id=header>
+			<nav role="navigation">
+			<span class="label success"><a href="/" class="fn-left">博客</a></span> 
+			<span class="label success"><a href="/vimwiki/" class="fn-left">WiKi</a></span> 
+			</nav>	
+		</div>
+		<div id="cse"></div>
+		<div id="main"> 
+<div class="toc">
+<ul>
+<li><a href="#toc_1">Ubuntu更新命令</a>
+<ul>
+<li><a href="#toc_1.1">使用apt命令工具</a>
+<li><a href="#toc_1.2">更新源</a>
+<li><a href="#toc_1.3">不升级部分软件</a>
+<li><a href="#toc_1.4">举例</a>
+<li><a href="#toc_1.5">dpkg － 底层一些的包管理工具</a>
+</ul>
+</ul>
+</div>
+<p>
+<a href="../../index.html">首页</a> - <a href="../index.html">ubuntu</a> - <a href="index.html">常用命令</a>
+</p>
+<h1 id="toc_1">Ubuntu更新命令</h1>
+<hr />
+<p>
+软件中心与新立德功能上一样，都是软件管理工具。好像它们用的源都应该是<code>/etc/apt/sources.list.</code>
+</p>
+
+<h2 id="toc_1.1">使用apt命令工具</h2>
+
+<p>
+安装包
+</p>
+<pre class="brush: bash"class="brush: bash">
+dpkg -i package.deb 
+sudo apt-get install package 安装包
+sudo apt-get install package - - reinstall 重新安装包
+sudo apt-get -f install 修复安装"-f = ——fix-missing" 
+</pre>
+
+<p>
+显示该包的版本、安装信息等 
+</p>
+<pre class="brush: bash">
+dpkg -l package  
+dpkg -s package (详细）
+apt-cache show package 获取包的相关信息，如说明、大小、版本等
+</pre>
+<p>
+搜索特定的包
+</p>
+<pre>
+apt-cache search package
+</pre>
+<p>
+列出当前所有已安装的包
+</p>
+<pre>
+dpkg -l
+</pre>
+<p>
+删除包
+</p>
+<pre class="brush: bash">
+dpkg -r package  
+dpkg -P package  （包括配置文件）
+sudo apt-get remove package 删除包
+sudo apt-get remove package - - purge 删除包，包括删除配置文件等
+</pre>
+<p>
+列出与该包关联的文件
+</p>
+<pre>
+dpkg -L package
+</pre>
+<p>
+解开 deb 包的内容
+</p>
+<pre>
+dpkg –unpack package.deb
+</pre>
+<p>
+从所有安装包中找寻文件keyword
+</p>
+<pre>
+dpkg -S keyword  
+</pre>
+<p>
+列出 deb 包的内容
+</p>
+<pre>
+dpkg -c package.deb
+</pre>
+<h2 id="toc_1.2">更新源</h2>
+<pre class="brush: bash">
+sudo apt-get update
+# apt-get update
+</pre>
+<p>
+运行成功之后，你就可以搜到在你的发行版中有哪些软件了，命令是<code>apt-cache</code>，运行这个命令是在本机是检索，而不连到网上。如：
+</p>
+<pre class="brush: bash">
+sudo apt-get upgrade 更新已安装的包
+
+sudo apt-get dist-upgrade 升级系统
+
+sudo apt-get dselect-upgrade 使用 dselect 升级
+
+apt-cache depends package 了解使用依赖
+
+apt-cache rdepends package 是查看该包被哪些包依赖
+
+sudo apt-get build-dep package 安装相关的编译环境
+
+apt-get source package 下载该包的源代码
+
+sudo apt-get clean &amp;&amp; sudo apt-get autoclean 清理无用的包
+
+sudo apt-get check 检查是否有损坏的依赖
+</pre>
+<h2 id="toc_1.3">不升级部分软件</h2>
+
+<p>
+切换至 <code>root</code> 用户 (<code>su or sudo -s</code>)
+</p>
+
+<p>
+执行:
+</p>
+<pre>
+　　echo php5 hold | sudo dpkg --set-selections
+</pre>
+<p>
+然后，执行 <code>apt-get upgrade</code> 命令之后，这个包会被“留住”。
+</p>
+<pre class="brush: bash">
+　　sudo apt-get upgrade
+
+　　Reading package lists... Done
+
+　　Building dependency tree
+
+　　Reading state information... Done
+
+　　The following packages have been kept back:
+
+　　php5
+</pre>
+<p>
+如果要使被你“留住”的软件包可升级，执行
+</p>
+<pre>
+    echo php5 hold | sudo dpkg --set-selections
+</pre>
+<h2 id="toc_1.4">举例</h2>
+<pre>
+	# apt-cache search baseutils
+</pre>
+<p>
+这个命令可以列出baseutils这个软件包的情况，有还是没有，还有版本等。
+</p>
+
+<p>
+看到库里有这个软件包后，就可以安装它：
+</p>
+<pre>
+	# apt-get install baseutils
+</pre>
+<p>
+这时我们就可以看到apt-get的威力了。如果baseutils依赖于某个另外的软件，或者一个运行库xyz.0.01.so，apt-get会自动下载这个包（或含有这个库的软件包）。这叫做自动依赖性处理。通常，如果你只用Debian软件库内的软件，是不会发生找不到包或包版本不对的情况的，除非用的是正在开发的Testing或Unstable版本。
+</p>
+
+<p>
+卸载软件：
+</p>
+<pre>
+	# apt-get remove baseutils
+</pre>
+<p>
+如果想看一下库里有多少软件：
+</p>
+<pre class="brush: bash">
+	# apt-cache stats 
+	Total package names : 22502 (900k) 
+	Normal packages: 17632 
+	Pure virtual packages: 281 
+	Single virtual packages: 1048 
+	Mixed virtual packages: 172 
+	Missing: 3369 
+	...
+</pre>
+<p>
+把本机所有软件升级到最新版：
+</p>
+<pre>
+	# apt-get upgrade
+</pre>
+<p>
+最后是最强力的－－把整个发行版都升到新版本：
+</p>
+<pre>
+	# apt-get dist-upgrade
+</pre>
+<p>
+升级时注意那些影响系统起动的东西，比如升级了内核，升级了<code>grub</code>或<code>lilo</code>等，这之后你应当重新运行<code>grub</code>或是<code>lilo</code>，让它们指向正确的位置，否则升级之后会工作不正常的。
+</p>
+
+<p>
+用<code>apt-get</code>安装软件时，它会从网上（在<code>sources.list</code>里指的那个站点）下载所用的软件包，这个包将存在本机上，目录是：<code>/var/cache/apt/archives/</code>。时间长了，这里会变得非常巨大，占用大量的硬盘空间。要想清理这个目录，可以运行：
+</p>
+<pre>
+	# apt-get clean
+</pre>
+<p>
+还有一个自动清理功能，它只清除那些没用的或者是不完整的软件包：
+</p>
+<pre class="brush: bash">
+	# apt-get autoclean
+</pre>
+<p>
+这样在重装某软件时就依然能使用已经下载好的，而不是再到网上去下载。
+</p>
+
+
+<h2 id="toc_1.5">dpkg － 底层一些的包管理工具</h2>
+
+<p>
+用上<code>apt</code>（高级包管理工具）之后，一般是不需要处理单个的deb文件的。如果需要，就要用<code>dpkg</code>命令。比如想自己装gedit：
+</p>
+<pre>
+	# dpkg -i gedit-2.12.1.deb
+</pre>
+<p>
+卸载：
+</p>
+<pre>
+	# dpkg -r gedit
+</pre>
+<p>
+这里只写名字即可。还可以加上<code>--purge(-P)</code>标志：
+</p>
+<pre>
+	# dpkg -P gedit
+</pre>
+<p>
+这会连同gedit的配置文件一起删除，只用<code>-r</code>的话是不删除配置文件的。
+</p>
+
+<p>
+如果不想安装一个deb包，但想看一下它里面有什么文件：
+</p>
+<pre>
+	# dpkg -c gedit-2.12.1.deb
+</pre>
+<p>
+如果想多看点信息：
+</p>
+<pre>
+	# dpkg -I gedit-2.12.1.deb
+</pre>
+<p>
+也可以用通配符来列出机器上的软件：
+</p>
+<pre>
+	# dpkg -l gcc*
+</pre>
+<p>
+这会列出所有gcc开头的软件包：
+</p>
+<pre class="brush: bash">
+	Desired=Unknown/Install/Remove/Purge/Hold 
+	Status=Not/Installed/Config-files/Unpacked/Failed-config/. 
+	/ Err?=(none)/Hold/Reinst-required/X=both-problems 
+	/ Name Version Description 
+	+++-===============-==============-======================== 
+	ii gcc 4.0.1-3 The GNU C compiler 
+	ii gcc-3.3-base 3.3.6-8ubuntu1 The GNU Compiler Colletio 
+	un gcc-3.5 none (no description available)
+</pre>
+<p>
+其中，第1个 i 表示希望安装，第2个 i 表示已经安装，第3个字段是问题（如果有）（这3个字的含义可以看上面那3行，desired, status, err），后面是名字，版本和描述。un就表示，Unknown, not-installed。
+</p>
+
+<p>
+如果想看某包是否已经安装：
+</p>
+<pre>
+	# dpkg -s gedit
+</pre>
+<p>
+如果想看某软件都有哪些文件，都装到了什么地方：
+</p>
+<pre>
+	# dpkg -L gedit
+</pre>
+<p>
+如果只想看其中的某些文件，就加上<code>Grep</code>：
+</p>
+<pre>
+	# dpkg -L gedit grep png
+</pre>
+<p>
+当然还有<code>aptitude</code>和<code>Aptitude</code>，前者是终端上运行的带菜单的工具，后者是X窗口上运行的图形化的程序。
+</p>
+
+<p>
+还有，列出某包的详情：
+</p>
+<pre>
+	apt-cache show gedit 
+</pre>
+
+<p>
+一般用<code>apt-get</code> 与本地包查寻<code>apt-cache</code>就可以了。<code>dpkg</code>是针对单独的deb包的。
+与<code>dpkg</code>主要不同的是，<code>apt-get</code>能看上去解决依赖关系。
+我认为可以这样子说，<code>apt-get</code>就是新得立的命令版。新得立也能自动解决依赖关系，软件中心就不清楚了。
+</p>
+ </div> 
+		<div id="footer">
+			<p><a href="http://huangming.org/blog/about/">HM</a>&nbsp;&copy;&nbsp;2011-2012&nbsp;wiki.huangming.org<br>Generated by <a href="http://www.vim.org" target="_blank">Vim</a> &amp;<a href="http://code.google.com/p/vimwiki/" target="_blank">Vimwiki</a></p> 
+		</div> 
+    <div id="goTop" style="display: block">
+      <a href="#top"" title="返回顶部" onclick="window.scroll(0,0);"><img src="http://huangming.org/images/gotoTop.png" height="24" width="24" border="0" alt="go to Top"/>
+      </a>
+    </div>
+    <script src="../../js/vimwiki.js" type="text/javascript"></script>
+    <script>window.jQuery || document.write('<script src="../../js/jquery-1.4.2.min.js"><\/script>')</script>
+ </body>
+</html>

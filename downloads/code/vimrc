@@ -1,0 +1,757 @@
+"===========================================================================
+"         Filename: vimrc
+"           Author: HM
+"            Email: wangbandi#gmail.com
+"         Homepage: http://huangming.github.com
+"          Created: 2015.03.30
+"===========================================================================
+
+
+"                      _________________________
+"
+"                               Plugin
+"                      _________________________
+"
+"---------------------------------------------------------------------------
+" => Vundle
+"---------------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/vimfiles/bundle/Vundle.vim
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/vimfiles/bundle')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Plugin 'Shougo/vimproc'
+" Plugin 'Shougo/vimshell.vim'
+
+Plugin 'bufexplorer.zip'
+let g:bufExplorerSplitBelow=1 
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+if executable('ctags')
+    Plugin 'majutsushi/tagbar'
+endif
+if executable('git')
+    Plugin 'tpope/vim-fugitive'
+endif
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Align'
+Plugin 'tpope/vim-commentary'
+autocmd FileType vim set commentstring=\"\ %s
+autocmd FileType vbnet set commentstring=\'\ %s
+Plugin 'vim-scripts/VisIncr'
+Plugin 'drmingdrmer/xptemplate'
+Plugin 'Shougo/neocomplcache.vim'
+
+Plugin 'calendar.vim'
+Plugin 'Stormherz/tablify'
+Plugin 'vimwiki'
+Plugin 'yianwillis/vimcdoc'
+Plugin 'huangming/myvimplugin'
+
+Plugin 'VOoM'
+" Plugin 'vim-scripts/txt.vim--xu'
+Plugin 'ap/vim-css-color'
+Plugin 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup = 1
+Plugin 'michaeljsmith/vim-indent-object'
+  let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown", "vbnet"]
+
+Plugin 'scrooloose/syntastic'
+" let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['python']
+let g:syntastic_enable_python_checker = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+if has('gui_running')
+    Plugin 'Lokaltog/vim-powerline'
+endif
+Plugin 'Color-Scheme-Explorer'
+Plugin 'baskerville/bubblegum'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
+
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" git repos on your local machine ( .e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtpa': 'vim/'}
+
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+
+
+" non github repos
+call vundle#end()
+filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :PluginList          - list configured bundles
+ " :PluginInstall(!)    - install(update) bundles
+ " :PluginSearch(!) foo - search(or refresh cache first) for foo
+ " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Plugin command are not allowed..
+
+"                      _________________________
+"
+"                           General settings
+"                      _________________________
+"
+"---------------------------------------------------------------------------
+" => General settings
+"---------------------------------------------------------------------------
+set fileencodings=utf-8,chinese,ucs-bom
+set encoding=utf-8
+set fileencoding=utf-8
+" set ambiwidth=double
+set termencoding=utf-8
+"vim 提示信息乱码解决方法  
+"language messages zh_CN.UTF-8  
+if has("win32")  
+    set termencoding=chinese  
+    language message zh_CN.UTF-8  
+endif  
+
+set history=100
+syntax on
+set cursorline
+set scrolloff=5
+set cmdheight=2
+set report=0
+set helplang=cn
+"set t_Co=256
+" set background=light
+set bsdir=buffer
+set nocompatible
+set autochdir
+set listchars=tab:>\ ,eol:$,extends:>,precedes:<  " Unprintable chars mapping 
+set showbreak=->\ \ \ 
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc
+set showcmd
+set shortmess=at " Avoids 'hit enter'
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+let mapleader=',' " Change the mapleader
+let maplocalleader='\' " Change the maplocalleader
+
+"--------------------------------------------------------------------------
+" => Colorscheme
+"--------------------------------------------------------------------------
+"colorscheme solarized
+exec 'colorscheme '.["bubblegum-256-light","solarized","Tomorrow","molokai","bubblegum-256-dark","molokai"][strftime("%S")%6] 
+
+"--------------------------------------------------------------------------
+" => Status bar
+"--------------------------------------------------------------------------
+" Only have cursorline in current window and in normal window
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorline
+auto InsertEnter * set nocursorline
+auto InsertLeave * set cursorline
+set laststatus=1
+
+"set statusline+=%{fugitive#head()}
+set ruler              " bottom status bar
+" set rulerformat=%45(%=\:b%n%m%r\ %Y\ %{fugitive#head()}\ %l,%c%V\ %P%)
+set rulerformat=%25(%n%m%r:\ %Y\ [%l,%v]\ %p%%%)
+highlight StatusLine guifg=SlateBlue guibg=Yellow
+highlight StatusLineNC guifg=Gray guibg=White
+if version >= 700    " change color when enter inser motion
+   au InsertEnter * hi StatusLine guibg=#818D2d guifg=#FCFCFC gui=none
+   au InsertLeave * hi StatusLine guibg=Yellow guifg=SlateBlue gui=none
+endif
+
+"---------------------------------------------------------------------------
+" => Gui settings
+"---------------------------------------------------------------------------
+if has("gui_running")
+    "au GUIEnter * simalt ~x  " maximun window
+    set guioptions-=m        " menu bar
+    set guioptions-=T        "  tools bar
+    "set guioptions-=L        " left scroll bar
+    set guioptions-=r        " right scroll bar
+    "set guioptions-=b        " bottom scroll bar
+    set showtabline=0        " tab bar
+endif
+
+"---------------------------------------------------------------------------
+" => Pos and size when start
+"---------------------------------------------------------------------------
+" winpos 350 150
+" winpos 250 200
+" set lines=25
+" set columns=85
+winpos 200 150
+set lines=30
+set columns=100
+
+"---------------------------------------------------------------------------
+" => Font
+"---------------------------------------------------------------------------
+if has('gui_running')
+    if has("win32")
+      " set guifont=Lucida\ Console:h11:cANSI
+        set guifont=Yahei_Mono:h12.5
+    endif
+endif
+
+"---------------------------------------------------------------------------
+" => Tag label
+"---------------------------------------------------------------------------
+set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum)}\]
+set tabline=%!MyTabLine()
+function! MyTabLine()
+    let s=''
+    let t=tabpagenr() " The index of current page
+    let i=1
+    while i<=tabpagenr('$') " From the first page
+      let buflist=tabpagebuflist(i)
+      let winnr=tabpagewinnr(i)
+      let s.=(i==t?'%#TabLineSel#':'%#TabLine#')
+      let s.='%'.i.'T'
+      let s.=' '
+      let bufnr=buflist[winnr - 1]
+      let file=bufname(bufnr)
+      let m=''
+      if getbufvar(bufnr, "&modified")
+          let m='[+]'
+      endif
+      if file=~'\/.'
+          let file=substitute(file,'.*\/\ze.','','')
+      endif
+      if file==''
+        let file='[No Name]'
+      endif
+      let s.=m
+      let s.=i.':'
+      let s.=file
+      let s.='['.winnr.']'
+      let s.=' '
+      let i=i+1
+    endwhile
+    let s.='%T%#TabLineFill#%='
+    let s.=(tabpagenr('$')>1?'%999XX':'X')
+    return s
+  endfunction
+" Set up tab tooltips with every buffer name
+set guitabtooltip=%F
+
+" Alt+n
+if has("gui_running")
+     :map <silent> <C-S> :if expand("%") == ""<CR>:browse confirm w<CR>:else<CR>:confirm w<CR>:endif<CR>
+     noremap <M-1> 1gt
+     noremap <M-2> 2gt
+     noremap <M-3> 3gt
+     noremap <M-4> 4gt
+     noremap <M-5> 5gt
+     noremap <M-6> 6gt
+     noremap <M-7> 7gt
+     noremap <M-8> 8gt
+     noremap <M-9> 9gt
+     noremap <M-0> 10gt
+     noremap <C-TAB> gt
+     noremap <C-F4> <ESC>:bd<CR>
+     noremap tx <ESC>:bd<CR>
+endif
+
+
+"---------------------------------------------------------------------------
+" => File settings
+"---------------------------------------------------------------------------
+set confirm                     " confirm when quit file
+set autoread                    " update file when it change external
+set backspace=indent,eol,start
+"set shortmess=atI              " dont display tips when start
+" Set directories
+"set noswapfile
+
+set backup " Set backup
+" set undofile " Set undo
+" Set directories
+set backupdir=~/vimfiles/tmp/backup " backups
+set directory=~/vimfiles/tmp/swap   " swap files
+set viewdir=~/vimfiles/tmp/view   " view files
+set undodir=~/vimfiles/tmp/undo   " undo files
+
+autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state)(folds,cursor,etc)
+autocmd BufWinEnter *.* silent! loadview " Make Vim load view(state)(folds,cursor,etc)
+
+"---------------------------------------------------------------------------
+" => File format and Typesetting
+"---------------------------------------------------------------------------
+"set nowrap
+set virtualedit=insert          " help virtualedit!
+set formatoptions=tcrqn         " auto format
+set textwidth=10000             " the max column,auto wrap when eceeding
+set matchtime=5                 " highlights time for Maching braces
+set showmatch                   " highlights for maching braces
+set nolinebreak                 " dont break on words
+set cindent                     " indent on c style
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set modeline                    " autoload indent line setting
+au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+"au BufRead,BufNewFile *.css set ft=css syntax=css3
+"自动插入modeline
+func! AppendModeline()
+ let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d :",
+ \ &tabstop, &shiftwidth, &textwidth)
+ let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+ call append(line("$"), l:modeline)
+endfunc
+"按\ml,自动插入modeline
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+" au BufWritePre *.Q ks|:silent %s/^scriptstart\s*=\s*\zs\d\+$/\=submatch(1).line('.')/|'s
+
+"---------------------------------------------------------------------------
+" => Auto completion
+"---------------------------------------------------------------------------
+inoremap <C-]>             <C-X><C-]>
+inoremap <C-F>             <C-X><C-F>
+set complete+=]
+" line                     CTRL-X CTRL-L
+" keyword                  CTRL-X CTRL-N
+" dict                     CTRL-X CTRL-K
+" synonyms dict            CTRL-X CTRL-T
+" key words                CTRL-X CTRL-I
+" tags                     CTRL-X CTRL-]
+" file name                CTRL-X CTRL-F
+" definitions              CTRL-X CTRL-D
+" vim command              CTRL-X CTRL-V
+" custom                   CTRL-X CTRL-U
+" spelling suggestions     CTRL-X CTRL-S 
+set wildmenu               " command line auto-complete
+set completeopt=longest,menuone 
+set wildmode=list:longest,full              " Use powerful wildmenu
+set ic                                      " ignore case
+set iskeyword+=.,_,$,@,%,#,-                " about dict complete
+
+"---------------------------------------------------------------------------
+" => Search and replace
+"---------------------------------------------------------------------------
+set hlsearch
+set incsearch      " enter '/b' you can find the word begin with b
+set gdefault       " replace all the lines match
+set ignorecase     " ignore case
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+
+" Highlight word 
+highlight InterestingWord  ctermbg=yellow guibg=yellow ctermfg=black guifg=#000000
+highlight InterestingWord1 ctermbg=green  guibg=green  ctermfg=black guifg=#000000
+highlight InterestingWord2 ctermbg=blue   guibg=blue   ctermfg=black guifg=#000000
+highlight InterestingWord3 ctermbg=red    guibg=red    ctermfg=white guifg=#FFFFFF
+nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
+
+"-------------------------------------------------
+" => Fold Related
+"-------------------------------------------------
+
+set foldenable
+"set foldopen = "all"
+set foldmethod=syntax
+set foldcolumn=0
+setlocal foldlevel=0
+set foldlevelstart=99       " dont fold when open file
+
+" Space to toggle and create folds.
+nnoremap <silent><Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+" Set foldtext
+function! MyFoldText()
+    let line=getline(v:foldstart)
+    let nucolwidth=&foldcolumn+&number*&numberwidth
+    let windowwidth=winwidth(0)-nucolwidth-3
+    let foldedlinecount=v:foldend-v:foldstart+1
+    let onetab=strpart('          ', 0, &tabstop)
+    let line=substitute(line, '\t', onetab, 'g')
+    let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))
+    let fillcharcount=windowwidth-len(line)-len(foldedlinecount)
+    return line.'…'.repeat(" ",fillcharcount).foldedlinecount.'…'.' '
+endfunction
+set foldtext=MyFoldText()
+"--------------------------------------------------------------------------
+" => Special file style
+"---------------------------------------------------------------------------
+au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
+au BufRead,BufNewFile {*.md,*.mkd,*.markdown}                         set ft=markdown
+au BufRead,BufNewFile {*.txt}                         set ft=txt
+au BufRead,BufNewFile {*.tabl}                         set nowrap
+"function! CtagsUpdata()
+"    let s:pwd = $PWD
+"    call system( 'cd ' . g:projecthome . ' && ctags -R' )
+"    call system( 'cd ' . s:pwd ) | execute 'cd ' . s:pwd
+"    execute 'set tags=' . g:default_tag
+"    execute 'set tags+=' . g:projecthome . 'tags'
+"     args *.c
+"     argdo set ff=unix | update
+"endfunction
+"autocmd BufNewFile  *.Q   0r ~/.vim/template/skeleton.q "
+"noremap <F12> : !ctags --langdef=vbnet --langmap=Asp:*.Q.<cr>
+"noremap <C-F12> : argg tags\|argdo set fenc=utf-8\|update<cr>
+set tags=./tags,tags
+
+" Python section
+" Run the current buffer in python - ie. on leader+space
+autocmd FileType python set textwidth=79 " PEP-8 Friendly
+" New Python file template
+autocmd bufnewfile *.py call setline(1,'#!/usr/bin/env python') |
+  \ call setline(2,'#coding:utf-8') |
+  \ call setline(3,"#Created Time: ".strftime("%c")) |
+  \ call setline(4,'#author: Cactus') |
+  \ call setline(5,'') |
+  \ call setline(6,'') |
+  \ exe "normal G"
+
+" Markdown
+augroup ft_markdown
+    autocmd!
+    " Use <localLeader>1/2/3/4/5/6 to add headings
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>1 I# <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>2 I## <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>3 I### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>4 I#### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>5 I##### <ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>6 I###### <ESC>
+    " Use <LocalLeader>b to add blockquotes in normal and visual mode
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>b I> <ESC>
+    autocmd Filetype markdown vnoremap <buffer> <localLeader>b :s/^/> /<CR>
+    " Use <localLeader>ul and <localLeader>ol to add list symbols in visual mode
+    autocmd Filetype markdown vnoremap <buffer> <localLeader>ul :s/^/* /<CR>
+    autocmd Filetype markdown vnoremap <buffer> <LocalLeader>ol :s/^/\=(line(".")-line("'<")+1).'. '/<CR>
+    " Use <localLeader>e1/2/3 to add emphasis symbols
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e1 I*<ESC>A*<ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e2 I**<ESC>A**<ESC>
+    autocmd Filetype markdown nnoremap <buffer> <localLeader>e3 I***<ESC>A***<ESC>
+    " Use <Leader>P to preview markdown file in browser
+    autocmd Filetype markdown nnoremap <buffer> <Leader>P :MarkdownPreview<CR>
+augroup END
+
+"--------------------------------------------------------------------------
+" => Key map
+"---------------------------------------------------------------------------
+
+" clear highlight after search
+noremap <silent><Leader>/ :nohls<CR>
+
+" Use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+cnoremap s/ s/\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+cnoremap s? s?\v
+
+" Keep search matches in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
+
+" Visual search mappings
+function! s:VSetSearch()
+    let temp=@@
+    normal! gvy
+    let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@=temp
+endfunction
+vnoremap * :<C-U>call <SID>VSetSearch()<CR>//<CR>
+vnoremap # :<C-U>call <SID>VSetSearch()<CR>??<CR>
+
+nmap wv      <C-w>v      " vertical spilt window
+nmap wc      <C-w>c      " colse the current window
+nmap ws      <C-w>s      " spilt window horizontally
+
+" Begining & End of line in Normal mode
+noremap H ^
+noremap L g_
+
+" Redesign moving keys in insert mode
+"inoremap <C-K> <Up>
+"inoremap <C-J> <Down>
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
+
+" Make j and k work the way you expect
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" Navigation between windows
+nnoremap <C-H> <C-W>h
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-L> <C-W>l
+nnoremap <C-O> <C-W>o
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Copy paste system clipboard
+map <leader>y "+y
+map <leader>p "+p
+map <leader>P "+P
+imap <c-v> <c-r>+
+" 把||之间的运行结果输出到剪切板
+" 把||之间的行数内容复制到剪切板
+nmap ,cn :redir @+\|\|redir END<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nmap ,cm :silent redir @+\|for i in []\|echo getline(i)\|endfor\|redir END<Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left><Left>
+
+" Quit help easily
+function! QuitWithQ()
+  if &buftype == 'help'
+    nnoremap <buffer> <silent> q :q<cr>
+  endif
+endfunction
+autocmd FileType help exe QuitWithQ()
+
+" Easy buffer navigation
+noremap <leader>bp :bprevious<cr>
+noremap <leader>bn :bnext<cr>
+
+nmap gx yiw/^(def)\s+<C-R>"<CR> 
+
+" Quick editing 
+nnoremap <Leader>ev :tabedit $MYVIMRC<CR>
+nnoremap <silent> <LocalLeader>rs :source $MYVIMRC<CR>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" When vimrc is edited, reload it
+autocmd! BufWritePost _vimrc source $MYVIMRC
+
+" better ESC
+inoremap jk <Esc>
+inoremap jkl <Esc>:
+nmap ; :
+" automatically leave insert mode after 4 seconds of inaction
+au CursorHoldI * stopinsert
+set ut=4000
+set nu
+nmap <leader>n :call NumberToggle()<CR>
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  elseif(&number == 1)
+    set nonumber
+  else
+    set relativenumber
+  endif
+endfunction 
+
+
+" Fast saving and closing current buffer without closing windows displaying the buffer
+nmap <leader>wq :w!<cr>:bdelete<cr>
+
+
+"---------------------------------------------------------------------------
+" => Complie and run program
+"---------------------------------------------------------------------------
+" 通过log文件打印错误/调试内容 
+"function QfMakeConv()
+"   let qflist = getqflist()
+"   for i in qflist
+"      let i.text = iconv(i.text, "cp936", "utf-8")
+"   endfor
+"   call setqflist(qflist)
+"endfunction
+"au QuickfixCmdPost make call QfMakeConv()
+
+" map <F9> :call CompileRunQ()<CR>
+" func! CompileRunQ()
+"     set errorformat=%f，第%l行：%m
+" "    let &errorformat=iconv("%f第%l行%m", "utf-8", &enc)
+"     exec "cexpr[]"
+"     exec "caddf E:\\Dropbox\\tmp\\tmp.txt"
+"     exec "copen"
+" "    call QfMakeConv()
+" endfunc
+
+func! CheckPythonSyntax()
+    " w
+    let mp = &makeprg
+    let ef = &errorformat
+    let exeFile = expand("%:t")
+    setlocal makeprg=python\ -u
+    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    silent make %
+    cw
+    let &makeprg     = mp
+    let &errorformat = ef
+endfunction
+au FileType python map <F5> :call CheckPythonSyntax()<CR>
+
+"--------------------------------------------------
+" => Tagbar
+"--------------------------------------------------
+nnoremap <Leader>t :TagbarToggle<CR>
+"let g:tagbar_ctags_bin='ctags'
+let g:tagbar_autofocus=1
+let g:tagbar_expand=1
+let g:tagbar_foldlevel=2
+let g:tagbar_ironchars=['?', '?']
+let g:tagbar_autoshowtag=1
+let g:tagbar_width = 30
+
+"--------------------------------------------------
+" => NERD_tree
+"--------------------------------------------------
+nnoremap <Leader>d :NERDTreeTabsToggle<CR>
+nnoremap <Leader>f :NERDTreeFind<CR>
+let NERDTreeChDirMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=0
+let NERDTreeDirArrows=0
+let g:nerdtree_tabs_open_on_gui_startup=0     "(default: 1)Open NERDTree on gvim/macvim startup
+let g:nerdtree_tabs_open_on_console_startup=0     "(default: 0)Open NERDTree on console vim startup
+
+"--------------------------------------------------
+" => fugitive
+"--------------------------------------------------
+if executable('git')
+    nnoremap <silent> <leader>gs :Gstatus<CR>
+    nnoremap <silent> <leader>gd :Gdiff<CR>
+    nnoremap <silent> <leader>gc :Gcommit<CR>
+    nnoremap <silent> <leader>gb :Gblame<CR>
+    nnoremap <silent> <leader>gl :Glog<CR>
+    nnoremap <silent> <leader>gp :Git push<CR>
+" Automatically remove fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set jedi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:jedi#goto_command            = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command    = "K"
+let g:jedi#usages_command           = "<leader>n"
+let g:jedi#completions_command      = "<C-Space>"
+let g:jedi#rename_command           = "<leader>rname"
+
+"--------------------------------------------------------
+" => xptemplate.vim设置
+"--------------------------------------------------------
+"let g:xptemplate_brace_complete = 1
+let g:xptemplate_brace_complete = '([''"'
+" if nothing matched in xpt, try c-p 
+let g:xptemplate_fallback = '<C-p>'
+ 
+" avoid key conflict
+"let g:SuperTabMappingForward = '<Plug>supertabKey'
+
+" if nothing matched in xpt, try supertab
+"let g:xptemplate_fallback = '<Plug>supertabKey'
+
+" xpt uses <Tab> as trigger key
+let g:xptemplate_key = '<Tab>'
+
+"let g:xptemplate_always_show_pum=1 
+" use <tab>/<S-tab> to navigate through popup menu  //NOT necessary. 
+let g:xptemplate_pum_tab_nav = 1
+let g:xptemplate_nav_cancel = '<C-c>'
+" xpt triggers only when you typed whole name of a snippet.   //NOT necessary. 
+let g:xptemplate_minimal_prefix = 'full'
+inoremap <expr> <CR> pumvisible() ? "\<C-Y><c-r>=XPTemplateStart(0)<cr>" : "\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+snoremap <expr> <C-p> pumvisible() ? '<C-n>' : '<C-p><C-r>=pumvisible() ? "\<lt>Up>" : ""<CR>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Omni complete functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType vbnet set omnifunc=javascriptcomplete#CompleteJ
+
+
+"---------------------------------------------------------------------------
+" => surround.vim
+"---------------------------------------------------------------------------
+xmap <Leader>sa <Plug>Vsurround
+
+"---------------------------------------------------------------------------
+" => Calendar
+"---------------------------------------------------------------------------
+"let g:calendar_diary='/home/cactus/dev/diary'
+
+"---------------------------------------------------------------------------
+" => VimWiki
+"---------------------------------------------------------------------------
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_camel_case = 0
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_CJK_length = 1
+let g:vimwiki_ext2syntax = {'.md': 'markdown',
+                  \ '.mkd': 'markdown',
+                  \ '.wiki': 'media'}
+let g:vimwiki_valid_html_tags ='b,i,s,u,sub,sup,kbd,br,hr,div'
+    let wiki_1 = {}
+"    let wiki_1.index = 'VimWiki-@HM'
+    let wiki_1.path = '~/vimwiki/'
+    let wiki_1.path_html = '~/vimwiki/html'
+    let wiki_1.template_path = '~/vimwiki/template/'
+    let wiki_1.template_default = 'template1'
+    let wiki_1.template_ext = '.html'
+    let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+"    let wiki_1.syntax = 'markdown'
+"    let wiki_1.ext = '.md'
+    let g:vimwiki_list = [wiki_1]
+
+"---------------------------------------------------------------------------
+" => Grep
+"---------------------------------------------------------------------------
+nnoremap <silent> <F3> :Grep<CR>
+
+"---------------------------------------------------------------------------
+" => vim-indent-guides
+"---------------------------------------------------------------------------
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+"nmap <silent> <Leader>ig <Plug>IndentGuidesToggle
+
+"---------------------------------------------------------------------------
+" => vim-powerline
+"---------------------------------------------------------------------------
+"let g:Powerline_symbols = 'fancy'
+set t_Co=256
+"let g:Powerline_symbols = 'unicode'
+
+"  vim: set ts=4 sw=4 tw=10000 :
