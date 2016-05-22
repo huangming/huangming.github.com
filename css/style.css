@@ -124,7 +124,7 @@ body,
 }
 body {
   background: #333 url("images/bgr1.jpg") top left;
-  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 16px 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
   -webkit-text-size-adjust: 100%;
 }
 .outer {
@@ -497,7 +497,7 @@ body {
   background: none;
   color: #008000;
   width: 100%;
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 13px 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
   outline: none;
 }
 .search-form-input::-webkit-search-results-decoration,
@@ -700,7 +700,7 @@ a.article-title:hover {
 .article-entry blockquote footer {
   font-size: 16px;
   margin: 1.6em 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 .article-entry blockquote footer cite:before {
   content: "—";
@@ -914,7 +914,7 @@ a.article-title:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 14px 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
   padding: 0 15px;
   color: #ddd;
   outline: none;
@@ -1286,7 +1286,7 @@ a.article-title:hover {
 .article-entry .gist .gist-file .gist-meta {
   background: #2d2d2d;
   color: #999;
-  font: 0.85em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 0.85em 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
   text-shadow: 0 0;
   padding: 0;
   margin-top: 1em;

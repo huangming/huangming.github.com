@@ -4,6 +4,12 @@
   
     
     <entry>
+      <title><![CDATA[oracle-cold-backup]]></title>
+      <url>http://huangming.github.io/2016-05-21-oracle-cold-backup.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Hexo写博客怎么优雅地插入图片]]></title>
       <url>http://huangming.github.io/2016-05-02-hexo-img-solution.html</url>
       <content type="html"><![CDATA[<p>发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写<a href="http://hexo.io" target="_blank" rel="external">hexo</a>博客的时候优雅地插入图片。</p>
