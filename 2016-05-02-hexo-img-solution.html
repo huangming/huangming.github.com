@@ -37,7 +37,7 @@
   <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link href="/css/font-quigleywiggly.css" rel="Stylesheet" type="text/css" />
-  <link href="/css/default.min.css" rel="Stylesheet" type="text/css" />
+  <link href="/css/highlight/styles/default.css" rel="Stylesheet" type="text/css" />
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/css/highlight/highlight.pack.js" type="text/javascript"></script>
   <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
@@ -140,11 +140,59 @@
 </ul>
 <a id="more"></a>
 <h3 id="vim配置">vim配置</h3><p>vim配置很简单，在你的配置文件vimrc里面添加下面的内容即可(网址请改为自己的图床，这里我用的是七牛图床)。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">autocmd! BufWritePost *.md,*.mkd,*.markdown :silent!call Insertimg()&lt;CR&gt;</span><br><span class="line">function! Insertimg()</span><br><span class="line">    " 转换![name] (num)</span><br><span class="line">    :%s#\(!\[[^\]]*\](\)\(\w\&#123;,10&#125;\))#\=submatch(1).'http://7xsj4f.com2.z0.glb.clouddn.com/'.expand("%:r").'/'.submatch(2).'.png)'#</span><br><span class="line">    </span><br><span class="line">    " 转换 ![name][num]</span><br><span class="line">    let lnum = 1</span><br><span class="line">    let lst = []</span><br><span class="line">    while lnum &lt;= line("$")</span><br><span class="line">        let line = getline(lnum)</span><br><span class="line">        call substitute(line, '\(!\[[^\]]*\]\[\)\(\d\&#123;,2&#125;\)\]', '\=add(lst, submatch(2))', 'g')</span><br><span class="line">        let lnum += 1</span><br><span class="line">    endwhile</span><br><span class="line">    let unduplst=sort(filter(copy(lst),'index(lst, v:val, v:key+1)==-1'))</span><br><span class="line">    let line = getline(line("$"))</span><br><span class="line">    let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    :ks</span><br><span class="line">    while flag != ''</span><br><span class="line">        exe "normal G"</span><br><span class="line">        exe "normal dd"</span><br><span class="line">        let line = getline(line("$"))</span><br><span class="line">        let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    endwhile</span><br><span class="line">    exe "normal 's"</span><br><span class="line"></span><br><span class="line">    for name in unduplst</span><br><span class="line">      if len(name)&gt;0</span><br><span class="line">          call append(line("$"), "[".name."]: http://7xsj4f.com2.z0.glb.clouddn.com/".expand("%:r")."/".name.".png")</span><br><span class="line">      endif</span><br><span class="line">    endfor</span><br><span class="line">    :w</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
+<pre><code class="vim">autocmd! BufWritePost *.md,*.mkd,*.markdown :silent!call Insertimg()&lt;CR&gt;
+function! Insertimg()
+    &quot; 转换![name] (num)
+    :%s#\(!\[[^\]]*\](\)\(\w\{,10}\))#\=submatch(1).&#39;http://7xsj4f.com2.z0.glb.clouddn.com/&#39;.expand(&quot;%:r&quot;).&#39;/&#39;.submatch(2).&#39;.png)&#39;#
+
+    &quot; 转换 ![name][num]
+    let lnum = 1
+    let lst = []
+    while lnum &lt;= line(&quot;$&quot;)
+        let line = getline(lnum)
+        call substitute(line, &#39;\(!\[[^\]]*\]\[\)\(\d\{,2}\)\]&#39;, &#39;\=add(lst, submatch(2))&#39;, &#39;g&#39;)
+        let lnum += 1
+    endwhile
+    let unduplst=sort(filter(copy(lst),&#39;index(lst, v:val, v:key+1)==-1&#39;))
+    let line = getline(line(&quot;$&quot;))
+    let flag = matchstr(line,&#39;\[\d\+\]: http:&#39;)
+    :ks
+    while flag != &#39;&#39;
+        exe &quot;normal G&quot;
+        exe &quot;normal dd&quot;
+        let line = getline(line(&quot;$&quot;))
+        let flag = matchstr(line,&#39;\[\d\+\]: http:&#39;)
+    endwhile
+    exe &quot;normal &#39;s&quot;
+
+    for name in unduplst
+      if len(name)&gt;0
+          call append(line(&quot;$&quot;), &quot;[&quot;.name.&quot;]: http://7xsj4f.com2.z0.glb.clouddn.com/&quot;.expand(&quot;%:r&quot;).&quot;/&quot;.name.&quot;.png&quot;)
+      endif
+    endfor
+    :w
+endfunction
+</code></pre>
 <h3 id="hexo_配置">hexo 配置</h3><p>这个配置起来有点小麻烦，要改hexo的一个模块代码。文件路径在<code>yourpath\hexo\node_modules\hexo\lib\hexo\post.js</code> 更改内容:</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@@ -<span class="number">63</span>,<span class="number">7</span> +<span class="number">63</span>,<span class="number">7</span> @@ Post.prototype.create = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">       <span class="comment">// Write content to file</span></span><br><span class="line">       fs.writeFile(path, content),</span><br><span class="line">       <span class="comment">// Create asset folder</span></span><br><span class="line">-      createAssetFolder(path, config.post_asset_folder)</span><br><span class="line">+      createAssetFolder(pathFn.resolve(config.post_asset_folder,pathFn.basename(path)), config.post_asset_folder)</span><br><span class="line">     ]).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       ctx.emit(<span class="string">'new'</span>, result);</span><br><span class="line">     &#125;).thenReturn(result);</span><br><span class="line">@@ -<span class="number">213</span>,<span class="number">7</span> +<span class="number">213</span>,<span class="number">7</span> @@ Post.prototype.publish = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">     <span class="comment">// Remove the original draft file</span></span><br><span class="line">     <span class="keyword">return</span> fs.unlink(src);</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">-    <span class="keyword">if</span> (!config.post_asset_folder) <span class="keyword">return</span>;</span><br><span class="line">+    <span class="keyword">if</span> (config.post_asset_folder !== <span class="literal">true</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<pre><code class="js">@@ -63,7 +63,7 @@ Post.prototype.create = function(data, replace, callback) {
+       // Write content to file
+       fs.writeFile(path, content),
+       // Create asset folder
+-      createAssetFolder(path, config.post_asset_folder)
++      createAssetFolder(pathFn.resolve(config.post_asset_folder,pathFn.basename(path)), config.post_asset_folder)
+     ]).then(function() {
+       ctx.emit(&#39;new&#39;, result);
+     }).thenReturn(result);
+@@ -213,7 +213,7 @@ Post.prototype.publish = function(data, replace, callback) {
+     // Remove the original draft file
+     return fs.unlink(src);
+   }).then(function() {
+-    if (!config.post_asset_folder) return;
++    if (config.post_asset_folder !== true) return;
+</code></pre>
 <p>然后在 <code>yourpath\hexo\_config.yml</code> 中配置 <code>post_asset_folder</code> 路径，路径可随意:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: .\static\images\</span><br></pre></td></tr></table></figure>
+<pre><code class="yml">post_asset_folder: .\static\images\
+</code></pre>
 <p>当每次用 <code>hexo new [layout] &lt;title&gt;</code> 命令的时候就会自动在配置的路径生成一个跟 <code>title</code> 同名的文件夹。并且此文件夹内的内容不会上传到github。</p>
 <h3 id="自动同步到图床">自动同步到图床</h3><ul>
 <li><a href="https://github.com/beyondskyway/QiniuSync" target="_blank" rel="external">QiniuSync</a></li>

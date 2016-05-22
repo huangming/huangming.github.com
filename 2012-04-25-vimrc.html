@@ -25,7 +25,7 @@
   <!-- <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
   <link rel="stylesheet" href="/css/font-awesome.min.css">
   <link href="/css/font-quigleywiggly.css" rel="Stylesheet" type="text/css" />
-  <link href="/css/default.min.css" rel="Stylesheet" type="text/css" />
+  <link href="/css/highlight/styles/default.css" rel="Stylesheet" type="text/css" />
   <link rel="stylesheet" href="/css/style.css" type="text/css">
   <script src="/css/highlight/highlight.pack.js" type="text/javascript"></script>
   <script src="/js/jquery-1.4.2.min.js" type="text/javascript"></script>
@@ -115,7 +115,731 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p> 系统：windows 7  vim版本:7.4<a id="more"></a><br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br><span class="line">456</span><br><span class="line">457</span><br><span class="line">458</span><br><span class="line">459</span><br><span class="line">460</span><br><span class="line">461</span><br><span class="line">462</span><br><span class="line">463</span><br><span class="line">464</span><br><span class="line">465</span><br><span class="line">466</span><br><span class="line">467</span><br><span class="line">468</span><br><span class="line">469</span><br><span class="line">470</span><br><span class="line">471</span><br><span class="line">472</span><br><span class="line">473</span><br><span class="line">474</span><br><span class="line">475</span><br><span class="line">476</span><br><span class="line">477</span><br><span class="line">478</span><br><span class="line">479</span><br><span class="line">480</span><br><span class="line">481</span><br><span class="line">482</span><br><span class="line">483</span><br><span class="line">484</span><br><span class="line">485</span><br><span class="line">486</span><br><span class="line">487</span><br><span class="line">488</span><br><span class="line">489</span><br><span class="line">490</span><br><span class="line">491</span><br><span class="line">492</span><br><span class="line">493</span><br><span class="line">494</span><br><span class="line">495</span><br><span class="line">496</span><br><span class="line">497</span><br><span class="line">498</span><br><span class="line">499</span><br><span class="line">500</span><br><span class="line">501</span><br><span class="line">502</span><br><span class="line">503</span><br><span class="line">504</span><br><span class="line">505</span><br><span class="line">506</span><br><span class="line">507</span><br><span class="line">508</span><br><span class="line">509</span><br><span class="line">510</span><br><span class="line">511</span><br><span class="line">512</span><br><span class="line">513</span><br><span class="line">514</span><br><span class="line">515</span><br><span class="line">516</span><br><span class="line">517</span><br><span class="line">518</span><br><span class="line">519</span><br><span class="line">520</span><br><span class="line">521</span><br><span class="line">522</span><br><span class="line">523</span><br><span class="line">524</span><br><span class="line">525</span><br><span class="line">526</span><br><span class="line">527</span><br><span class="line">528</span><br><span class="line">529</span><br><span class="line">530</span><br><span class="line">531</span><br><span class="line">532</span><br><span class="line">533</span><br><span class="line">534</span><br><span class="line">535</span><br><span class="line">536</span><br><span class="line">537</span><br><span class="line">538</span><br><span class="line">539</span><br><span class="line">540</span><br><span class="line">541</span><br><span class="line">542</span><br><span class="line">543</span><br><span class="line">544</span><br><span class="line">545</span><br><span class="line">546</span><br><span class="line">547</span><br><span class="line">548</span><br><span class="line">549</span><br><span class="line">550</span><br><span class="line">551</span><br><span class="line">552</span><br><span class="line">553</span><br><span class="line">554</span><br><span class="line">555</span><br><span class="line">556</span><br><span class="line">557</span><br><span class="line">558</span><br><span class="line">559</span><br><span class="line">560</span><br><span class="line">561</span><br><span class="line">562</span><br><span class="line">563</span><br><span class="line">564</span><br><span class="line">565</span><br><span class="line">566</span><br><span class="line">567</span><br><span class="line">568</span><br><span class="line">569</span><br><span class="line">570</span><br><span class="line">571</span><br><span class="line">572</span><br><span class="line">573</span><br><span class="line">574</span><br><span class="line">575</span><br><span class="line">576</span><br><span class="line">577</span><br><span class="line">578</span><br><span class="line">579</span><br><span class="line">580</span><br><span class="line">581</span><br><span class="line">582</span><br><span class="line">583</span><br><span class="line">584</span><br><span class="line">585</span><br><span class="line">586</span><br><span class="line">587</span><br><span class="line">588</span><br><span class="line">589</span><br><span class="line">590</span><br><span class="line">591</span><br><span class="line">592</span><br><span class="line">593</span><br><span class="line">594</span><br><span class="line">595</span><br><span class="line">596</span><br><span class="line">597</span><br><span class="line">598</span><br><span class="line">599</span><br><span class="line">600</span><br><span class="line">601</span><br><span class="line">602</span><br><span class="line">603</span><br><span class="line">604</span><br><span class="line">605</span><br><span class="line">606</span><br><span class="line">607</span><br><span class="line">608</span><br><span class="line">609</span><br><span class="line">610</span><br><span class="line">611</span><br><span class="line">612</span><br><span class="line">613</span><br><span class="line">614</span><br><span class="line">615</span><br><span class="line">616</span><br><span class="line">617</span><br><span class="line">618</span><br><span class="line">619</span><br><span class="line">620</span><br><span class="line">621</span><br><span class="line">622</span><br><span class="line">623</span><br><span class="line">624</span><br><span class="line">625</span><br><span class="line">626</span><br><span class="line">627</span><br><span class="line">628</span><br><span class="line">629</span><br><span class="line">630</span><br><span class="line">631</span><br><span class="line">632</span><br><span class="line">633</span><br><span class="line">634</span><br><span class="line">635</span><br><span class="line">636</span><br><span class="line">637</span><br><span class="line">638</span><br><span class="line">639</span><br><span class="line">640</span><br><span class="line">641</span><br><span class="line">642</span><br><span class="line">643</span><br><span class="line">644</span><br><span class="line">645</span><br><span class="line">646</span><br><span class="line">647</span><br><span class="line">648</span><br><span class="line">649</span><br><span class="line">650</span><br><span class="line">651</span><br><span class="line">652</span><br><span class="line">653</span><br><span class="line">654</span><br><span class="line">655</span><br><span class="line">656</span><br><span class="line">657</span><br><span class="line">658</span><br><span class="line">659</span><br><span class="line">660</span><br><span class="line">661</span><br><span class="line">662</span><br><span class="line">663</span><br><span class="line">664</span><br><span class="line">665</span><br><span class="line">666</span><br><span class="line">667</span><br><span class="line">668</span><br><span class="line">669</span><br><span class="line">670</span><br><span class="line">671</span><br><span class="line">672</span><br><span class="line">673</span><br><span class="line">674</span><br><span class="line">675</span><br><span class="line">676</span><br><span class="line">677</span><br><span class="line">678</span><br><span class="line">679</span><br><span class="line">680</span><br><span class="line">681</span><br><span class="line">682</span><br><span class="line">683</span><br><span class="line">684</span><br><span class="line">685</span><br><span class="line">686</span><br><span class="line">687</span><br><span class="line">688</span><br><span class="line">689</span><br><span class="line">690</span><br><span class="line">691</span><br><span class="line">692</span><br><span class="line">693</span><br><span class="line">694</span><br><span class="line">695</span><br><span class="line">696</span><br><span class="line">697</span><br><span class="line">698</span><br><span class="line">699</span><br><span class="line">700</span><br><span class="line">701</span><br><span class="line">702</span><br><span class="line">703</span><br><span class="line">704</span><br><span class="line">705</span><br><span class="line">706</span><br><span class="line">707</span><br><span class="line">708</span><br><span class="line">709</span><br><span class="line">710</span><br><span class="line">711</span><br><span class="line">712</span><br><span class="line">713</span><br><span class="line">714</span><br><span class="line">715</span><br><span class="line">716</span><br><span class="line">717</span><br><span class="line">718</span><br><span class="line">719</span><br><span class="line">720</span><br><span class="line">721</span><br><span class="line">722</span><br><span class="line">723</span><br><span class="line">724</span><br><span class="line">725</span><br><span class="line">726</span><br><span class="line">727</span><br><span class="line">728</span><br><span class="line">729</span><br><span class="line">730</span><br><span class="line">731</span><br><span class="line">732</span><br><span class="line">733</span><br><span class="line">734</span><br><span class="line">735</span><br><span class="line">736</span><br><span class="line">737</span><br><span class="line">738</span><br><span class="line">739</span><br><span class="line">740</span><br><span class="line">741</span><br><span class="line">742</span><br><span class="line">743</span><br><span class="line">744</span><br><span class="line">745</span><br><span class="line">746</span><br><span class="line">747</span><br><span class="line">748</span><br><span class="line">749</span><br><span class="line">750</span><br><span class="line">751</span><br><span class="line">752</span><br><span class="line">753</span><br><span class="line">754</span><br><span class="line">755</span><br><span class="line">756</span><br><span class="line">757</span><br></pre></td><td class="code"><pre><span class="line">"===========================================================================</span><br><span class="line">"         Filename: vimrc</span><br><span class="line">"           Author: HM</span><br><span class="line">"            Email: wangbandi#gmail.com</span><br><span class="line">"         Homepage: http://huangming.github.io</span><br><span class="line">"          Created: 2015.03.30</span><br><span class="line">"===========================================================================</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"                      _________________________</span><br><span class="line">"</span><br><span class="line">"                               Plugin</span><br><span class="line">"                      _________________________</span><br><span class="line">"</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Vundle</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">set nocompatible              " be iMproved, required</span><br><span class="line">filetype off                  " required</span><br><span class="line"></span><br><span class="line">" set the runtime path to include Vundle and initialize</span><br><span class="line">set rtp+=~/vimfiles/bundle/Vundle.vim</span><br><span class="line">" alternatively, pass a path where Vundle should install plugins</span><br><span class="line">call vundle#begin('~/vimfiles/bundle')</span><br><span class="line"></span><br><span class="line">" let Vundle manage Vundle, required</span><br><span class="line">Plugin 'gmarik/Vundle.vim'</span><br><span class="line"></span><br><span class="line">" Plugin 'Shougo/vimproc'</span><br><span class="line">" Plugin 'Shougo/vimshell.vim'</span><br><span class="line"></span><br><span class="line">Plugin 'bufexplorer.zip'</span><br><span class="line">let g:bufExplorerSplitBelow=1 </span><br><span class="line">Plugin 'scrooloose/nerdtree'</span><br><span class="line">Plugin 'jistr/vim-nerdtree-tabs'</span><br><span class="line">if executable('ctags')</span><br><span class="line">    Plugin 'majutsushi/tagbar'</span><br><span class="line">endif</span><br><span class="line">if executable('git')</span><br><span class="line">    Plugin 'tpope/vim-fugitive'</span><br><span class="line">endif</span><br><span class="line">Plugin 'tpope/vim-surround'</span><br><span class="line">Plugin 'tpope/vim-unimpaired'</span><br><span class="line">Plugin 'Align'</span><br><span class="line">Plugin 'tpope/vim-commentary'</span><br><span class="line">autocmd FileType vim set commentstring=\"\ %s</span><br><span class="line">autocmd FileType vbnet set commentstring=\'\ %s</span><br><span class="line">Plugin 'vim-scripts/VisIncr'</span><br><span class="line">Plugin 'drmingdrmer/xptemplate'</span><br><span class="line">Plugin 'Shougo/neocomplcache.vim'</span><br><span class="line"></span><br><span class="line">Plugin 'calendar.vim'</span><br><span class="line">Plugin 'Stormherz/tablify'</span><br><span class="line">Plugin 'vimwiki'</span><br><span class="line">Plugin 'yianwillis/vimcdoc'</span><br><span class="line">Plugin 'huangming/myvimplugin'</span><br><span class="line"></span><br><span class="line">Plugin 'VOoM'</span><br><span class="line">" Plugin 'vim-scripts/txt.vim--xu'</span><br><span class="line">Plugin 'ap/vim-css-color'</span><br><span class="line">Plugin 'nathanaelkane/vim-indent-guides'</span><br><span class="line">  let g:indent_guides_enable_on_vim_startup = 1</span><br><span class="line">Plugin 'michaeljsmith/vim-indent-object'</span><br><span class="line">  let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown", "vbnet"]</span><br><span class="line"></span><br><span class="line">Plugin 'scrooloose/syntastic'</span><br><span class="line">" let g:syntastic_python_checkers = ['pylint']</span><br><span class="line">let g:syntastic_python_checkers = ['python']</span><br><span class="line">let g:syntastic_enable_python_checker = 1</span><br><span class="line">set statusline+=%#warningmsg#</span><br><span class="line">set statusline+=%&#123;SyntasticStatuslineFlag()&#125;</span><br><span class="line">set statusline+=%*</span><br><span class="line">let g:syntastic_always_populate_loc_list = 1</span><br><span class="line">let g:syntastic_auto_loc_list = 1</span><br><span class="line">let g:syntastic_check_on_open = 1</span><br><span class="line">let g:syntastic_check_on_wq = 0</span><br><span class="line"></span><br><span class="line">if has('gui_running')</span><br><span class="line">    Plugin 'Lokaltog/vim-powerline'</span><br><span class="line">endif</span><br><span class="line">Plugin 'Color-Scheme-Explorer'</span><br><span class="line">Plugin 'baskerville/bubblegum'</span><br><span class="line">Plugin 'altercation/vim-colors-solarized'</span><br><span class="line">Plugin 'chriskempson/vim-tomorrow-theme'</span><br><span class="line">Plugin 'tomasr/molokai'</span><br><span class="line"></span><br><span class="line">" Git plugin not hosted on GitHub</span><br><span class="line">" Plugin 'git://git.wincent.com/command-t.git'</span><br><span class="line"></span><br><span class="line">" git repos on your local machine ( .e. when working on your own plugin)</span><br><span class="line">" Plugin 'file:///home/gmarik/path/to/plugin'</span><br><span class="line"></span><br><span class="line">" The sparkup vim script is in a subdirectory of this repo called vim.</span><br><span class="line">" Pass the path to set the runtimepath properly.</span><br><span class="line">" Plugin 'rstacruz/sparkup', &#123;'rtpa': 'vim/'&#125;</span><br><span class="line"></span><br><span class="line">" Avoid a name conflict with L9</span><br><span class="line">" Plugin 'user/L9', &#123;'name': 'newL9'&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">" non github repos</span><br><span class="line">call vundle#end()</span><br><span class="line">filetype plugin indent on     " required!</span><br><span class="line"> "</span><br><span class="line"> " Brief help</span><br><span class="line"> " :PluginList          - list configured bundles</span><br><span class="line"> " :PluginInstall(!)    - install(update) bundles</span><br><span class="line"> " :PluginSearch(!) foo - search(or refresh cache first) for foo</span><br><span class="line"> " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles</span><br><span class="line"> "</span><br><span class="line"> " see :h vundle for more details or wiki for FAQ</span><br><span class="line"> " NOTE: comments after Plugin command are not allowed..</span><br><span class="line"></span><br><span class="line">"                      _________________________</span><br><span class="line">"</span><br><span class="line">"                           General settings</span><br><span class="line">"                      _________________________</span><br><span class="line">"</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; General settings</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">set fileencodings=utf-8,chinese,ucs-bom</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencoding=utf-8</span><br><span class="line">" set ambiwidth=double</span><br><span class="line">set termencoding=utf-8</span><br><span class="line">"vim 提示信息乱码解决方法  </span><br><span class="line">"language messages zh_CN.UTF-8  </span><br><span class="line">if has("win32")  </span><br><span class="line">    set termencoding=chinese  </span><br><span class="line">    language message zh_CN.UTF-8  </span><br><span class="line">endif  </span><br><span class="line"></span><br><span class="line">set history=100</span><br><span class="line">syntax on</span><br><span class="line">set cursorline</span><br><span class="line">set scrolloff=5</span><br><span class="line">set cmdheight=2</span><br><span class="line">set report=0</span><br><span class="line">set helplang=cn</span><br><span class="line">"set t_Co=256</span><br><span class="line">" set background=light</span><br><span class="line">set bsdir=buffer</span><br><span class="line">set nocompatible</span><br><span class="line">set autochdir</span><br><span class="line">set listchars=tab:&gt;\ ,eol:$,extends:&gt;,precedes:&lt;  " Unprintable chars mapping </span><br><span class="line">set showbreak=-&gt;\ \ \ </span><br><span class="line">set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc</span><br><span class="line">set showcmd</span><br><span class="line">set shortmess=at " Avoids 'hit enter'</span><br><span class="line">au BufReadPost * if line("'\"") &gt; 0|if line("'\"") &lt;= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif</span><br><span class="line">let mapleader=',' " Change the mapleader</span><br><span class="line">let maplocalleader='\' " Change the maplocalleader</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">" =&gt; Colorscheme</span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">"colorscheme solarized</span><br><span class="line">exec 'colorscheme '.["bubblegum-256-light","solarized","Tomorrow","molokai","bubblegum-256-dark","molokai"][strftime("%S")%6] </span><br><span class="line"></span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">" =&gt; Status bar</span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">" Only have cursorline in current window and in normal window</span><br><span class="line">autocmd WinLeave * set nocursorline</span><br><span class="line">autocmd WinEnter * set cursorline</span><br><span class="line">auto InsertEnter * set nocursorline</span><br><span class="line">auto InsertLeave * set cursorline</span><br><span class="line">set laststatus=1</span><br><span class="line"></span><br><span class="line">"set statusline+=%&#123;fugitive#head()&#125;</span><br><span class="line">set ruler              " bottom status bar</span><br><span class="line">" set rulerformat=%45(%=\:b%n%m%r\ %Y\ %&#123;fugitive#head()&#125;\ %l,%c%V\ %P%)</span><br><span class="line">set rulerformat=%25(%n%m%r:\ %Y\ [%l,%v]\ %p%%%)</span><br><span class="line">highlight StatusLine guifg=SlateBlue guibg=Yellow</span><br><span class="line">highlight StatusLineNC guifg=Gray guibg=White</span><br><span class="line">if version &gt;= 700    " change color when enter inser motion</span><br><span class="line">   au InsertEnter * hi StatusLine guibg=#818D2d guifg=#FCFCFC gui=none</span><br><span class="line">   au InsertLeave * hi StatusLine guibg=Yellow guifg=SlateBlue gui=none</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Gui settings</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">if has("gui_running")</span><br><span class="line">    "au GUIEnter * simalt ~x  " maximun window</span><br><span class="line">    set guioptions-=m        " menu bar</span><br><span class="line">    set guioptions-=T        "  tools bar</span><br><span class="line">    "set guioptions-=L        " left scroll bar</span><br><span class="line">    set guioptions-=r        " right scroll bar</span><br><span class="line">    "set guioptions-=b        " bottom scroll bar</span><br><span class="line">    set showtabline=0        " tab bar</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Pos and size when start</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" winpos 350 150</span><br><span class="line">" winpos 250 200</span><br><span class="line">" set lines=25</span><br><span class="line">" set columns=85</span><br><span class="line">winpos 200 150</span><br><span class="line">set lines=30</span><br><span class="line">set columns=100</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Font</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">if has('gui_running')</span><br><span class="line">    if has("win32")</span><br><span class="line">      " set guifont=Lucida\ Console:h11:cANSI</span><br><span class="line">        set guifont=Yahei_Mono:h12.5</span><br><span class="line">    endif</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Tag label</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">set guitablabel=%m%N:%t\[%&#123;tabpagewinnr(v:lnum)&#125;\]</span><br><span class="line">set tabline=%!MyTabLine()</span><br><span class="line">function! MyTabLine()</span><br><span class="line">    let s=''</span><br><span class="line">    let t=tabpagenr() " The index of current page</span><br><span class="line">    let i=1</span><br><span class="line">    while i&lt;=tabpagenr('$') " From the first page</span><br><span class="line">      let buflist=tabpagebuflist(i)</span><br><span class="line">      let winnr=tabpagewinnr(i)</span><br><span class="line">      let s.=(i==t?'%#TabLineSel#':'%#TabLine#')</span><br><span class="line">      let s.='%'.i.'T'</span><br><span class="line">      let s.=' '</span><br><span class="line">      let bufnr=buflist[winnr - 1]</span><br><span class="line">      let file=bufname(bufnr)</span><br><span class="line">      let m=''</span><br><span class="line">      if getbufvar(bufnr, "&amp;modified")</span><br><span class="line">          let m='[+]'</span><br><span class="line">      endif</span><br><span class="line">      if file=~'\/.'</span><br><span class="line">          let file=substitute(file,'.*\/\ze.','','')</span><br><span class="line">      endif</span><br><span class="line">      if file==''</span><br><span class="line">        let file='[No Name]'</span><br><span class="line">      endif</span><br><span class="line">      let s.=m</span><br><span class="line">      let s.=i.':'</span><br><span class="line">      let s.=file</span><br><span class="line">      let s.='['.winnr.']'</span><br><span class="line">      let s.=' '</span><br><span class="line">      let i=i+1</span><br><span class="line">    endwhile</span><br><span class="line">    let s.='%T%#TabLineFill#%='</span><br><span class="line">    let s.=(tabpagenr('$')&gt;1?'%999XX':'X')</span><br><span class="line">    return s</span><br><span class="line">  endfunction</span><br><span class="line">" Set up tab tooltips with every buffer name</span><br><span class="line">set guitabtooltip=%F</span><br><span class="line"></span><br><span class="line">" Alt+n</span><br><span class="line">if has("gui_running")</span><br><span class="line">     :map &lt;silent&gt; &lt;C-S&gt; :if expand("%") == ""&lt;CR&gt;:browse confirm w&lt;CR&gt;:else&lt;CR&gt;:confirm w&lt;CR&gt;:endif&lt;CR&gt;</span><br><span class="line">     noremap &lt;M-1&gt; 1gt</span><br><span class="line">     noremap &lt;M-2&gt; 2gt</span><br><span class="line">     noremap &lt;M-3&gt; 3gt</span><br><span class="line">     noremap &lt;M-4&gt; 4gt</span><br><span class="line">     noremap &lt;M-5&gt; 5gt</span><br><span class="line">     noremap &lt;M-6&gt; 6gt</span><br><span class="line">     noremap &lt;M-7&gt; 7gt</span><br><span class="line">     noremap &lt;M-8&gt; 8gt</span><br><span class="line">     noremap &lt;M-9&gt; 9gt</span><br><span class="line">     noremap &lt;M-0&gt; 10gt</span><br><span class="line">     noremap &lt;C-TAB&gt; gt</span><br><span class="line">     noremap &lt;C-F4&gt; &lt;ESC&gt;:bd&lt;CR&gt;</span><br><span class="line">     noremap tx &lt;ESC&gt;:bd&lt;CR&gt;</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; File settings</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">set confirm                     " confirm when quit file</span><br><span class="line">set autoread                    " update file when it change external</span><br><span class="line">set backspace=indent,eol,start</span><br><span class="line">"set shortmess=atI              " dont display tips when start</span><br><span class="line">" Set directories</span><br><span class="line">"set noswapfile</span><br><span class="line"></span><br><span class="line">set backup " Set backup</span><br><span class="line">" set undofile " Set undo</span><br><span class="line">" Set directories</span><br><span class="line">set backupdir=~/vimfiles/tmp/backup " backups</span><br><span class="line">set directory=~/vimfiles/tmp/swap   " swap files</span><br><span class="line">set viewdir=~/vimfiles/tmp/view   " view files</span><br><span class="line">set undodir=~/vimfiles/tmp/undo   " undo files</span><br><span class="line"></span><br><span class="line">autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state)(folds,cursor,etc)</span><br><span class="line">autocmd BufWinEnter *.* silent! loadview " Make Vim load view(state)(folds,cursor,etc)</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; File format and Typesetting</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">"set nowrap</span><br><span class="line">set virtualedit=insert          " help virtualedit!</span><br><span class="line">set formatoptions=tcrqn         " auto format</span><br><span class="line">set textwidth=10000             " the max column,auto wrap when eceeding</span><br><span class="line">set matchtime=5                 " highlights time for Maching braces</span><br><span class="line">set showmatch                   " highlights for maching braces</span><br><span class="line">set nolinebreak                 " dont break on words</span><br><span class="line">set cindent                     " indent on c style</span><br><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set expandtab</span><br><span class="line">set modeline                    " autoload indent line setting</span><br><span class="line">au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab</span><br><span class="line">"au BufRead,BufNewFile *.css set ft=css syntax=css3</span><br><span class="line">"自动插入modeline</span><br><span class="line">func! AppendModeline()</span><br><span class="line"> let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d :",</span><br><span class="line"> \ &amp;tabstop, &amp;shiftwidth, &amp;textwidth)</span><br><span class="line"> let l:modeline = substitute(&amp;commentstring, "%s", l:modeline, "")</span><br><span class="line"> call append(line("$"), l:modeline)</span><br><span class="line">endfunc</span><br><span class="line">"按\ml,自动插入modeline</span><br><span class="line">nnoremap &lt;silent&gt; &lt;Leader&gt;ml :call AppendModeline()&lt;CR&gt;</span><br><span class="line">" au BufWritePre *.Q ks|:silent %s/^scriptstart\s*=\s*\zs\d\+$/\=submatch(1).line('.')/|'s</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Auto completion</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">inoremap &lt;C-]&gt;             &lt;C-X&gt;&lt;C-]&gt;</span><br><span class="line">inoremap &lt;C-F&gt;             &lt;C-X&gt;&lt;C-F&gt;</span><br><span class="line">set complete+=]</span><br><span class="line">" line                     CTRL-X CTRL-L</span><br><span class="line">" keyword                  CTRL-X CTRL-N</span><br><span class="line">" dict                     CTRL-X CTRL-K</span><br><span class="line">" synonyms dict            CTRL-X CTRL-T</span><br><span class="line">" key words                CTRL-X CTRL-I</span><br><span class="line">" tags                     CTRL-X CTRL-]</span><br><span class="line">" file name                CTRL-X CTRL-F</span><br><span class="line">" definitions              CTRL-X CTRL-D</span><br><span class="line">" vim command              CTRL-X CTRL-V</span><br><span class="line">" custom                   CTRL-X CTRL-U</span><br><span class="line">" spelling suggestions     CTRL-X CTRL-S </span><br><span class="line">set wildmenu               " command line auto-complete</span><br><span class="line">set completeopt=longest,menuone </span><br><span class="line">set wildmode=list:longest,full              " Use powerful wildmenu</span><br><span class="line">set ic                                      " ignore case</span><br><span class="line">set iskeyword+=.,_,$,@,%,#,-                " about dict complete</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Search and replace</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">set hlsearch</span><br><span class="line">set incsearch      " enter '/b' you can find the word begin with b</span><br><span class="line">set gdefault       " replace all the lines match</span><br><span class="line">set ignorecase     " ignore case</span><br><span class="line"></span><br><span class="line">" Open a Quickfix window for the last search.</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;? :execute 'vimgrep /'.@/.'/g %'&lt;CR&gt;:copen&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">" Highlight word </span><br><span class="line">highlight InterestingWord  ctermbg=yellow guibg=yellow ctermfg=black guifg=#000000</span><br><span class="line">highlight InterestingWord1 ctermbg=green  guibg=green  ctermfg=black guifg=#000000</span><br><span class="line">highlight InterestingWord2 ctermbg=blue   guibg=blue   ctermfg=black guifg=#000000</span><br><span class="line">highlight InterestingWord3 ctermbg=red    guibg=red    ctermfg=white guifg=#FFFFFF</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;hh :execute 'match InterestingWord1 /\&lt;&lt;c-r&gt;&lt;c-w&gt;\&gt;/'&lt;cr&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;h1 :execute 'match InterestingWord1 /\&lt;&lt;c-r&gt;&lt;c-w&gt;\&gt;/'&lt;cr&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;h2 :execute '2match InterestingWord2 /\&lt;&lt;c-r&gt;&lt;c-w&gt;\&gt;/'&lt;cr&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;leader&gt;h3 :execute '3match InterestingWord3 /\&lt;&lt;c-r&gt;&lt;c-w&gt;\&gt;/'&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">"-------------------------------------------------</span><br><span class="line">" =&gt; Fold Related</span><br><span class="line">"-------------------------------------------------</span><br><span class="line"></span><br><span class="line">set foldenable</span><br><span class="line">"set foldopen = "all"</span><br><span class="line">set foldmethod=syntax</span><br><span class="line">set foldcolumn=0</span><br><span class="line">setlocal foldlevel=0</span><br><span class="line">set foldlevelstart=99       " dont fold when open file</span><br><span class="line"></span><br><span class="line">" Space to toggle and create folds.</span><br><span class="line">nnoremap &lt;silent&gt;&lt;Space&gt; @=(foldlevel('.')?'za':"\&lt;Space&gt;")&lt;CR&gt;</span><br><span class="line">vnoremap &lt;Space&gt; zf</span><br><span class="line"></span><br><span class="line">" Set foldtext</span><br><span class="line">function! MyFoldText()</span><br><span class="line">    let line=getline(v:foldstart)</span><br><span class="line">    let nucolwidth=&amp;foldcolumn+&amp;number*&amp;numberwidth</span><br><span class="line">    let windowwidth=winwidth(0)-nucolwidth-3</span><br><span class="line">    let foldedlinecount=v:foldend-v:foldstart+1</span><br><span class="line">    let onetab=strpart('          ', 0, &amp;tabstop)</span><br><span class="line">    let line=substitute(line, '\t', onetab, 'g')</span><br><span class="line">    let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))</span><br><span class="line">    let fillcharcount=windowwidth-len(line)-len(foldedlinecount)</span><br><span class="line">    return line.'…'.repeat(" ",fillcharcount).foldedlinecount.'…'.' '</span><br><span class="line">endfunction</span><br><span class="line">set foldtext=MyFoldText()</span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">" =&gt; Special file style</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">au BufRead,BufNewFile &#123;Gemfile,Rakefile,Capfile,*.rake,config.ru&#125;     set ft=ruby</span><br><span class="line">au BufRead,BufNewFile &#123;*.md,*.mkd,*.markdown&#125;                         set ft=markdown</span><br><span class="line">au BufRead,BufNewFile &#123;*.txt&#125;                         set ft=txt</span><br><span class="line">au BufRead,BufNewFile &#123;*.tabl&#125;                         set nowrap</span><br><span class="line">"function! CtagsUpdata()</span><br><span class="line">"    let s:pwd = $PWD</span><br><span class="line">"    call system( 'cd ' . g:projecthome . ' &amp;&amp; ctags -R' )</span><br><span class="line">"    call system( 'cd ' . s:pwd ) | execute 'cd ' . s:pwd</span><br><span class="line">"    execute 'set tags=' . g:default_tag</span><br><span class="line">"    execute 'set tags+=' . g:projecthome . 'tags'</span><br><span class="line">"     args *.c</span><br><span class="line">"     argdo set ff=unix | update</span><br><span class="line">"endfunction</span><br><span class="line">"autocmd BufNewFile  *.Q   0r ~/.vim/template/skeleton.q "</span><br><span class="line">"noremap &lt;F12&gt; : !ctags --langdef=vbnet --langmap=Asp:*.Q.&lt;cr&gt;</span><br><span class="line">"noremap &lt;C-F12&gt; : argg tags\|argdo set fenc=utf-8\|update&lt;cr&gt;</span><br><span class="line">set tags=./tags,tags</span><br><span class="line"></span><br><span class="line">" Python section</span><br><span class="line">" Run the current buffer in python - ie. on leader+space</span><br><span class="line">autocmd FileType python set textwidth=79 " PEP-8 Friendly</span><br><span class="line">" New Python file template</span><br><span class="line">autocmd bufnewfile *.py call setline(1,'#!/usr/bin/env python') |</span><br><span class="line">  \ call setline(2,'#coding:utf-8') |</span><br><span class="line">  \ call setline(3,"#Created Time: ".strftime("%c")) |</span><br><span class="line">  \ call setline(4,'#author: Cactus') |</span><br><span class="line">  \ call setline(5,'') |</span><br><span class="line">  \ call setline(6,'') |</span><br><span class="line">  \ exe "normal G"</span><br><span class="line"></span><br><span class="line">" Markdown</span><br><span class="line">augroup ft_markdown</span><br><span class="line">    autocmd!</span><br><span class="line">    " Use &lt;localLeader&gt;1/2/3/4/5/6 to add headings</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;1 I# &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;2 I## &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;3 I### &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;4 I#### &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;5 I##### &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;6 I###### &lt;ESC&gt;</span><br><span class="line">    " Use &lt;LocalLeader&gt;b to add blockquotes in normal and visual mode</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;b I&gt; &lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown vnoremap &lt;buffer&gt; &lt;localLeader&gt;b :s/^/&gt; /&lt;CR&gt;</span><br><span class="line">    " Use &lt;localLeader&gt;ul and &lt;localLeader&gt;ol to add list symbols in visual mode</span><br><span class="line">    autocmd Filetype markdown vnoremap &lt;buffer&gt; &lt;localLeader&gt;ul :s/^/* /&lt;CR&gt;</span><br><span class="line">    autocmd Filetype markdown vnoremap &lt;buffer&gt; &lt;LocalLeader&gt;ol :s/^/\=(line(".")-line("'&lt;")+1).'. '/&lt;CR&gt;</span><br><span class="line">    " Use &lt;localLeader&gt;e1/2/3 to add emphasis symbols</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;e1 I*&lt;ESC&gt;A*&lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;e2 I**&lt;ESC&gt;A**&lt;ESC&gt;</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;localLeader&gt;e3 I***&lt;ESC&gt;A***&lt;ESC&gt;</span><br><span class="line">    " Use &lt;Leader&gt;P to preview markdown file in browser</span><br><span class="line">    autocmd Filetype markdown nnoremap &lt;buffer&gt; &lt;Leader&gt;P :MarkdownPreview&lt;CR&gt;</span><br><span class="line">augroup END</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------------------------------</span><br><span class="line">" =&gt; Key map</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">" clear highlight after search</span><br><span class="line">noremap &lt;silent&gt;&lt;Leader&gt;/ :nohls&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">" Use sane regexes</span><br><span class="line">nnoremap / /\v</span><br><span class="line">vnoremap / /\v</span><br><span class="line">cnoremap s/ s/\v</span><br><span class="line">nnoremap ? ?\v</span><br><span class="line">vnoremap ? ?\v</span><br><span class="line">cnoremap s? s?\v</span><br><span class="line"></span><br><span class="line">" Keep search matches in the middle of the window</span><br><span class="line">nnoremap n nzzzv</span><br><span class="line">nnoremap N Nzzzv</span><br><span class="line">nnoremap * *zzzv</span><br><span class="line">nnoremap # #zzzv</span><br><span class="line">nnoremap g* g*zzzv</span><br><span class="line">nnoremap g# g#zzzv</span><br><span class="line"></span><br><span class="line">" Visual search mappings</span><br><span class="line">function! s:VSetSearch()</span><br><span class="line">    let temp=@@</span><br><span class="line">    normal! gvy</span><br><span class="line">    let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')</span><br><span class="line">    let @@=temp</span><br><span class="line">endfunction</span><br><span class="line">vnoremap * :&lt;C-U&gt;call &lt;SID&gt;VSetSearch()&lt;CR&gt;//&lt;CR&gt;</span><br><span class="line">vnoremap # :&lt;C-U&gt;call &lt;SID&gt;VSetSearch()&lt;CR&gt;??&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">nmap wv      &lt;C-w&gt;v      " vertical spilt window</span><br><span class="line">nmap wc      &lt;C-w&gt;c      " colse the current window</span><br><span class="line">nmap ws      &lt;C-w&gt;s      " spilt window horizontally</span><br><span class="line"></span><br><span class="line">" Begining &amp; End of line in Normal mode</span><br><span class="line">noremap H ^</span><br><span class="line">noremap L g_</span><br><span class="line"></span><br><span class="line">" Redesign moving keys in insert mode</span><br><span class="line">"inoremap &lt;C-K&gt; &lt;Up&gt;</span><br><span class="line">"inoremap &lt;C-J&gt; &lt;Down&gt;</span><br><span class="line">inoremap &lt;C-H&gt; &lt;Left&gt;</span><br><span class="line">inoremap &lt;C-L&gt; &lt;Right&gt;</span><br><span class="line"></span><br><span class="line">" Make j and k work the way you expect</span><br><span class="line">nnoremap j gj</span><br><span class="line">nnoremap k gk</span><br><span class="line">vnoremap j gj</span><br><span class="line">vnoremap k gk</span><br><span class="line"></span><br><span class="line">" Same when jumping around</span><br><span class="line">nnoremap g; g;zz</span><br><span class="line">nnoremap g, g,zz</span><br><span class="line"></span><br><span class="line">" Navigation between windows</span><br><span class="line">nnoremap &lt;C-H&gt; &lt;C-W&gt;h</span><br><span class="line">nnoremap &lt;C-J&gt; &lt;C-W&gt;j</span><br><span class="line">nnoremap &lt;C-K&gt; &lt;C-W&gt;k</span><br><span class="line">nnoremap &lt;C-L&gt; &lt;C-W&gt;l</span><br><span class="line">nnoremap &lt;C-O&gt; &lt;C-W&gt;o</span><br><span class="line"></span><br><span class="line">" Reselect visual block after indent/outdent</span><br><span class="line">vnoremap &lt; &lt;gv</span><br><span class="line">vnoremap &gt; &gt;gv</span><br><span class="line"></span><br><span class="line">" Copy paste system clipboard</span><br><span class="line">map &lt;leader&gt;y "+y</span><br><span class="line">map &lt;leader&gt;p "+p</span><br><span class="line">map &lt;leader&gt;P "+P</span><br><span class="line">imap &lt;c-v&gt; &lt;c-r&gt;+</span><br><span class="line">" 把||之间的运行结果输出到剪切板</span><br><span class="line">" 把||之间的行数内容复制到剪切板</span><br><span class="line">nmap ,cn :redir @+\|\|redir END&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;</span><br><span class="line">nmap ,cm :silent redir @+\|for i in []\|echo getline(i)\|endfor\|redir END&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;&lt;Left&gt;</span><br><span class="line"></span><br><span class="line">" Quit help easily</span><br><span class="line">function! QuitWithQ()</span><br><span class="line">  if &amp;buftype == 'help'</span><br><span class="line">    nnoremap &lt;buffer&gt; &lt;silent&gt; q :q&lt;cr&gt;</span><br><span class="line">  endif</span><br><span class="line">endfunction</span><br><span class="line">autocmd FileType help exe QuitWithQ()</span><br><span class="line"></span><br><span class="line">" Easy buffer navigation</span><br><span class="line">noremap &lt;leader&gt;bp :bprevious&lt;cr&gt;</span><br><span class="line">noremap &lt;leader&gt;bn :bnext&lt;cr&gt;</span><br><span class="line"></span><br><span class="line">nmap gx yiw/^(def)\s+&lt;C-R&gt;"&lt;CR&gt; </span><br><span class="line"></span><br><span class="line">" Quick editing </span><br><span class="line">nnoremap &lt;Leader&gt;ev :tabedit $MYVIMRC&lt;CR&gt;</span><br><span class="line">nnoremap &lt;silent&gt; &lt;LocalLeader&gt;rs :source $MYVIMRC&lt;CR&gt;</span><br><span class="line">map &lt;leader&gt;te :tabedit &lt;c-r&gt;=expand("%:p:h")&lt;cr&gt;/</span><br><span class="line"></span><br><span class="line">" When vimrc is edited, reload it</span><br><span class="line">autocmd! BufWritePost _vimrc source $MYVIMRC</span><br><span class="line"></span><br><span class="line">" better ESC</span><br><span class="line">inoremap jk &lt;Esc&gt;</span><br><span class="line">inoremap jkl &lt;Esc&gt;:</span><br><span class="line">nmap ; :</span><br><span class="line">" automatically leave insert mode after 4 seconds of inaction</span><br><span class="line">au CursorHoldI * stopinsert</span><br><span class="line">set ut=4000</span><br><span class="line">set nu</span><br><span class="line">nmap &lt;leader&gt;n :call NumberToggle()&lt;CR&gt;</span><br><span class="line">function! NumberToggle()</span><br><span class="line">  if(&amp;relativenumber == 1)</span><br><span class="line">    set number</span><br><span class="line">  elseif(&amp;number == 1)</span><br><span class="line">    set nonumber</span><br><span class="line">  else</span><br><span class="line">    set relativenumber</span><br><span class="line">  endif</span><br><span class="line">endfunction </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">" Fast saving and closing current buffer without closing windows displaying the buffer</span><br><span class="line">nmap &lt;leader&gt;wq :w!&lt;cr&gt;:bdelete&lt;cr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Complie and run program</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" 通过log文件打印错误/调试内容 </span><br><span class="line">"function QfMakeConv()</span><br><span class="line">"   let qflist = getqflist()</span><br><span class="line">"   for i in qflist</span><br><span class="line">"      let i.text = iconv(i.text, "cp936", "utf-8")</span><br><span class="line">"   endfor</span><br><span class="line">"   call setqflist(qflist)</span><br><span class="line">"endfunction</span><br><span class="line">"au QuickfixCmdPost make call QfMakeConv()</span><br><span class="line"></span><br><span class="line">" map &lt;F9&gt; :call CompileRunQ()&lt;CR&gt;</span><br><span class="line">" func! CompileRunQ()</span><br><span class="line">"     set errorformat=%f，第%l行：%m</span><br><span class="line">" "    let &amp;errorformat=iconv("%f第%l行%m", "utf-8", &amp;enc)</span><br><span class="line">"     exec "cexpr[]"</span><br><span class="line">"     exec "caddf E:\\Dropbox\\tmp\\tmp.txt"</span><br><span class="line">"     exec "copen"</span><br><span class="line">" "    call QfMakeConv()</span><br><span class="line">" endfunc</span><br><span class="line"></span><br><span class="line">func! CheckPythonSyntax()</span><br><span class="line">    " w</span><br><span class="line">    let mp = &amp;makeprg</span><br><span class="line">    let ef = &amp;errorformat</span><br><span class="line">    let exeFile = expand("%:t")</span><br><span class="line">    setlocal makeprg=python\ -u</span><br><span class="line">    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m</span><br><span class="line">    silent make %</span><br><span class="line">    cw</span><br><span class="line">    let &amp;makeprg     = mp</span><br><span class="line">    let &amp;errorformat = ef</span><br><span class="line">endfunction</span><br><span class="line">au FileType python map &lt;F5&gt; :call CheckPythonSyntax()&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------</span><br><span class="line">" =&gt; Tagbar</span><br><span class="line">"--------------------------------------------------</span><br><span class="line">nnoremap &lt;Leader&gt;t :TagbarToggle&lt;CR&gt;</span><br><span class="line">"let g:tagbar_ctags_bin='ctags'</span><br><span class="line">let g:tagbar_autofocus=1</span><br><span class="line">let g:tagbar_expand=1</span><br><span class="line">let g:tagbar_foldlevel=2</span><br><span class="line">let g:tagbar_ironchars=['?', '?']</span><br><span class="line">let g:tagbar_autoshowtag=1</span><br><span class="line">let g:tagbar_width = 30</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------</span><br><span class="line">" =&gt; NERD_tree</span><br><span class="line">"--------------------------------------------------</span><br><span class="line">nnoremap &lt;Leader&gt;d :NERDTreeTabsToggle&lt;CR&gt;</span><br><span class="line">nnoremap &lt;Leader&gt;f :NERDTreeFind&lt;CR&gt;</span><br><span class="line">let NERDTreeChDirMode=2</span><br><span class="line">let NERDTreeShowBookmarks=1</span><br><span class="line">let NERDTreeShowHidden=1</span><br><span class="line">let NERDTreeShowLineNumbers=0</span><br><span class="line">let NERDTreeDirArrows=0</span><br><span class="line">let g:nerdtree_tabs_open_on_gui_startup=0     "(default: 1)Open NERDTree on gvim/macvim startup</span><br><span class="line">let g:nerdtree_tabs_open_on_console_startup=0     "(default: 0)Open NERDTree on console vim startup</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------</span><br><span class="line">" =&gt; fugitive</span><br><span class="line">"--------------------------------------------------</span><br><span class="line">if executable('git')</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gs :Gstatus&lt;CR&gt;</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gd :Gdiff&lt;CR&gt;</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gc :Gcommit&lt;CR&gt;</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gb :Gblame&lt;CR&gt;</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gl :Glog&lt;CR&gt;</span><br><span class="line">    nnoremap &lt;silent&gt; &lt;leader&gt;gp :Git push&lt;CR&gt;</span><br><span class="line">" Automatically remove fugitive buffers</span><br><span class="line">autocmd BufReadPost fugitive://* set bufhidden=delete</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" set jedi</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">"let g:jedi#goto_command            = "&lt;leader&gt;d"</span><br><span class="line">let g:jedi#goto_assignments_command = "&lt;leader&gt;g"</span><br><span class="line">let g:jedi#goto_definitions_command = "&lt;leader&gt;d"</span><br><span class="line">let g:jedi#documentation_command    = "K"</span><br><span class="line">let g:jedi#usages_command           = "&lt;leader&gt;n"</span><br><span class="line">let g:jedi#completions_command      = "&lt;C-Space&gt;"</span><br><span class="line">let g:jedi#rename_command           = "&lt;leader&gt;rname"</span><br><span class="line"></span><br><span class="line">"--------------------------------------------------------</span><br><span class="line">" =&gt; xptemplate.vim设置</span><br><span class="line">"--------------------------------------------------------</span><br><span class="line">"let g:xptemplate_brace_complete = 1</span><br><span class="line">let g:xptemplate_brace_complete = '([''"'</span><br><span class="line">" if nothing matched in xpt, try c-p </span><br><span class="line">let g:xptemplate_fallback = '&lt;C-p&gt;'</span><br><span class="line"> </span><br><span class="line">" avoid key conflict</span><br><span class="line">"let g:SuperTabMappingForward = '&lt;Plug&gt;supertabKey'</span><br><span class="line"></span><br><span class="line">" if nothing matched in xpt, try supertab</span><br><span class="line">"let g:xptemplate_fallback = '&lt;Plug&gt;supertabKey'</span><br><span class="line"></span><br><span class="line">" xpt uses &lt;Tab&gt; as trigger key</span><br><span class="line">let g:xptemplate_key = '&lt;Tab&gt;'</span><br><span class="line"></span><br><span class="line">"let g:xptemplate_always_show_pum=1 </span><br><span class="line">" use &lt;tab&gt;/&lt;S-tab&gt; to navigate through popup menu  //NOT necessary. </span><br><span class="line">let g:xptemplate_pum_tab_nav = 1</span><br><span class="line">let g:xptemplate_nav_cancel = '&lt;C-c&gt;'</span><br><span class="line">" xpt triggers only when you typed whole name of a snippet.   //NOT necessary. </span><br><span class="line">let g:xptemplate_minimal_prefix = 'full'</span><br><span class="line">inoremap &lt;expr&gt; &lt;CR&gt; pumvisible() ? "\&lt;C-Y&gt;&lt;c-r&gt;=XPTemplateStart(0)&lt;cr&gt;" : "\&lt;CR&gt;"</span><br><span class="line">inoremap &lt;expr&gt; &lt;C-n&gt; pumvisible() ? '&lt;C-n&gt;' : '&lt;C-n&gt;&lt;C-r&gt;=pumvisible() ? "\&lt;lt&gt;Down&gt;" : ""&lt;CR&gt;'</span><br><span class="line">snoremap &lt;expr&gt; &lt;C-p&gt; pumvisible() ? '&lt;C-n&gt;' : '&lt;C-p&gt;&lt;C-r&gt;=pumvisible() ? "\&lt;lt&gt;Up&gt;" : ""&lt;CR&gt;'</span><br><span class="line"></span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">" =&gt; Omni complete functions</span><br><span class="line">"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""</span><br><span class="line">"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete</span><br><span class="line">autocmd FileType css set omnifunc=csscomplete#CompleteCSS</span><br><span class="line">autocmd FileType html set omnifunc=htmlcomplete#CompleteTags</span><br><span class="line">autocmd FileType python set omnifunc=pythoncomplete#Complete</span><br><span class="line">autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags</span><br><span class="line">autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS</span><br><span class="line">"autocmd FileType vbnet set omnifunc=javascriptcomplete#CompleteJ</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; surround.vim</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">xmap &lt;Leader&gt;sa &lt;Plug&gt;Vsurround</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Calendar</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">"let g:calendar_diary='/home/cactus/dev/diary'</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; VimWiki</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">let g:vimwiki_use_mouse = 1</span><br><span class="line">let g:vimwiki_camel_case = 0</span><br><span class="line">let g:vimwiki_hl_cb_checked = 1</span><br><span class="line">let g:vimwiki_CJK_length = 1</span><br><span class="line">let g:vimwiki_ext2syntax = &#123;'.md': 'markdown',</span><br><span class="line">                  \ '.mkd': 'markdown',</span><br><span class="line">                  \ '.wiki': 'media'&#125;</span><br><span class="line">let g:vimwiki_valid_html_tags ='b,i,s,u,sub,sup,kbd,br,hr,div'</span><br><span class="line">    let wiki_1 = &#123;&#125;</span><br><span class="line">"    let wiki_1.index = 'VimWiki-@HM'</span><br><span class="line">    let wiki_1.path = '~/vimwiki/'</span><br><span class="line">    let wiki_1.path_html = '~/vimwiki/html'</span><br><span class="line">    let wiki_1.template_path = '~/vimwiki/template/'</span><br><span class="line">    let wiki_1.template_default = 'template1'</span><br><span class="line">    let wiki_1.template_ext = '.html'</span><br><span class="line">    let wiki_1.nested_syntaxes = &#123;'python': 'python', 'c++': 'cpp'&#125;</span><br><span class="line">"    let wiki_1.syntax = 'markdown'</span><br><span class="line">"    let wiki_1.ext = '.md'</span><br><span class="line">    let g:vimwiki_list = [wiki_1]</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; Grep</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">nnoremap &lt;silent&gt; &lt;F3&gt; :Grep&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; vim-indent-guides</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">let g:indent_guides_start_level=2</span><br><span class="line">let g:indent_guides_guide_size=1</span><br><span class="line">"nmap &lt;silent&gt; &lt;Leader&gt;ig &lt;Plug&gt;IndentGuidesToggle</span><br><span class="line"></span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">" =&gt; vim-powerline</span><br><span class="line">"---------------------------------------------------------------------------</span><br><span class="line">"let g:Powerline_symbols = 'fancy'</span><br><span class="line">set t_Co=256</span><br><span class="line">"let g:Powerline_symbols = 'unicode'</span><br><span class="line"></span><br><span class="line">"  vim: set ts=4 sw=4 tw=10000 :</span><br></pre></td></tr></table></figure></p>
+        <p> 系统：windows 7  vim版本:7.4<a id="more"></a><br><pre><code>"===========================================================================
+"         Filename: vimrc
+"           Author: HM
+"            Email: wangbandi#gmail.com
+"         Homepage: http://huangming.github.io
+"          Created: 2015.03.30
+"===========================================================================
+
+
+"                      _________________________
+"
+"                               Plugin
+"                      _________________________
+"
+"---------------------------------------------------------------------------
+" => Vundle
+"---------------------------------------------------------------------------
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/vimfiles/bundle/Vundle.vim
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/vimfiles/bundle')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Plugin 'Shougo/vimproc'
+" Plugin 'Shougo/vimshell.vim'
+
+Plugin 'bufexplorer.zip'
+let g:bufExplorerSplitBelow=1 
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+if executable('ctags')
+    Plugin 'majutsushi/tagbar'
+endif
+if executable('git')
+    Plugin 'tpope/vim-fugitive'
+endif
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Align'
+Plugin 'tpope/vim-commentary'
+autocmd FileType vim set commentstring=\"\ %s
+autocmd FileType vbnet set commentstring=\'\ %s
+Plugin 'vim-scripts/VisIncr'
+Plugin 'drmingdrmer/xptemplate'
+Plugin 'Shougo/neocomplcache.vim'
+
+Plugin 'calendar.vim'
+Plugin 'Stormherz/tablify'
+Plugin 'vimwiki'
+Plugin 'yianwillis/vimcdoc'
+Plugin 'huangming/myvimplugin'
+
+Plugin 'VOoM'
+" Plugin 'vim-scripts/txt.vim--xu'
+Plugin 'ap/vim-css-color'
+Plugin 'nathanaelkane/vim-indent-guides'
+  let g:indent_guides_enable_on_vim_startup = 1
+Plugin 'michaeljsmith/vim-indent-object'
+  let g:indentobject_meaningful_indentation = ["haml", "sass", "python", "yaml", "markdown", "vbnet"]
+
+Plugin 'scrooloose/syntastic'
+" let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['python']
+let g:syntastic_enable_python_checker = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+if has('gui_running')
+    Plugin 'Lokaltog/vim-powerline'
+endif
+Plugin 'Color-Scheme-Explorer'
+Plugin 'baskerville/bubblegum'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/vim-tomorrow-theme'
+Plugin 'tomasr/molokai'
+
+" Git plugin not hosted on GitHub
+" Plugin 'git://git.wincent.com/command-t.git'
+
+" git repos on your local machine ( .e. when working on your own plugin)
+" Plugin 'file:///home/gmarik/path/to/plugin'
+
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+" Plugin 'rstacruz/sparkup', {'rtpa': 'vim/'}
+
+" Avoid a name conflict with L9
+" Plugin 'user/L9', {'name': 'newL9'}
+
+
+
+" non github repos
+call vundle#end()
+filetype plugin indent on     " required!
+ "
+ " Brief help
+ " :PluginList          - list configured bundles
+ " :PluginInstall(!)    - install(update) bundles
+ " :PluginSearch(!) foo - search(or refresh cache first) for foo
+ " :PluginClean(!)      - confirm(or auto-approve) removal of unused bundles
+ "
+ " see :h vundle for more details or wiki for FAQ
+ " NOTE: comments after Plugin command are not allowed..
+
+"                      _________________________
+"
+"                           General settings
+"                      _________________________
+"
+"---------------------------------------------------------------------------
+" => General settings
+"---------------------------------------------------------------------------
+set fileencodings=utf-8,chinese,ucs-bom
+set encoding=utf-8
+set fileencoding=utf-8
+" set ambiwidth=double
+set termencoding=utf-8
+"vim 提示信息乱码解决方法  
+"language messages zh_CN.UTF-8  
+if has("win32")  
+    set termencoding=chinese  
+    language message zh_CN.UTF-8  
+endif  
+
+set history=100
+syntax on
+set cursorline
+set scrolloff=5
+set cmdheight=2
+set report=0
+set helplang=cn
+"set t_Co=256
+" set background=light
+set bsdir=buffer
+set nocompatible
+set autochdir
+set listchars=tab:>\ ,eol:$,extends:>,precedes:<  " Unprintable chars mapping 
+set showbreak=->\ \ \ 
+set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc
+set showcmd
+set shortmess=at " Avoids 'hit enter'
+au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm="" '\"")|else|exe="" "norm="" $"|endif|endif="" let="" mapleader="," "="" change="" the="" maplocalleader="\" "--------------------------------------------------------------------------=""> Colorscheme
+"--------------------------------------------------------------------------
+"colorscheme solarized
+exec 'colorscheme '.["bubblegum-256-light","solarized","Tomorrow","molokai","bubblegum-256-dark","molokai"][strftime("%S")%6] 
+
+"--------------------------------------------------------------------------
+" => Status bar
+"--------------------------------------------------------------------------
+" Only have cursorline in current window and in normal window
+autocmd WinLeave * set nocursorline
+autocmd WinEnter * set cursorline
+auto InsertEnter * set nocursorline
+auto InsertLeave * set cursorline
+set laststatus=1
+
+"set statusline+=%{fugitive#head()}
+set ruler              " bottom status bar
+" set rulerformat=%45(%=\:b%n%m%r\ %Y\ %{fugitive#head()}\ %l,%c%V\ %P%)
+set rulerformat=%25(%n%m%r:\ %Y\ [%l,%v]\ %p%%%)
+highlight StatusLine guifg=SlateBlue guibg=Yellow
+highlight StatusLineNC guifg=Gray guibg=White
+if version >= 700    " change color when enter inser motion
+   au InsertEnter * hi StatusLine guibg=#818D2d guifg=#FCFCFC gui=none
+   au InsertLeave * hi StatusLine guibg=Yellow guifg=SlateBlue gui=none
+endif
+
+"---------------------------------------------------------------------------
+" => Gui settings
+"---------------------------------------------------------------------------
+if has("gui_running")
+    "au GUIEnter * simalt ~x  " maximun window
+    set guioptions-=m        " menu bar
+    set guioptions-=T        "  tools bar
+    "set guioptions-=L        " left scroll bar
+    set guioptions-=r        " right scroll bar
+    "set guioptions-=b        " bottom scroll bar
+    set showtabline=0        " tab bar
+endif
+
+"---------------------------------------------------------------------------
+" => Pos and size when start
+"---------------------------------------------------------------------------
+" winpos 350 150
+" winpos 250 200
+" set lines=25
+" set columns=85
+winpos 200 150
+set lines=30
+set columns=100
+
+"---------------------------------------------------------------------------
+" => Font
+"---------------------------------------------------------------------------
+if has('gui_running')
+    if has("win32")
+      " set guifont=Lucida\ Console:h11:cANSI
+        set guifont=Yahei_Mono:h12.5
+    endif
+endif
+
+"---------------------------------------------------------------------------
+" => Tag label
+"---------------------------------------------------------------------------
+set guitablabel=%m%N:%t\[%{tabpagewinnr(v:lnum)}\]
+set tabline=%!MyTabLine()
+function! MyTabLine()
+    let s=''
+    let t=tabpagenr() " The index of current page
+    let i=1
+    while i<=tabpagenr('$') "="" from="" the="" first="" page="" let="" buflist="tabpagebuflist(i)" winnr="tabpagewinnr(i)" s.="(i==t?'%#TabLineSel#':'%#TabLine#')" .i.'t'="" bufnr="buflist[winnr" -="" 1]="" file="bufname(bufnr)" m="" if="" getbufvar(bufnr,="" "&modified")="" endif="" .winnr.']'="" i="i+1" endwhile="">1?'%999XX':'X')
+    return s
+  endfunction
+" Set up tab tooltips with every buffer name
+set guitabtooltip=%F
+
+" Alt+n
+if has("gui_running")
+     :map <silent> <c-s> :if expand("%") == ""<cr>:browse confirm w<cr>:else<cr>:confirm w<cr>:endif<cr>
+     noremap <m-1> 1gt
+     noremap <m-2> 2gt
+     noremap <m-3> 3gt
+     noremap <m-4> 4gt
+     noremap <m-5> 5gt
+     noremap <m-6> 6gt
+     noremap <m-7> 7gt
+     noremap <m-8> 8gt
+     noremap <m-9> 9gt
+     noremap <m-0> 10gt
+     noremap <c-tab> gt
+     noremap <c-f4> <esc>:bd<cr>
+     noremap tx <esc>:bd<cr>
+endif
+
+
+"---------------------------------------------------------------------------
+" => File settings
+"---------------------------------------------------------------------------
+set confirm                     " confirm when quit file
+set autoread                    " update file when it change external
+set backspace=indent,eol,start
+"set shortmess=atI              " dont display tips when start
+" Set directories
+"set noswapfile
+
+set backup " Set backup
+" set undofile " Set undo
+" Set directories
+set backupdir=~/vimfiles/tmp/backup " backups
+set directory=~/vimfiles/tmp/swap   " swap files
+set viewdir=~/vimfiles/tmp/view   " view files
+set undodir=~/vimfiles/tmp/undo   " undo files
+
+autocmd BufWinLeave *.* silent! mkview " Make Vim save view (state)(folds,cursor,etc)
+autocmd BufWinEnter *.* silent! loadview " Make Vim load view(state)(folds,cursor,etc)
+
+"---------------------------------------------------------------------------
+" => File format and Typesetting
+"---------------------------------------------------------------------------
+"set nowrap
+set virtualedit=insert          " help virtualedit!
+set formatoptions=tcrqn         " auto format
+set textwidth=10000             " the max column,auto wrap when eceeding
+set matchtime=5                 " highlights time for Maching braces
+set showmatch                   " highlights for maching braces
+set nolinebreak                 " dont break on words
+set cindent                     " indent on c style
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set modeline                    " autoload indent line setting
+au BufNewFile,BufReadPost *.html setl shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+"au BufRead,BufNewFile *.css set ft=css syntax=css3
+"自动插入modeline
+func! AppendModeline()
+ let l:modeline = printf(" vim: set ts=%d sw=%d tw=%d :",
+ \ &tabstop, &shiftwidth, &textwidth)
+ let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+ call append(line("$"), l:modeline)
+endfunc
+"按\ml,自动插入modeline
+nnoremap <silent> <leader>ml :call AppendModeline()<cr>
+" au BufWritePre *.Q ks|:silent %s/^scriptstart\s*=\s*\zs\d\+$/\=submatch(1).line('.')/|'s
+
+"---------------------------------------------------------------------------
+" => Auto completion
+"---------------------------------------------------------------------------
+inoremap <c-]>             <c-x><c-]>
+inoremap <c-f>             <c-x><c-f>
+set complete+=]
+" line                     CTRL-X CTRL-L
+" keyword                  CTRL-X CTRL-N
+" dict                     CTRL-X CTRL-K
+" synonyms dict            CTRL-X CTRL-T
+" key words                CTRL-X CTRL-I
+" tags                     CTRL-X CTRL-]
+" file name                CTRL-X CTRL-F
+" definitions              CTRL-X CTRL-D
+" vim command              CTRL-X CTRL-V
+" custom                   CTRL-X CTRL-U
+" spelling suggestions     CTRL-X CTRL-S 
+set wildmenu               " command line auto-complete
+set completeopt=longest,menuone 
+set wildmode=list:longest,full              " Use powerful wildmenu
+set ic                                      " ignore case
+set iskeyword+=.,_,$,@,%,#,-                " about dict complete
+
+"---------------------------------------------------------------------------
+" => Search and replace
+"---------------------------------------------------------------------------
+set hlsearch
+set incsearch      " enter '/b' you can find the word begin with b
+set gdefault       " replace all the lines match
+set ignorecase     " ignore case
+
+" Open a Quickfix window for the last search.
+nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<cr>:copen<cr>
+
+" Highlight word 
+highlight InterestingWord  ctermbg=yellow guibg=yellow ctermfg=black guifg=#000000
+highlight InterestingWord1 ctermbg=green  guibg=green  ctermfg=black guifg=#000000
+highlight InterestingWord2 ctermbg=blue   guibg=blue   ctermfg=black guifg=#000000
+highlight InterestingWord3 ctermbg=red    guibg=red    ctermfg=white guifg=#FFFFFF
+nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<c-r><c-w>\>/'<cr>
+nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<c-r><c-w>\>/'<cr>
+
+"-------------------------------------------------
+" => Fold Related
+"-------------------------------------------------
+
+set foldenable
+"set foldopen = "all"
+set foldmethod=syntax
+set foldcolumn=0
+setlocal foldlevel=0
+set foldlevelstart=99       " dont fold when open file
+
+" Space to toggle and create folds.
+nnoremap <silent><space> @=(foldlevel('.')?'za':"\<space>")<cr>
+vnoremap <space> zf
+
+" Set foldtext
+function! MyFoldText()
+    let line=getline(v:foldstart)
+    let nucolwidth=&foldcolumn+&number*&numberwidth
+    let windowwidth=winwidth(0)-nucolwidth-3
+    let foldedlinecount=v:foldend-v:foldstart+1
+    let onetab=strpart('          ', 0, &tabstop)
+    let line=substitute(line, '\t', onetab, 'g')
+    let line=strpart(line, 0, windowwidth-2-len(foldedlinecount))
+    let fillcharcount=windowwidth-len(line)-len(foldedlinecount)
+    return line.'…'.repeat(" ",fillcharcount).foldedlinecount.'…'.' '
+endfunction
+set foldtext=MyFoldText()
+"--------------------------------------------------------------------------
+" => Special file style
+"---------------------------------------------------------------------------
+au BufRead,BufNewFile {Gemfile,Rakefile,Capfile,*.rake,config.ru}     set ft=ruby
+au BufRead,BufNewFile {*.md,*.mkd,*.markdown}                         set ft=markdown
+au BufRead,BufNewFile {*.txt}                         set ft=txt
+au BufRead,BufNewFile {*.tabl}                         set nowrap
+"function! CtagsUpdata()
+"    let s:pwd = $PWD
+"    call system( 'cd ' . g:projecthome . ' && ctags -R' )
+"    call system( 'cd ' . s:pwd ) | execute 'cd ' . s:pwd
+"    execute 'set tags=' . g:default_tag
+"    execute 'set tags+=' . g:projecthome . 'tags'
+"     args *.c
+"     argdo set ff=unix | update
+"endfunction
+"autocmd BufNewFile  *.Q   0r ~/.vim/template/skeleton.q "
+"noremap <f12> : !ctags --langdef=vbnet --langmap=Asp:*.Q.<cr>
+"noremap <c-f12> : argg tags\|argdo set fenc=utf-8\|update<cr>
+set tags=./tags,tags
+
+" Python section
+" Run the current buffer in python - ie. on leader+space
+autocmd FileType python set textwidth=79 " PEP-8 Friendly
+" New Python file template
+autocmd bufnewfile *.py call setline(1,'#!/usr/bin/env python') |
+  \ call setline(2,'#coding:utf-8') |
+  \ call setline(3,"#Created Time: ".strftime("%c")) |
+  \ call setline(4,'#author: Cactus') |
+  \ call setline(5,'') |
+  \ call setline(6,'') |
+  \ exe "normal G"
+
+" Markdown
+augroup ft_markdown
+    autocmd!
+    " Use <localleader>1/2/3/4/5/6 to add headings
+    autocmd Filetype markdown nnoremap <buffer> <localleader>1 I# <esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>2 I## <esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>3 I### <esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>4 I#### <esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>5 I##### <esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>6 I###### <esc>
+    " Use <localleader>b to add blockquotes in normal and visual mode
+    autocmd Filetype markdown nnoremap <buffer> <localleader>b I> <esc>
+    autocmd Filetype markdown vnoremap <buffer> <localleader>b :s/^/> /<cr>
+    " Use <localleader>ul and <localleader>ol to add list symbols in visual mode
+    autocmd Filetype markdown vnoremap <buffer> <localleader>ul :s/^/* /<cr>
+    autocmd Filetype markdown vnoremap <buffer> <localleader>ol :s/^/\=(line(".")-line("'<")+1).'. '="" <cr="">
+    " Use <localleader>e1/2/3 to add emphasis symbols
+    autocmd Filetype markdown nnoremap <buffer> <localleader>e1 I*<esc>A*<esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>e2 I**<esc>A**<esc>
+    autocmd Filetype markdown nnoremap <buffer> <localleader>e3 I***<esc>A***<esc>
+    " Use <leader>P to preview markdown file in browser
+    autocmd Filetype markdown nnoremap <buffer> <leader>P :MarkdownPreview<cr>
+augroup END
+
+"--------------------------------------------------------------------------
+" => Key map
+"---------------------------------------------------------------------------
+
+" clear highlight after search
+noremap <silent><leader>/ :nohls<cr>
+
+" Use sane regexes
+nnoremap / /\v
+vnoremap / /\v
+cnoremap s/ s/\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+cnoremap s? s?\v
+
+" Keep search matches in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap * *zzzv
+nnoremap # #zzzv
+nnoremap g* g*zzzv
+nnoremap g# g#zzzv
+
+" Visual search mappings
+function! s:VSetSearch()
+    let temp=@@
+    normal! gvy
+    let @/='\V'.substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    let @@=temp
+endfunction
+vnoremap * :<c-u>call <sid>VSetSearch()<cr>//<cr>
+vnoremap # :<c-u>call <sid>VSetSearch()<cr>??<cr>
+
+nmap wv      <c-w>v      " vertical spilt window
+nmap wc      <c-w>c      " colse the current window
+nmap ws      <c-w>s      " spilt window horizontally
+
+" Begining & End of line in Normal mode
+noremap H ^
+noremap L g_
+
+" Redesign moving keys in insert mode
+"inoremap <c-k> <up>
+"inoremap <c-j> <down>
+inoremap <c-h> <left>
+inoremap <c-l> <right>
+
+" Make j and k work the way you expect
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" Same when jumping around
+nnoremap g; g;zz
+nnoremap g, g,zz
+
+" Navigation between windows
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-o> <c-w>o
+
+" Reselect visual block after indent/outdent
+vnoremap < <gv vnoremap=""> >gv
+
+" Copy paste system clipboard
+map <leader>y "+y
+map <leader>p "+p
+map <leader>P "+P
+imap <c-v> <c-r>+
+" 把||之间的运行结果输出到剪切板
+" 把||之间的行数内容复制到剪切板
+nmap ,cn :redir @+\|\|redir END<left><left><left><left><left><left><left><left><left><left>
+nmap ,cm :silent redir @+\|for i in []\|echo getline(i)\|endfor\|redir END<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
+
+" Quit help easily
+function! QuitWithQ()
+  if &buftype == 'help'
+    nnoremap <buffer> <silent> q :q<cr>
+  endif
+endfunction
+autocmd FileType help exe QuitWithQ()
+
+" Easy buffer navigation
+noremap <leader>bp :bprevious<cr>
+noremap <leader>bn :bnext<cr>
+
+nmap gx yiw/^(def)\s+<c-r>"<cr> 
+
+" Quick editing 
+nnoremap <leader>ev :tabedit $MYVIMRC<cr>
+nnoremap <silent> <localleader>rs :source $MYVIMRC<cr>
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" When vimrc is edited, reload it
+autocmd! BufWritePost _vimrc source $MYVIMRC
+
+" better ESC
+inoremap jk <esc>
+inoremap jkl <esc>:
+nmap ; :
+" automatically leave insert mode after 4 seconds of inaction
+au CursorHoldI * stopinsert
+set ut=4000
+set nu
+nmap <leader>n :call NumberToggle()<cr>
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  elseif(&number == 1)
+    set nonumber
+  else
+    set relativenumber
+  endif
+endfunction 
+
+
+" Fast saving and closing current buffer without closing windows displaying the buffer
+nmap <leader>wq :w!<cr>:bdelete<cr>
+
+
+"---------------------------------------------------------------------------
+" => Complie and run program
+"---------------------------------------------------------------------------
+" 通过log文件打印错误/调试内容 
+"function QfMakeConv()
+"   let qflist = getqflist()
+"   for i in qflist
+"      let i.text = iconv(i.text, "cp936", "utf-8")
+"   endfor
+"   call setqflist(qflist)
+"endfunction
+"au QuickfixCmdPost make call QfMakeConv()
+
+" map <f9> :call CompileRunQ()<cr>
+" func! CompileRunQ()
+"     set errorformat=%f，第%l行：%m
+" "    let &errorformat=iconv("%f第%l行%m", "utf-8", &enc)
+"     exec "cexpr[]"
+"     exec "caddf E:\\Dropbox\\tmp\\tmp.txt"
+"     exec "copen"
+" "    call QfMakeConv()
+" endfunc
+
+func! CheckPythonSyntax()
+    " w
+    let mp = &makeprg
+    let ef = &errorformat
+    let exeFile = expand("%:t")
+    setlocal makeprg=python\ -u
+    set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+    silent make %
+    cw
+    let &makeprg     = mp
+    let &errorformat = ef
+endfunction
+au FileType python map <f5> :call CheckPythonSyntax()<cr>
+
+"--------------------------------------------------
+" => Tagbar
+"--------------------------------------------------
+nnoremap <leader>t :TagbarToggle<cr>
+"let g:tagbar_ctags_bin='ctags'
+let g:tagbar_autofocus=1
+let g:tagbar_expand=1
+let g:tagbar_foldlevel=2
+let g:tagbar_ironchars=['?', '?']
+let g:tagbar_autoshowtag=1
+let g:tagbar_width = 30
+
+"--------------------------------------------------
+" => NERD_tree
+"--------------------------------------------------
+nnoremap <leader>d :NERDTreeTabsToggle<cr>
+nnoremap <leader>f :NERDTreeFind<cr>
+let NERDTreeChDirMode=2
+let NERDTreeShowBookmarks=1
+let NERDTreeShowHidden=1
+let NERDTreeShowLineNumbers=0
+let NERDTreeDirArrows=0
+let g:nerdtree_tabs_open_on_gui_startup=0     "(default: 1)Open NERDTree on gvim/macvim startup
+let g:nerdtree_tabs_open_on_console_startup=0     "(default: 0)Open NERDTree on console vim startup
+
+"--------------------------------------------------
+" => fugitive
+"--------------------------------------------------
+if executable('git')
+    nnoremap <silent> <leader>gs :Gstatus<cr>
+    nnoremap <silent> <leader>gd :Gdiff<cr>
+    nnoremap <silent> <leader>gc :Gcommit<cr>
+    nnoremap <silent> <leader>gb :Gblame<cr>
+    nnoremap <silent> <leader>gl :Glog<cr>
+    nnoremap <silent> <leader>gp :Git push<cr>
+" Automatically remove fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" set jedi
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:jedi#goto_command            = "<leader>d"
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command    = "K"
+let g:jedi#usages_command           = "<leader>n"
+let g:jedi#completions_command      = "<c-space>"
+let g:jedi#rename_command           = "<leader>rname"
+
+"--------------------------------------------------------
+" => xptemplate.vim设置
+"--------------------------------------------------------
+"let g:xptemplate_brace_complete = 1
+let g:xptemplate_brace_complete = '([''"'
+" if nothing matched in xpt, try c-p 
+let g:xptemplate_fallback = '<c-p>'
+ 
+" avoid key conflict
+"let g:SuperTabMappingForward = '<plug>supertabKey'
+
+" if nothing matched in xpt, try supertab
+"let g:xptemplate_fallback = '<plug>supertabKey'
+
+" xpt uses <tab> as trigger key
+let g:xptemplate_key = '<tab>'
+
+"let g:xptemplate_always_show_pum=1 
+" use <tab>/<s-tab> to navigate through popup menu  //NOT necessary. 
+let g:xptemplate_pum_tab_nav = 1
+let g:xptemplate_nav_cancel = '<c-c>'
+" xpt triggers only when you typed whole name of a snippet.   //NOT necessary. 
+let g:xptemplate_minimal_prefix = 'full'
+inoremap <expr> <cr> pumvisible() ? "\<c-y><c-r>=XPTemplateStart(0)<cr>" : "\<cr>"
+inoremap <expr> <c-n> pumvisible() ? '<c-n>' : '<c-n><c-r>=pumvisible() ? "\<lt>Down>" : ""<cr>'
+snoremap <expr> <c-p> pumvisible() ? '<c-n>' : '<c-p><c-r>=pumvisible() ? "\<lt>Up>" : ""<cr>'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Omni complete functions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType vbnet set omnifunc=javascriptcomplete#CompleteJ
+
+
+"---------------------------------------------------------------------------
+" => surround.vim
+"---------------------------------------------------------------------------
+xmap <leader>sa <plug>Vsurround
+
+"---------------------------------------------------------------------------
+" => Calendar
+"---------------------------------------------------------------------------
+"let g:calendar_diary='/home/cactus/dev/diary'
+
+"---------------------------------------------------------------------------
+" => VimWiki
+"---------------------------------------------------------------------------
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_camel_case = 0
+let g:vimwiki_hl_cb_checked = 1
+let g:vimwiki_CJK_length = 1
+let g:vimwiki_ext2syntax = {'.md': 'markdown',
+                  \ '.mkd': 'markdown',
+                  \ '.wiki': 'media'}
+let g:vimwiki_valid_html_tags ='b,i,s,u,sub,sup,kbd,br,hr,div'
+    let wiki_1 = {}
+"    let wiki_1.index = 'VimWiki-@HM'
+    let wiki_1.path = '~/vimwiki/'
+    let wiki_1.path_html = '~/vimwiki/html'
+    let wiki_1.template_path = '~/vimwiki/template/'
+    let wiki_1.template_default = 'template1'
+    let wiki_1.template_ext = '.html'
+    let wiki_1.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+"    let wiki_1.syntax = 'markdown'
+"    let wiki_1.ext = '.md'
+    let g:vimwiki_list = [wiki_1]
+
+"---------------------------------------------------------------------------
+" => Grep
+"---------------------------------------------------------------------------
+nnoremap <silent> <f3> :Grep<cr>
+
+"---------------------------------------------------------------------------
+" => vim-indent-guides
+"---------------------------------------------------------------------------
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+"nmap <silent> <leader>ig <plug>IndentGuidesToggle
+
+"---------------------------------------------------------------------------
+" => vim-powerline
+"---------------------------------------------------------------------------
+"let g:Powerline_symbols = 'fancy'
+set t_Co=256
+"let g:Powerline_symbols = 'unicode'
+
+"  vim: set ts=4 sw=4 tw=10000 :</plug></leader></silent></cr></f3></silent></plug></leader></cr></lt></c-r></c-p></c-n></c-p></expr></cr></lt></c-r></c-n></c-n></c-n></expr></cr></cr></c-r></c-y></cr></expr></c-c></s-tab></tab></tab></tab></plug></plug></c-p></leader></c-space></leader></leader></leader></leader></cr></leader></silent></cr></leader></silent></cr></leader></silent></cr></leader></silent></cr></leader></silent></cr></leader></silent></cr></leader></cr></leader></cr></leader></cr></f5></cr></f9></cr></cr></leader></cr></leader></esc></esc></cr></c-r></leader></cr></localleader></silent></cr></leader></cr></c-r></cr></leader></cr></leader></cr></silent></buffer></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></left></c-r></c-v></leader></leader></leader></gv></c-w></c-o></c-w></c-l></c-w></c-k></c-w></c-j></c-w></c-h></right></c-l></left></c-h></down></c-j></up></c-k></c-w></c-w></c-w></cr></cr></sid></c-u></cr></cr></sid></c-u></cr></leader></silent></cr></leader></buffer></leader></esc></esc></localleader></buffer></esc></esc></localleader></buffer></esc></esc></localleader></buffer></localleader></")+1).'.></localleader></buffer></cr></localleader></buffer></localleader></localleader></cr></localleader></buffer></esc></localleader></buffer></localleader></esc></localleader></buffer></esc></localleader></buffer></esc></localleader></buffer></esc></localleader></buffer></esc></localleader></buffer></esc></localleader></buffer></localleader></cr></c-f12></cr></f12></space></cr></space></space></silent></cr></c-w></c-r></leader></silent></cr></c-w></c-r></leader></silent></cr></c-w></c-r></leader></silent></cr></c-w></c-r></leader></silent></cr></cr></leader></silent></c-f></c-x></c-f></c-]></c-x></c-]></cr></leader></silent></cr></esc></cr></esc></c-f4></c-tab></m-0></m-9></m-8></m-7></m-6></m-5></m-4></m-3></m-2></m-1></cr></cr></cr></cr></cr></c-s></silent></=tabpagenr('$')></=></code></pre></p>
 
       
     </div>
