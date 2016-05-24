@@ -4,13 +4,29 @@
   
     
     <entry>
-      <title><![CDATA[oracle-cold-backup]]></title>
+      <title><![CDATA[oracle冷备]]></title>
       <url>http://huangming.github.io/2016-05-21-oracle-cold-backup.html</url>
-      <content type="html"></content>
+      <content type="html"><![CDATA[<p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。</p>
+<h2 id="环境">环境</h2><p>oracle大版本要一致。本文测试环境：</p>
+<ul>
+<li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+<li>目的库操作系统 <code>win7 x64</code> <code>win10 x64</code> <code>windows server 2008 R2 x64</code> 均测试成功<br>目的库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+</ul>
+<h2 id="冷备">冷备</h2><p>在源库(假定SID名为ORCL)执行以下操作：</p>
+<ol>
+<li>打开CMD，用sysdba登录数据库。有些操作系统安装了不止一个数据库实例，为了确保操作的是源库，在CMD命令行中先执行一次<code>set ORACLE_SID=ORCL</code>：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">sqlplus / as sysdba</span><br></pre></td></tr></table></figure>
+<p>先检查一下登录的数据库：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select instance_name from v<span class="variable">$instance</span>;</span><br><span class="line">INSTANCE_NAME</span><br><span class="line">----------------</span><br><span class="line">orcl</span><br></pre></td></tr></table></figure>
+<p>然后关闭数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown immediate;</span><br><span class="line">数据库已经关闭。</span><br><span class="line">已经卸载数据库。</span><br><span class="line">ORACLE 例程已经关闭。</span><br></pre></td></tr></table></figure>
+<p>此时可拷贝各物理文件(参数文件、数据文件、密码文件、redolog文件)</p>
+]]></content>
     </entry>
     
     <entry>
-      <title><![CDATA[Hexo写博客怎么优雅地插入图片]]></title>
+      <title><![CDATA[Hexo怎么优雅地插入图片]]></title>
       <url>http://huangming.github.io/2016-05-02-hexo-img-solution.html</url>
       <content type="html"><![CDATA[<p>发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写<a href="http://hexo.io" target="_blank" rel="external">hexo</a>博客的时候优雅地插入图片。</p>
 <h2 id="环境">环境</h2><p>我的环境:<code>win10</code> <code>gvim7.4</code> <code>hexo3.1.1</code>, 此方案对环境无要求。 </p>
