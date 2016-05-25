@@ -19,7 +19,7 @@
 用gvim 编写markdown。
 开始最终结果
 在执行 hexo new [layout] &amp;lt;title&amp;gt; 后，自动在一个设定的目录创建以 &amp;lt;title&amp;gt; 命">
-<meta property="og:updated_time" content="2016-05-24T14:18:15.054Z">
+<meta property="og:updated_time" content="2016-05-25T02:25:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo怎么优雅地插入图片">
 <meta name="twitter:description" content="发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写hexo博客的时候优雅地插入图片。
@@ -137,7 +137,7 @@
 </ul>
 <a id="more"></a>
 <h3 id="vim配置">vim配置</h3><p>vim配置很简单，在你的配置文件vimrc里面添加下面的内容即可(网址请改为自己的图床，这里我用的是七牛图床)。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">autocmd! BufWritePost *.md,*.mkd,*.markdown :silent!call Insertimg()&lt;CR&gt;</span><br><span class="line">function! Insertimg()</span><br><span class="line">    " 转换![name] (num)</span><br><span class="line">    :%s#\(!\[[^\]]*\](\)\(\w\&#123;,10&#125;\))#\=submatch(1).'http://7xsj4f.com2.z0.glb.clouddn.com/'.expand("%:r").'/'.submatch(2).'.png)'#</span><br><span class="line">    </span><br><span class="line">    " 转换 ![name][num]</span><br><span class="line">    let lnum = 1</span><br><span class="line">    let lst = []</span><br><span class="line">    while lnum &lt;= line("$")</span><br><span class="line">        let line = getline(lnum)</span><br><span class="line">        call substitute(line, '\(!\[[^\]]*\]\[\)\(\d\&#123;,2&#125;\)\]', '\=add(lst, submatch(2))', 'g')</span><br><span class="line">        let lnum += 1</span><br><span class="line">    endwhile</span><br><span class="line">    let unduplst=sort(filter(copy(lst),'index(lst, v:val, v:key+1)==-1'))</span><br><span class="line">    let line = getline(line("$"))</span><br><span class="line">    let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    :ks</span><br><span class="line">    while flag != ''</span><br><span class="line">        exe "normal G"</span><br><span class="line">        exe "normal dd"</span><br><span class="line">        let line = getline(line("$"))</span><br><span class="line">        let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    endwhile</span><br><span class="line">    exe "normal 's"</span><br><span class="line"></span><br><span class="line">    for name in unduplst</span><br><span class="line">      if len(name)&gt;0</span><br><span class="line">          call append(line("$"), "[".name."]: http://7xsj4f.com2.z0.glb.clouddn.com/".expand("%:r")."/".name.".png")</span><br><span class="line">      endif</span><br><span class="line">    endfor</span><br><span class="line">    :w</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">autocmd! BufWritePost *.md,*.mkd,*.markdown :silent!call Insertimg()&lt;CR&gt;</span><br><span class="line">function! Insertimg()</span><br><span class="line">    " 转换![name](num)</span><br><span class="line">    :%s#\(!\[[^\]]*\](\)\(\w\&#123;,10&#125;\))#\=submatch(1).'http://7xsj4f.com2.z0.glb.clouddn.com/'.expand("%:r").'/'.submatch(2).'.png)'#</span><br><span class="line">    </span><br><span class="line">    " 转换 ![name][num]</span><br><span class="line">    let lnum = 1</span><br><span class="line">    let lst = []</span><br><span class="line">    while lnum &lt;= line("$")</span><br><span class="line">        let line = getline(lnum)</span><br><span class="line">        call substitute(line, '\(!\[[^\]]*\]\[\)\(\d\&#123;,2&#125;\)\]', '\=add(lst, submatch(2))', 'g')</span><br><span class="line">        let lnum += 1</span><br><span class="line">    endwhile</span><br><span class="line">    let unduplst=sort(filter(copy(lst),'index(lst, v:val, v:key+1)==-1'))</span><br><span class="line">    let line = getline(line("$"))</span><br><span class="line">    let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    :ks</span><br><span class="line">    while flag != ''</span><br><span class="line">        exe "normal G"</span><br><span class="line">        exe "normal dd"</span><br><span class="line">        let line = getline(line("$"))</span><br><span class="line">        let flag = matchstr(line,'\[\d\+\]: http:')</span><br><span class="line">    endwhile</span><br><span class="line">    exe "normal 's"</span><br><span class="line"></span><br><span class="line">    for name in unduplst</span><br><span class="line">      if len(name)&gt;0</span><br><span class="line">          call append(line("$"), "[".name."]: http://7xsj4f.com2.z0.glb.clouddn.com/".expand("%:r")."/".name.".png")</span><br><span class="line">      endif</span><br><span class="line">    endfor</span><br><span class="line">    :w</span><br><span class="line">endfunction</span><br></pre></td></tr></table></figure>
 <h3 id="hexo_配置">hexo 配置</h3><p>这个配置起来有点小麻烦，要改hexo的一个模块代码。文件路径在<code>yourpath\hexo\node_modules\hexo\lib\hexo\post.js</code> 更改内容:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@@ -<span class="number">63</span>,<span class="number">7</span> +<span class="number">63</span>,<span class="number">7</span> @@ Post.prototype.create = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">       <span class="comment">// Write content to file</span></span><br><span class="line">       fs.writeFile(path, content),</span><br><span class="line">       <span class="comment">// Create asset folder</span></span><br><span class="line">-      createAssetFolder(path, config.post_asset_folder)</span><br><span class="line">+      createAssetFolder(pathFn.resolve(config.post_asset_folder,pathFn.basename(path)), config.post_asset_folder)</span><br><span class="line">     ]).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">       ctx.emit(<span class="string">'new'</span>, result);</span><br><span class="line">     &#125;).thenReturn(result);</span><br><span class="line">@@ -<span class="number">213</span>,<span class="number">7</span> +<span class="number">213</span>,<span class="number">7</span> @@ Post.prototype.publish = <span class="function"><span class="keyword">function</span>(<span class="params">data, replace, callback</span>) </span>&#123;</span><br><span class="line">     <span class="comment">// Remove the original draft file</span></span><br><span class="line">     <span class="keyword">return</span> fs.unlink(src);</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">-    <span class="keyword">if</span> (!config.post_asset_folder) <span class="keyword">return</span>;</span><br><span class="line">+    <span class="keyword">if</span> (config.post_asset_folder !== <span class="literal">true</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
 <p>然后在 <code>yourpath\hexo\_config.yml</code> 中配置 <code>post_asset_folder</code> 路径，路径可随意:</p>
@@ -151,7 +151,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cioi53udb00094sfu9u4dijwi" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="ciomuin9c000cxsfu0lzp59g6" class="article-share-link">Share</a> -->
       
         
 <nav id="article-nav">
@@ -160,7 +160,7 @@
       <!-- <strong class="article-nav-caption">Newer</strong> -->
       <div class="article-nav-title">
         
-          &laquo;oracle冷备
+          &laquo;Oracle冷备与恢复
         
       </div>
     </a>
@@ -212,7 +212,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/oracle/">oracle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -221,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -230,7 +230,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a>
     </div>
   </div>
 
@@ -242,7 +242,11 @@
       <ul>
         
           <li>
-            <a href="/2016-05-21-oracle-cold-backup.html">oracle冷备</a>
+            <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html">Oracle收缩临时表空间</a>
+          </li>
+        
+          <li>
+            <a href="/2016-05-21-oracle-cold-backup.html">Oracle冷备与恢复</a>
           </li>
         
           <li>
@@ -255,10 +259,6 @@
         
           <li>
             <a href="/2015-07-10-hello-world.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2012-04-25-vimrc.html">我的vimrc</a>
           </li>
         
       </ul>

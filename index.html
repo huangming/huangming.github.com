@@ -77,14 +77,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-oracle-cold-backup" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-oracle-rebuild-temp-tablespace" class="article article-type-post" itemscope itemprop="blogPost">
   <!-- <div class="article-meta"> -->
-  <!--   <a href="/2016-05-21-oracle-cold-backup.html" class="article-date">
-  <time datetime="2016-05-21T12:41:46.000Z" itemprop="datePublished">2016-05-21</time>
+  <!--   <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html" class="article-date">
+  <time datetime="2016-05-25T06:42:57.000Z" itemprop="datePublished">2016-05-25</time>
 </a> -->
   <!--   
   <div class="article-category">
-    <a class="article-category-link" href="/categories/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/database/">database</a>
   </div>
  -->
   <!-- </div> -->
@@ -95,7 +95,65 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016-05-21-oracle-cold-backup.html">oracle冷备</a>
+      <a class="article-title" href="/2016-05-25-oracle-rebuild-temp-tablespace.html">Oracle收缩临时表空间</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html" class="article-date">
+  <time datetime="2016-05-25T06:42:57.000Z" itemprop="datePublished">2016-05-25</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter tablespace temp shrink space;</span><br><span class="line">表空间已更改。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="ciomuin8x0004xsfucpp5hc34" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article id="post-oracle-cold-backup" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-05-21-oracle-cold-backup.html" class="article-date">
+  <time datetime="2016-05-21T12:41:46.000Z" itemprop="datePublished">2016-05-21</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-05-21-oracle-cold-backup.html">Oracle冷备与恢复</a>
     </h1>
   
 
@@ -105,7 +163,7 @@
 </a>
           
   <div class="article-category">
-    <a class="article-category-link" href="/categories/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/database/">database</a>
   </div>
 
         </div>
@@ -113,27 +171,16 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。</p>
-<h2 id="环境">环境</h2><p>oracle大版本要一致。本文测试环境：</p>
-<ul>
-<li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
-<li>目的库操作系统 <code>win7 x64</code> <code>win10 x64</code> <code>windows server 2008 R2 x64</code> 均测试成功<br>目的库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
-</ul>
-<h2 id="冷备">冷备</h2><p>在源库(假定SID名为ORCL)执行以下操作：</p>
-<ol>
-<li>打开CMD，用sysdba登录数据库。有些操作系统安装了不止一个数据库实例，为了确保操作的是源库，在CMD命令行中先执行一次<code>set ORACLE_SID=ORCL</code>：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">sqlplus / as sysdba</span><br></pre></td></tr></table></figure>
-<p>先检查一下登录的数据库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select instance_name from v<span class="variable">$instance</span>;</span><br><span class="line">INSTANCE_NAME</span><br><span class="line">----------------</span><br><span class="line">orcl</span><br></pre></td></tr></table></figure>
-<p>然后关闭数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown immediate;</span><br><span class="line">数据库已经关闭。</span><br><span class="line">已经卸载数据库。</span><br><span class="line">ORACLE 例程已经关闭。</span><br></pre></td></tr></table></figure>
-<p>此时可拷贝各物理文件(参数文件、数据文件、密码文件、redolog文件)</p>
-
+        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016-05-21-oracle-cold-backup.html#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cioi53ucf00044sfui7qpmtjm" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="ciomuin9c0009xsfui8ohoibf" class="article-share-link">Share</a> -->
       
       
         
@@ -205,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cioi53udb00094sfu9u4dijwi" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="ciomuin9c000cxsfu0lzp59g6" class="article-share-link">Share</a> -->
       
       
         
@@ -267,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cioi53udb000g4sfum2qhdx9p" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="ciomuin9c000jxsfu07gvspho" class="article-share-link">Share</a> -->
       
       
         
@@ -323,7 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cioi53ue6000j4sfunnqdamjo" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="ciomuin9c000mxsfumbz4uxdh" class="article-share-link">Share</a> -->
       
       
         
@@ -383,7 +430,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cioi53ue6000k4sfu0v74xt2q" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="ciomuin9u000nxsfuh37v3dx4" class="article-share-link">Share</a> -->
       
       
         
@@ -445,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cioi53uel000n4sfu19x70t0b" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="ciomuin9x000qxsfuaa7ffeel" class="article-share-link">Share</a> -->
       
       
         
@@ -505,7 +552,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="cioi53uep000q4sfujuia9e8j" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="ciomuin9y000txsfu5iot7c8k" class="article-share-link">Share</a> -->
       
       
         
@@ -565,7 +612,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="cioi53uer000s4sfu4b9zfomp" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="ciomuin9y000vxsfuaz3bjfkd" class="article-share-link">Share</a> -->
       
       
         
@@ -635,67 +682,11 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-12-01-10-nian-ganyan.html" data-id="cioi53uer000u4sfuzu4ncl21" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2008-12-01-10-nian-ganyan.html" data-id="ciomuin9y000xxsfug54usmt2" class="article-share-link">Share</a> -->
       
       
         
           <a href="http://huangming.github.io/2008-12-01-10-nian-ganyan.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article id="post-jintian-tianqi-bucuo" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2008-10-03-jintian-tianqi-bucuo.html" class="article-date">
-  <time datetime="2008-10-02T16:00:00.000Z" itemprop="datePublished">2008-10-03</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2008-10-03-jintian-tianqi-bucuo.html">o(∩_∩)o</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2008-10-03-jintian-tianqi-bucuo.html" class="article-date">
-  <time datetime="2008-10-02T16:00:00.000Z" itemprop="datePublished">2008-10-03</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天天气真的不错~!~~~!!! </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-10-03-jintian-tianqi-bucuo.html" data-id="cioi53uer000w4sfu52hfmgvd" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2008-10-03-jintian-tianqi-bucuo.html#disqus_thread" class="article-comment-link">Comments</a>
         
       
       
@@ -724,7 +715,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/oracle/">oracle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -733,7 +724,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -742,7 +733,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a>
     </div>
   </div>
 
@@ -754,7 +745,11 @@
       <ul>
         
           <li>
-            <a href="/2016-05-21-oracle-cold-backup.html">oracle冷备</a>
+            <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html">Oracle收缩临时表空间</a>
+          </li>
+        
+          <li>
+            <a href="/2016-05-21-oracle-cold-backup.html">Oracle冷备与恢复</a>
           </li>
         
           <li>
@@ -767,10 +762,6 @@
         
           <li>
             <a href="/2015-07-10-hello-world.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2012-04-25-vimrc.html">我的vimrc</a>
           </li>
         
       </ul>

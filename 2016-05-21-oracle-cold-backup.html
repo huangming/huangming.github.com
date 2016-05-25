@@ -3,30 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>oracle冷备 | Hm&#39;s Blog</title>
+  <title>Oracle冷备与恢复 | Hm&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
-环境oracle大版本要一致。本文测试环境：
-
-源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit
-目的库操作系统 win7 x64 wi">
+  <meta name="description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="oracle冷备">
+<meta property="og:title" content="Oracle冷备与恢复">
 <meta property="og:url" content="http://huangming.github.io/2016-05-21-oracle-cold-backup.html">
 <meta property="og:site_name" content="Hm's Blog">
-<meta property="og:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
-环境oracle大版本要一致。本文测试环境：
-
-源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit
-目的库操作系统 win7 x64 wi">
-<meta property="og:updated_time" content="2016-05-24T14:10:15.962Z">
+<meta property="og:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
+<meta property="og:updated_time" content="2016-05-25T06:49:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="oracle冷备">
-<meta name="twitter:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
-环境oracle大版本要一致。本文测试环境：
-
-源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit
-目的库操作系统 win7 x64 wi">
+<meta name="twitter:title" content="Oracle冷备与恢复">
+<meta name="twitter:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
 <meta name="twitter:creator" content="@hmorz">
   
     <link rel="alternative" href="/atom.xml" title="Hm&#39;s Blog" type="application/atom+xml">
@@ -95,7 +83,7 @@
 </a> -->
   <!--   
   <div class="article-category">
-    <a class="article-category-link" href="/categories/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/database/">database</a>
   </div>
  -->
   <!-- </div> -->
@@ -106,7 +94,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      oracle冷备
+      Oracle冷备与恢复
     </h1>
   
 
@@ -116,7 +104,7 @@
 </a>
           
   <div class="article-category">
-    <a class="article-category-link" href="/categories/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/database/">database</a>
   </div>
 
         </div>
@@ -124,30 +112,101 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。</p>
-<h2 id="环境">环境</h2><p>oracle大版本要一致。本文测试环境：</p>
+        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。<br><a id="more"></a></p>
+<h2 id="环境">环境</h2><p>源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。<br>本文测试环境：</p>
 <ul>
 <li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
 <li>目的库操作系统 <code>win7 x64</code> <code>win10 x64</code> <code>windows server 2008 R2 x64</code> 均测试成功<br>目的库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
 </ul>
+<p>查看版本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> banner <span class="keyword">from</span> sys.v_$<span class="keyword">version</span>;</span></span><br></pre></td></tr></table></figure>
 <h2 id="冷备">冷备</h2><p>在源库(假定SID名为ORCL)执行以下操作：</p>
 <ol>
-<li>打开CMD，用sysdba登录数据库。有些操作系统安装了不止一个数据库实例，为了确保操作的是源库，在CMD命令行中先执行一次<code>set ORACLE_SID=ORCL</code>：</li>
+<li><p>打开CMD，用sysdba登录数据库。有些操作系统安装了不止一个数据库实例，为了确保操作的是源库，在CMD命令行中先执行一次<code>set ORACLE_SID=ORCL</code>：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">sqlplus / as sysdba</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">sqlplus / as sysdba</span><br></pre></td></tr></table></figure>
-<p>先检查一下登录的数据库：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select instance_name from v<span class="variable">$instance</span>;</span><br><span class="line">INSTANCE_NAME</span><br><span class="line">----------------</span><br><span class="line">orcl</span><br></pre></td></tr></table></figure>
-<p>然后关闭数据库</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown immediate;</span><br><span class="line">数据库已经关闭。</span><br><span class="line">已经卸载数据库。</span><br><span class="line">ORACLE 例程已经关闭。</span><br></pre></td></tr></table></figure>
-<p>此时可拷贝各物理文件(参数文件、数据文件、密码文件、redolog文件)</p>
+<pre><code>先检查一下登录的数据库：
+
+<span class="comment"><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select instance_name from v<span class="variable">$instance</span>;</span><br><span class="line">INSTANCE_NAME</span><br><span class="line">----------------</span><br><span class="line">orcl</span><br></pre></td></tr></table></figure></span>
+</code></pre><ol>
+<li><p>查找并记下各物理文件路径(控制文件、参数文件、数据文件、密码文件、redolog文件)<br>可在SQL*PLUS 也可在 Pl/SQL 里边查看：</p>
+<ul>
+<li><p>控制文件(可不拷贝)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; <span class="built_in">set</span> line <span class="number">200</span></span><br><span class="line">SQL&gt; columnn NAME format a60</span><br><span class="line">SQL&gt; select * from V<span class="variable">$CONTROLFILE</span>;</span><br><span class="line">STATUS  NAME                                                         IS_ BLOCK_SIZE FILE_SIZE_BLKS</span><br><span class="line">------- ------------------------------------------------------------ --- ---------- --------------</span><br><span class="line">        D:\APP\ADMINISTRATOR\ORADATA\ORCL\CONTROL01.CTL              NO       <span class="number">16384</span>            <span class="number">636</span></span><br><span class="line">        D:\APP\ADMINISTRATOR\FLASH_RECOVERY_AREA\ORCL\CONTROL02.CTL  NO       <span class="number">16384</span>            <span class="number">636</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参数文件(如果没有可不拷贝) </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; show parameter spfile</span><br><span class="line">NAME                                 TYPE        VALUE</span><br><span class="line">------------------------------------ ----------- ------------------------------</span><br><span class="line">spfile                               string</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>密码文件<br>一般在如下路径，以<code>PWD+SID.ora</code>命名。可直接拷贝整个<code>database</code>文件夹(上面的参数文件一般也在这里)。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">D:\app\Administrator\product\<span class="number">11.2</span>.<span class="number">0</span>\dbhome_1\database\PWDorcl.ora</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重做日志文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select * from V<span class="variable">$LOGFILE</span>;</span><br><span class="line">    GROUP<span class="comment"># STATUS  TYPE    MEMBER                                                       IS_</span></span><br><span class="line">---------- ------- ------- ------------------------------------------------------------ ---</span><br><span class="line">         <span class="number">2</span>         ONLINE  D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO02.LOG                  NO</span><br><span class="line">         <span class="number">1</span>         ONLINE  D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO01.LOG                  NO</span><br><span class="line">         <span class="number">3</span>         ONLINE  D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO03.LOG                  NO</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>数据文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select name from V<span class="variable">$DATAFILE</span>;</span><br><span class="line">NAME</span><br><span class="line">------------------------------------------------------------</span><br><span class="line">D:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSTEM01.DBF</span><br><span class="line">D:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSAUX01.DBF</span><br><span class="line">D:\APP\ADMINISTRATOR\ORADATA\ORCL\UNDOTBS01.DBF</span><br><span class="line">D:\APP\ADMINISTRATOR\ORADATA\ORCL\USERS01.DBF</span><br><span class="line">D:\APP\ADMINISTRATOR\ORADATA\ORCL\ORCL.DBF</span><br><span class="line">已选择<span class="number">5</span>行。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>然后关闭数据库，并拷贝物理文件。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown immediate;</span><br><span class="line">数据库已经关闭。</span><br><span class="line">已经卸载数据库。</span><br><span class="line">ORACLE 例程已经关闭。</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拷贝完文件后备份重建控制文件脚本</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; startup mount;</span><br><span class="line">ORACLE 例程已经启动。</span><br><span class="line">Total System Global Area <span class="number">3423965184</span> bytes</span><br><span class="line">Fixed Size                  <span class="number">2180544</span> bytes</span><br><span class="line">Variable Size            <span class="number">1862273600</span> bytes</span><br><span class="line">Database Buffers         <span class="number">1543503872</span> bytes</span><br><span class="line">Redo Buffers               <span class="number">16007168</span> bytes</span><br><span class="line">数据库装载完毕。</span><br><span class="line">SQL&gt; alter database backup controlfile to trace as <span class="string">'d:\controlfile.sql'</span>;</span><br><span class="line">数据库已更改。</span><br></pre></td></tr></table></figure>
+<p> <code>d:\controlfile.sql</code>为建立控制文件的脚本。</p>
+</li>
+<li><p>重新启动数据库</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown abort;</span><br><span class="line">ORACLE 例程已经关闭。</span><br><span class="line">SQL&gt; startup;</span><br><span class="line">ORACLE 例程已经启动。</span><br><span class="line">Total System Global Area <span class="number">3423965184</span> bytes</span><br><span class="line">Fixed Size                  <span class="number">2180544</span> bytes</span><br><span class="line">Variable Size            <span class="number">1862273600</span> bytes</span><br><span class="line">Database Buffers         <span class="number">1543503872</span> bytes</span><br><span class="line">Redo Buffers               <span class="number">16007168</span> bytes</span><br><span class="line">数据库装载完毕。</span><br><span class="line">数据库已经打开。</span><br></pre></td></tr></table></figure>
+<p> 如果有问题可直接通过系统服务重启对应的服务</p>
+</li>
+</ol>
+<h2 id="恢复、拷贝">恢复、拷贝</h2><pre><code>这里只讨论控制文件丢失的情况下的恢复还有拷贝搭建一模一样的测试库的情况。
+
+如果目的库不存在，先新建一个同名目的库(可用<span class="escape">`D</span>atabase Configuration Assistant<span class="escape">`)</span>。建立的时候注意一下字符集还有存储位置(跟源库一样选所有数据库文件使用公共位置)即可。以下操作均在目的库执行：
+</code></pre><ol>
+<li><p>创建参数化文件<br>打开CMD并用sqlplus以sysdba身份登陆ORCL(方法如上节)</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; Create pfile from spfile;</span><br><span class="line">文件已创建。</span><br></pre></td></tr></table></figure>
+<p> 创建结果在<code>product\11.2.0\dbhome_1\database\INIT+DBNAME.ORA</code> 这里是<code>INITorcl.ORA</code></p>
+</li>
+<li><p>关闭实例并重命名spfile</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; shutdown immediate;</span><br><span class="line">数据库已经关闭。</span><br><span class="line">已经卸载数据库。</span><br><span class="line">ORACLE 例程已经关闭。</span><br></pre></td></tr></table></figure>
+<p> 此处将<code>D:\app\Administrator\product\11.2.0\dbhome_1\database\SPFILEORCL.ORA</code>重命名为<br> <code>D:\app\Administrator\product\11.2.0\dbhome_1\database\SPFILEORCL.ORA.20160525.bak</code></p>
+</li>
+<li><p>将<code>数据文件</code>、<code>密码文件</code>、<code>redolog文件</code>拷贝到目的库对应路径<br> 我实际测试的时候<code>win7</code>跟<code>win2008</code>路径是跟源库一模一样的，<code>win10</code>跟源库对比路径的磁盘位置不一样。</p>
+</li>
+<li><p>重建控制文件<br> 先修改备份的控制文件。备份的控制文件里边有两种重建脚本。这里选<code>NORESETLOGS case</code>。<br> 什么时候用另一个不太清楚，实际测试的时候第二种失败了。应该跟源库的<code>ARCHIVELOG</code>设置有关。<br> 选好后把别的都删除，<red><strong>特别是空行一定要删除</strong></red>！路径有修改的，可以改成目的库的路径，例如我测试的时候数据库在H盘，所以d全部变成h了。<br> 修改后的内容如下：</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">STARTUP NOMOUNT</span><br><span class="line"><span class="operator"><span class="keyword">CREATE</span> CONTROLFILE REUSE <span class="keyword">DATABASE</span> <span class="string">"ORCL"</span> NORESETLOGS  NOARCHIVELOG</span><br><span class="line">    MAXLOGFILES <span class="number">16</span></span><br><span class="line">    MAXLOGMEMBERS <span class="number">3</span></span><br><span class="line">    MAXDATAFILES <span class="number">100</span></span><br><span class="line">    MAXINSTANCES <span class="number">8</span></span><br><span class="line">    MAXLOGHISTORY <span class="number">292</span></span><br><span class="line"><span class="keyword">LOGFILE</span></span><br><span class="line">  <span class="keyword">GROUP</span> <span class="number">1</span> <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO01.LOG'</span>  <span class="keyword">SIZE</span> <span class="number">50</span>M BLOCKSIZE <span class="number">512</span>,</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="number">2</span> <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO02.LOG'</span>  <span class="keyword">SIZE</span> <span class="number">50</span>M BLOCKSIZE <span class="number">512</span>,</span><br><span class="line">  <span class="keyword">GROUP</span> <span class="number">3</span> <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\REDO03.LOG'</span>  <span class="keyword">SIZE</span> <span class="number">50</span>M BLOCKSIZE <span class="number">512</span></span><br><span class="line"><span class="comment">-- STANDBY LOGFILE</span></span><br><span class="line">DATAFILE</span><br><span class="line">  <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSTEM01.DBF'</span>,</span><br><span class="line">  <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\SYSAUX01.DBF'</span>,</span><br><span class="line">  <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\UNDOTBS01.DBF'</span>,</span><br><span class="line">  <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\USERS01.DBF'</span>,</span><br><span class="line">  <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\ORCL.DBF'</span></span><br><span class="line"><span class="built_in">CHARACTER</span> <span class="keyword">SET</span> ZHS16GBK</span><br><span class="line">;</span></span><br></pre></td></tr></table></figure>
+<p> 把修改后的文件放到目的库所在系统某路径，这里测试的时候放到了<code>d:\</code>,然后在sqlplus以<code>nomount</code>模式启动数据库执行这个脚本：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; STARTUP NOMOUNT;</span><br><span class="line">ORACLE 例程已经启动。</span><br><span class="line">Total System Global Area <span class="number">3423965184</span> bytes</span><br><span class="line">Fixed Size                  <span class="number">2180544</span> bytes</span><br><span class="line">Variable Size            <span class="number">1862273600</span> bytes</span><br><span class="line">Database Buffers         <span class="number">1543503872</span> bytes</span><br><span class="line">Redo Buffers               <span class="number">16007168</span> bytes</span><br><span class="line">SQL&gt; @d:\controlfile.sql;</span><br><span class="line">SQL&gt; @d:\CONTROLFILE_KRCS.SQL</span><br><span class="line">ORA-<span class="number">01081</span>: ????????? ORACLE - ??????</span><br><span class="line">控制文件已创建。</span><br></pre></td></tr></table></figure>
+<p> 那个<code>ora-01081</code>可以不用管他，出现的原因是本身已经<code>STARTUP NOMOUNT</code>，脚本里边又执行了一次。<br> 此处报01503、01565之类的错的话检查脚本中的datafile在对应路径是否存在，路径对不上的话改对它。<br> 重建控制文件后执行一次恢复:</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; recover database;</span><br><span class="line">ORA-<span class="number">00283</span>: ????????????????????</span><br><span class="line">ORA-<span class="number">00264</span>: ??????????</span><br></pre></td></tr></table></figure>
+<p> 如果弹出ORA-00264错误，表示数据库是一致的，不需要恢复</p>
+<p> 接着打开数据库</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; alter database open;</span><br><span class="line">数据库已更改。</span><br></pre></td></tr></table></figure>
+<p> 如果无报错表示数据迁移、恢复成功。</p>
+</li>
+<li><p>最后把临时表空间重建一下<br> 重建语句可以在原来备份的重建控制文件脚本里边找。</p>
+ <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">ALTER</span> <span class="keyword">TABLESPACE</span> TEMP <span class="keyword">ADD</span> TEMPFILE <span class="string">'D:\APP\ADMINISTRATOR\ORADATA\ORCL\TEMP01.DBF'</span> REUSE;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cioi53ucf00044sfui7qpmtjm" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="ciomuin9c0009xsfui8ohoibf" class="article-share-link">Share</a> -->
       
         
 <nav id="article-nav">
+  
+    <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <!-- <strong class="article-nav-caption">Newer</strong> -->
+      <div class="article-nav-title">
+        
+          &laquo;Oracle收缩临时表空间
+        
+      </div>
+    </a>
   
   
     <a href="/2016-05-02-hexo-img-solution.html" id="article-nav-older" class="article-nav-link-wrap">
@@ -196,7 +255,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/oracle/">oracle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -205,7 +264,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -214,7 +273,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a>
     </div>
   </div>
 
@@ -226,7 +285,11 @@
       <ul>
         
           <li>
-            <a href="/2016-05-21-oracle-cold-backup.html">oracle冷备</a>
+            <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html">Oracle收缩临时表空间</a>
+          </li>
+        
+          <li>
+            <a href="/2016-05-21-oracle-cold-backup.html">Oracle冷备与恢复</a>
           </li>
         
           <li>
@@ -239,10 +302,6 @@
         
           <li>
             <a href="/2015-07-10-hello-world.html">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2012-04-25-vimrc.html">我的vimrc</a>
           </li>
         
       </ul>
