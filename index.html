@@ -171,7 +171,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。<br>
+        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。</p>
+<h2 id="环境">环境</h2><p>源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。<br>本文测试环境：</p>
+<ul>
+<li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+<li>目的库操作系统 <code>win7 x64</code> <code>win10 x64</code> <code>windows server 2008 R2 x64</code> 均测试成功<br>目的库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+</ul>
+<p>查看版本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> banner <span class="keyword">from</span> sys.v_$<span class="keyword">version</span>;</span></span><br></pre></td></tr></table></figure>
         
           <p class="article-more-link">
             <a href="/2016-05-21-oracle-cold-backup.html#more">Read More</a>

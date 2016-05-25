@@ -5,16 +5,25 @@
   
   <title>Oracle冷备与恢复 | Hm&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
+  <meta name="description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
+环境源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。本文测试环境：
+
+源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Oracle冷备与恢复">
 <meta property="og:url" content="http://huangming.github.io/2016-05-21-oracle-cold-backup.html">
 <meta property="og:site_name" content="Hm's Blog">
-<meta property="og:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
-<meta property="og:updated_time" content="2016-05-25T12:49:14.981Z">
+<meta property="og:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
+环境源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。本文测试环境：
+
+源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit">
+<meta property="og:updated_time" content="2016-05-25T14:04:53.867Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Oracle冷备与恢复">
-<meta name="twitter:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。">
+<meta name="twitter:description" content="冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。
+环境源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。本文测试环境：
+
+源库操作系统 windows server 2008 R2 x64源库数据库版本 11g Enterprise Edition Release 11.2.0.1.0 - 64bit">
 <meta name="twitter:creator" content="@hmorz">
   
     <link rel="alternative" href="/atom.xml" title="Hm&#39;s Blog" type="application/atom+xml">
@@ -112,7 +121,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。<br><a id="more"></a></p>
+        <p>冷备恢复是oracle最快捷方便安全的恢复、拷贝方式。他只有一个缺点：冷备的时候要关闭源库。冷备特别适合搭建跟生产一致的测试环境。</p>
 <h2 id="环境">环境</h2><p>源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。<br>本文测试环境：</p>
 <ul>
 <li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
@@ -120,6 +129,7 @@
 </ul>
 <p>查看版本：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> banner <span class="keyword">from</span> sys.v_$<span class="keyword">version</span>;</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h2 id="冷备">冷备</h2><p>在源库(假定SID名为ORCL)执行以下操作：</p>
 <h3 id="1-_打开CMD，用sysdba登录数据库。">1. 打开CMD，用sysdba登录数据库。</h3><p>有些操作系统安装了不止一个数据库实例，为了确保操作的是源库，在CMD命令行中先执行一次<code>set ORACLE_SID=ORCL</code>：<br>        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> ORACLE_SID=ORCL</span><br><span class="line">sqlplus / as sysdba</span><br></pre></td></tr></table></figure></p>
 <p>先检查一下登录的数据库：<br>        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SQL&gt; select instance_name from v<span class="variable">$instance</span>;</span><br><span class="line">INSTANCE_NAME</span><br><span class="line">----------------</span><br><span class="line">orcl</span><br></pre></td></tr></table></figure></p>
