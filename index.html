@@ -77,6 +77,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-python-log" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-05-29-python-log.html" class="article-date">
+  <time datetime="2016-05-29T05:22:14.000Z" itemprop="datePublished">2016-05-29</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-05-29-python-log.html">Python logging 模块封装</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-05-29-python-log.html" class="article-date">
+  <time datetime="2016-05-29T05:22:14.000Z" itemprop="datePublished">2016-05-29</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>python自带的记录日志模块 <a href="https://docs.python.org/3/library/logging.html#module-logging">logging</a> 非常强大，但是每次写程序都要写很多东西来配置使用，体验不怎么友好，花时间封装在一个文件里面，用的时候直接调用，并且提供配置接口保留其强大的功能还是非常有必要的。</p>
+<h2 id="logging介绍">logging介绍</h2><p>Python的logging模块提供了通用的日志系统，可以方便第三方模块或者是应用使用。这个模块提供不同的日志级别，并可以采用不同的方式记录日志，比如文件，HTTP GET/POST，SMTP，Socket等，甚至可以自己实现具体的日志记录方式。</p>
+<p>logging模块与log4j的机制是一样的，只是具体的实现细节不同。模块提供logger，handler，filter，formatter。</p>
+<ul>
+<li>logger：提供日志接口，供应用代码使用。</li>
+<li>handler：将日志记录（log record）发送到合适的目的地（destination），比如文件，socket，cmd等。一个logger对象可以通过addHandler方法添加0到多个handler，每个handler又可以定义不同日志级别，以实现日志分级过滤显示。每个handler还可以单独设置自己的formatter格式。</li>
+<li>filter：提供一种优雅的方式决定一个日志记录是否发送到handler。</li>
+<li>formatter：指定日志记录输出的具体格式。</li>
+</ul>
+<p>与log4j类似，logger，handler和日志消息的调用可以有具体的日志级别（Level），只有在日志消息的级别大于logger和handler的级别才会呈现。</p>
+<p>默认的日志级别设置为<code>WARNING</code>（日志级别等级<code>CRITICAL</code> &gt; <code>ERROR</code> &gt; <code>WARNING</code> &gt; <code>INFO</code> &gt; <code>DEBUG</code> &gt; <code>NOTSET</code>）, 小于WARNING级别的日志都不输出, 大于等于WARNING级别的日志都会输出。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016-05-29-python-log.html#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-05-29-python-log.html" data-id="cios9qpgm0004r8fuarvdwvgx" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-05-29-python-log.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日志/">日志</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article id="post-oracle-rebuild-temp-tablespace" class="article article-type-post" itemscope itemprop="blogPost">
   <!-- <div class="article-meta"> -->
   <!--   <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html" class="article-date">
@@ -118,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="cioqt4xhu00048sfu71g35bmx" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="cios9qphl000br8fui2jbhals" class="article-share-link">Share</a> -->
       
       
         
@@ -187,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cioqt4xi400098sfufdxb1p1a" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cios9qphl000gr8fukx8ixtjg" class="article-share-link">Share</a> -->
       
       
         
@@ -259,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cioqt4xi8000c8sfua5ejfusu" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cios9qphl000jr8fu3impldcv" class="article-share-link">Share</a> -->
       
       
         
@@ -321,7 +393,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cioqt4xid000j8sfuazkgd5in" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cios9qpi2000qr8fu7blm4pfw" class="article-share-link">Share</a> -->
       
       
         
@@ -377,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cioqt4xii000m8sfuko33qg1a" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cios9qpi6000tr8fuxbjd6my3" class="article-share-link">Share</a> -->
       
       
         
@@ -437,7 +509,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cioqt4xil000n8sfusgwtmxyc" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cios9qpic000ur8fuhb7l1zo9" class="article-share-link">Share</a> -->
       
       
         
@@ -499,7 +571,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cioqt4xio000q8sfuy9pvemey" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cios9qpig000xr8futkjcvllx" class="article-share-link">Share</a> -->
       
       
         
@@ -559,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="cioqt4xiq000t8sfurd1gvpt8" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="cios9qpig0010r8fumt9snn00" class="article-share-link">Share</a> -->
       
       
         
@@ -619,81 +691,11 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="cioqt4xiu000v8sfu6bttf3zh" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="cios9qpig0012r8fur0ysumiw" class="article-share-link">Share</a> -->
       
       
         
           <a href="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article id="post-10-nian-ganyan" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2008-12-01-10-nian-ganyan.html" class="article-date">
-  <time datetime="2008-11-30T16:00:00.000Z" itemprop="datePublished">2008-12-01</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2008-12-01-10-nian-ganyan.html">我的十年感言</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2008-12-01-10-nian-ganyan.html" class="article-date">
-  <time datetime="2008-11-30T16:00:00.000Z" itemprop="datePublished">2008-12-01</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><code>回忆1998年</code><br>　今年我十岁了，终于到了二位数年龄~好感动~~</p>
-<p><code>回忆1999年</code><br>　今年11岁，11代表着光棍，孤独的岁月开始~~</p>
-<p><code>回忆2000年</code><br>　今年是龙年，属龙的我注定飞黄腾达哈~~骗你的…小学数学竞赛拿奖了呗</p>
-<p><code>回忆2001年</code><br>　今年？不知道有什么了，好像开始学会乐观吧~~</p>
-<p><code>回忆2002年</code><br>　貌似我入团了呢 ~ 跟一大帮朋友瞎混~ 最开心的是那次野炊了~自己做的饭菜好好吃 ~</p>
-<p><code>回忆2003年</code><br>　初二了吧，貌似是，额，貌似没什么。。。想想看。有了，玩封神榜的游戏通关了~~~哈哈，那纣王挺难打的</p>
-<p><code>回忆2004年</code><br>　初三了呢，最开心的事是特招考试成功了，不用再去参加中考～～呵呵。。不过快中考的时候出水豆了～555，刚开始没去看医生，结果挺严重的~～～虽然快中考了，同学还是抽空来看我，好感动～</p>
-<p><code>回忆2005年</code><br>　今年是高一呢，在城里读书，些许兴奋～～～最开心的是101宿舍里的打打闹闹啦 ~ 遗憾的是拍的同学的几张裸照曝光了，冲洗不了～～～还记得中段或期终后整个宿舍的在网吧通宵～那时候好可爱耶～让人暴汗的是那次随便在班群上找个人来骂，他也跟我斗嘴，结果后来知道是老师来的，瀑布汗～～嘿嘿，还记得一次跟粉仔通宵上网再回来数学竞赛，结果还拿奖了～</p>
-<p><code>回忆2006年</code><br>　高二，额。。。开始T毽球～～让人气愤的是技术一直很烂~不是运动的料，不过经常去玩轮滑，觉得还不错～~心情不好就去轮滑~还学会了折很多纸东西～～貌似高二的成绩也一直很好～开始喜欢看书了～～</p>
-<p><code>回忆2007年</code><br>　高三，是最郁闷的一年，整天混混沌沌，幻想，还是看小说好~~~放学后很多同学一起跑步，放松自己，还有T毽球，虽然技术不好，老被当同学的笑料，还是感觉蛮开心的～高考没考好，考外省了，决定重读～～</p>
-<p><code>回忆2008年</code><br>　考中大了呗～～～来到中大，开阔了眼界啊~自己真的很渺小耶~就拿轮滑来说，走到这里简直就是菜鸟～～他们的技术真的不错~还有很多要学习的～～～很多很多东西都要自己找条件去学习~</p>
-<h2 id="评论:">评论:</h2><ul>
-<li><a href="http://user.qzone.qq.com/552311925" target="_blank" rel="external">D.E.M</a><time>2008-12-02 20:31:12</time> </li>
-<li>呵呵。你的十年经历就被你几句话说完啦？不过你说的有些事我也知道耶。五年级数学竞赛第一名，初三特招考试成功，出水痘，但后来还有来上课。高一数学竞赛得奖。有一次我去一中看到那里贴的通知。高三结束后考了个外省重点，但你把通知书撕啦，去重读。最后考出了对你来说还不错的成绩。进入中大。之后关于你的事，我这个朋友就不知道啦。因为你呀，肯定重学习，重色轻友。害我伤肝伤心伤肺伤脾伤肾呀。 </li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-12-01-10-nian-ganyan.html" data-id="cioqt4xj0000x8sfu8o88s8sn" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2008-12-01-10-nian-ganyan.html#disqus_thread" class="article-comment-link">Comments</a>
         
       
       
@@ -722,7 +724,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -731,7 +733,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日志/">日志</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -740,7 +742,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a>
+      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/日志/" style="font-size: 10px;">日志</a>
     </div>
   </div>
 
@@ -750,6 +752,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016-05-29-python-log.html">Python logging 模块封装</a>
+          </li>
         
           <li>
             <a href="/2016-05-25-oracle-rebuild-temp-tablespace.html">Oracle收缩临时表空间</a>
@@ -765,10 +771,6 @@
         
           <li>
             <a href="/2015-09-28-juban.html">羁绊</a>
-          </li>
-        
-          <li>
-            <a href="/2015-07-10-hello-world.html">Hello World</a>
           </li>
         
       </ul>
