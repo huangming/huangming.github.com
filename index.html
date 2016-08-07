@@ -77,6 +77,137 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ssh-upload-dir-to-linux-vps-by-scp" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html" class="article-date">
+  <time datetime="2016-06-25T06:34:51.000Z" itemprop="datePublished">2016-06-25</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vps/">vps</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html">SSH通过SCP命令上传文件夹到linux系统的vps</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html" class="article-date">
+  <time datetime="2016-06-25T06:34:51.000Z" itemprop="datePublished">2016-06-25</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vps/">vps</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="环境">环境</h2><p>mingw2.0.3</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ scp -P <span class="number">26443</span> -r /E/OneDrive/GitRepository/ItChat_old root@<span class="number">23.105</span>.<span class="number">203</span>.**:~/ItChat</span><br><span class="line">root@<span class="number">23.105</span>.<span class="number">203</span>.**<span class="string">'s password:</span><br><span class="line">config                                        100%  397     0.4KB/s   00:00</span><br><span class="line">description                                   100%   73     0.1KB/s   00:00</span><br><span class="line">HEAD                                          100%   24     0.0KB/s   00:00</span><br><span class="line">applypatch-msg.sample                         100%  478     0.5KB/s   00:00</span><br><span class="line">commit-msg.sample                             100%  896     0.9KB/s   00:00</span><br><span class="line">post-update.sample                            100%  189     0.2KB/s   00:00</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html" data-id="cirk4kzem00046ofuys1lj7vm" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
+    <article id="post-python-excel" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-05-31-python-excel.html" class="article-date">
+  <time datetime="2016-05-31T14:56:05.000Z" itemprop="datePublished">2016-05-31</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-05-31-python-excel.html">Python调用dll动态链接库操作excel</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-05-31-python-excel.html" class="article-date">
+  <time datetime="2016-05-31T14:56:05.000Z" itemprop="datePublished">2016-05-31</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/python/">python</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是一篇Python调用动态链接库的标准示范。</p>
+<h3 id="原理">原理</h3><p>其实不管什么语言调用dll的流程都是一样的：先注册dll到操作系统，然后获取到初始化的dll对象，然后就可以调用dll的各种api接口了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">register</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="string">'''注册插件</span><br><span class="line">    '''</span></span><br><span class="line">    pythoncom.CoInitialize()</span><br><span class="line">    command = <span class="string">"regsvr32 /s atl.dll"</span></span><br><span class="line">    os.system(command)</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        lx = win32com.client.Dispatch(<span class="string">'Lazy.LxjExcel'</span>)</span><br><span class="line">    <span class="keyword">except</span> pywintypes.com_error:</span><br><span class="line">        command = <span class="string">'regsvr32 /s LazyOffice.dll'</span></span><br><span class="line">        <span class="keyword">if</span> os.system(command) == <span class="number">0</span>:</span><br><span class="line">            lx = win32com.client.Dispatch(<span class="string">'Lazy.LxjExcel'</span>)</span><br><span class="line">            <span class="keyword">return</span> lx</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.log.error(<span class="string">'regsver32 error'</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> lx</span><br></pre></td></tr></table></figure>
+<p>这段代码是python调用dll的标准代码。别的dll也可以用这个调用。其中<code>LazyOffice.dll</code>是操作excel的dll文件，<code>Lazy.LxjExcel</code>是初始化的操作excel的对象，该对象由dll的编写作者提供。</p>
+<p>然后就能通过返回的lx调用这个dll内部封装的接口啦：<code>lx.ExcelOpen(path, visual)</code></p>
+<h3 id="封装">封装</h3><p>环境：<code>win7</code> <code>python3</code> <code>python2</code>,如果操作系统注册dll插件失败，可先手动注册成功后再运行程序调用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># Last Update:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> win32com.client</span><br><span class="line"><span class="keyword">import</span> pywintypes</span><br><span class="line"><span class="keyword">import</span> pythoncom</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">GoodString</span><span class="params">(value)</span>:</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    &gt;&gt;&gt; GoodString(2)</span><br><span class="line">    '2'</span><br><span class="line">    """</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> str(value)</span><br><span class="line">    <span class="keyword">except</span> UnicodeEncodeError:</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Lxsoft</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, log, path=<span class="string">''</span>)</span>:</span></span><br><span class="line">        self.log = log</span><br><span class="line">        self.lx = self.__registerLxsoft()</span><br><span class="line">        self.InitExcel()</span><br><span class="line">        <span class="keyword">if</span> path:</span><br><span class="line">            self.Open(path)</span><br><span class="line">            self.SheetIndex()</span><br><span class="line">            self.SheetCount()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__registerLxsoft</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''注册插件</span><br><span class="line">        '''</span></span><br><span class="line">        pythoncom.CoInitialize()</span><br><span class="line">        command = <span class="string">"regsvr32 /s atl.dll"</span></span><br><span class="line">        os.system(command)</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            lx = win32com.client.Dispatch(<span class="string">'Lazy.LxjExcel'</span>)</span><br><span class="line">        <span class="keyword">except</span> pywintypes.com_error:</span><br><span class="line">            command = <span class="string">'regsvr32 /s LazyOffice.dll'</span></span><br><span class="line">            <span class="keyword">if</span> os.system(command) == <span class="number">0</span>:</span><br><span class="line">                lx = win32com.client.Dispatch(<span class="string">'Lazy.LxjExcel'</span>)</span><br><span class="line">                <span class="comment"># assert(dm.Ver == '2.1138')</span></span><br><span class="line">                <span class="keyword">return</span> lx</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.log.error(<span class="string">'regsver32 error'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> lx</span><br><span class="line">     </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">InitExcel</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.path = <span class="string">''</span></span><br><span class="line">        self.maxsheet = <span class="number">1</span></span><br><span class="line">        self.index = <span class="number">1</span></span><br><span class="line">        self.sindex = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__del__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.Close()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__Trueindex</span><span class="params">(self, index)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> index == <span class="string">''</span>:</span><br><span class="line">            <span class="keyword">return</span> self.index</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Open</span><span class="params">(self, path, visual=<span class="number">0</span>)</span>:</span></span><br><span class="line">        <span class="comment"># visual:1可见,0不可见 opencd:打开密码(如果存在)</span></span><br><span class="line">        <span class="comment"># writecd:写入密码 flag:只读方式打开</span></span><br><span class="line">        self.path = path</span><br><span class="line">        self.index =  self.lx.ExcelOpen(path, visual)</span><br><span class="line">        <span class="keyword">return</span> self.index</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Close</span><span class="params">(self, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelClose(index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetIndex</span><span class="params">(self, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 获取当前标签页序号</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.sindex = self.lx.SheetIndex(index)</span><br><span class="line">        <span class="keyword">return</span> self.sindex</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetName</span><span class="params">(self, Sindex, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 获取标签页序号(或名称)为Sindex的标签名称(或索引)</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        <span class="keyword">return</span> self.lx.SheetGetName(Sindex, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetCount</span><span class="params">(self, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 获取标签页总数</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.maxsheet =  self.lx.SheetCount(index)</span><br><span class="line">        <span class="keyword">return</span> self.maxsheet</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetAdd</span><span class="params">(self, Sindex, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 在第Sindex个标签页之前新建一个标签</span></span><br><span class="line">        <span class="comment"># 如果Sindex是字符串,则在最后新建一个名叫Sindex的标签</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'新建标签: '</span>+GoodString(Sindex))</span><br><span class="line">        <span class="keyword">return</span> self.lx.SheetAdd(Sindex, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetRename</span><span class="params">(self, Sindex, name, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># Sindex可为序号或者名称</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        <span class="keyword">return</span> self.lx.SheetRename(Sindex, name, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">SheetDel</span><span class="params">(self, Sindex, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'删除标签: '</span>+GoodString(Sindex))</span><br><span class="line">        <span class="keyword">return</span> self.lx.SheetDel(Sindex, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Write</span><span class="params">(self, Sindex, x, y, string, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># Write(1,3,2,"内容",Index)向单元格(3,2)即'B3'写入内容</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'向单元格(%s,%s)写入内容: %s'</span> % (GoodString(x),GoodString(y),GoodString(string)))</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelWrite(Sindex, x, y, string, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Read</span><span class="params">(self, Sindex, x, y, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        string = self.lx.ExcelRead(Sindex, x, y, index)[<span class="number">0</span>]</span><br><span class="line">        self.log.debug(<span class="string">u'读取单元格(%s,%s): %s'</span> % (GoodString(x),GoodString(y),GoodString(string)))</span><br><span class="line">        <span class="keyword">return</span> string</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">differ</span><span class="params">(self, Sindex, x1, y1, x2, y2, index1=<span class="string">''</span>, index2=<span class="string">''</span>)</span>:</span></span><br><span class="line">        index1 = self.__Trueindex(index1)</span><br><span class="line">        index2 = self.__Trueindex(index2)</span><br><span class="line">        <span class="keyword">return</span> int(self.Read(Sindex, x1, y1, index1)) - int(self.Read(Sindex, x2, y2, index2))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Cells</span><span class="params">(self, tab1, action, tab2, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 如设置tab2为负数，将只进行复制</span></span><br><span class="line">        <span class="comment"># 如设置tab2为0，将在所有标签页后面新建一个被复制的表</span></span><br><span class="line">        <span class="comment"># 将工作表第1个标签页整表复制到第3个标签页:self.lx.ExcelCells(1, u"复制", 3, Index)</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'表%s %s -&gt; %s'</span> % (GoodString(tab1),action,GoodString(tab2)))</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelCells(tab1, action, tab2, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Rows</span><span class="params">(self, tab, row1, action, row2, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 如设置row2为负数，将只进行复制</span></span><br><span class="line">        <span class="comment"># 复制第1个标签页第2行到第8行:self.lx.ExcelRows(1, 2, u"复制", 8, Index)</span></span><br><span class="line">        <span class="comment"># 第2行模糊查找1:self.lx.ExcelRows(1, 2, u"模糊查找", 1, Index)</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'行%s %s -&gt; %s'</span> % (GoodString(row1),action,GoodString(row2)))</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelRows(tab, row1, action, row2, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Columns</span><span class="params">(self, tab, col1, action, col2, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 如设置col2为负数，将只进行复制</span></span><br><span class="line">        <span class="comment"># 复制第1个标签页第3列到第6列:self.lx.ExcelColumns(1, 3, u"复制", 6, Index)</span></span><br><span class="line">        <span class="comment"># 第3列模糊查找1:self.lx.ExcelColumns(1,3, u"模糊查找", 1, Index)</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'列%s %s -&gt; %s'</span> % (GoodString(col1),action,GoodString(col2)))</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelColumns(tab, col1, action, col2, index)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">Range</span><span class="params">(self, tab, ranges, action, destination, index=<span class="string">''</span>)</span>:</span></span><br><span class="line">        <span class="comment"># 如设置destination为负数，将只进行复制</span></span><br><span class="line">        <span class="comment"># 复制第1个标签页"B2:C5"区域:self.lx.ExcelRange(1, "B2:C5", "复制", -1, Index)</span></span><br><span class="line">        <span class="comment"># 区域C2:E5模糊查找1:self.lx.ExcelRange(1, "C2:E5",u"模糊查找", 1, Index)</span></span><br><span class="line">        index = self.__Trueindex(index)</span><br><span class="line">        self.log.debug(<span class="string">u'区域%s %s -&gt; %s'</span> % (GoodString(tab),action,GoodString(destination)))</span><br><span class="line">        <span class="keyword">return</span> self.lx.ExcelRange(tab, ranges, action, destination, index)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">import</span> log</span><br><span class="line">    <span class="keyword">import</span> time</span><br><span class="line">    path = <span class="string">'F:\\test.xls'</span></span><br><span class="line">    mylog = log.Log()</span><br><span class="line">    lx = Lxsoft(mylog, path)</span><br><span class="line">    <span class="comment"># print int(lx.Read(lx.SheetCount(), 5, 7))==int(time.strftime("%Y%m%d"))</span></span><br><span class="line">    <span class="comment"># a = lx.Read(lx.maxsheet, 5, 7)</span></span><br><span class="line">    a = lx.SheetCount()</span><br><span class="line">    print(lx.Columns(a, <span class="number">7</span>, <span class="string">u"模糊查找"</span>, <span class="string">"20150722"</span>)[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line">    <span class="comment"># lx.Cells(lx.SheetCount(), 5, u"字体颜色", 3)</span></span><br><span class="line">    <span class="comment"># print lx.differ(lx.maxsheet, 17, 7, 17, 3)</span></span><br><span class="line">    <span class="comment"># print a</span></span><br><span class="line">    <span class="comment"># lx.Write(lx.maxsheet, 5, 7, "20150709")</span></span><br><span class="line">    <span class="comment"># lx.Cells(80, u"复制", 0, index)</span></span><br><span class="line">    lx.Close()</span><br><span class="line">    <span class="comment"># lx = Lxsoft(config.log)</span></span><br><span class="line">    <span class="comment"># index = lx.Open(path, 0)</span></span><br><span class="line">    <span class="comment"># lx.Close(index)</span></span><br></pre></td></tr></table></figure>
+<h3 id="其他">其他</h3><ul>
+<li><p><a href="http://huangming.work/2016-05-29-python-log.html" target="_blank" rel="external">log模块</a></p>
+</li>
+<li><p><a href="https://github.com/huangming/python_dll_excel/blob/master/%E6%87%92%E4%BA%BA%E5%8A%9E%E5%85%AC%E6%8F%92%E4%BB%B6%E5%B8%AE%E5%8A%A9%E6%96%87%E6%A1%A3.CHM" target="_blank" rel="external">动态链接库接口文档</a></p>
+</li>
+<li><p><a href="https://github.com/huangming/python_dll_excel" target="_blank" rel="external">GithubRepository</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-05-31-python-excel.html" data-id="cirk4kzfx000d6ofugtfmvd6l" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-05-31-python-excel.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/excel/">excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/动态链接库/">动态链接库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自动化/">自动化</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article id="post-python-log" class="article article-type-post" itemscope itemprop="blogPost">
   <!-- <div class="article-meta"> -->
   <!--   <a href="/2016-05-29-python-log.html" class="article-date">
@@ -132,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-29-python-log.html" data-id="cios9qpgm0004r8fuarvdwvgx" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-29-python-log.html" data-id="cirk4kzfx000o6ofus6ly8k7r" class="article-share-link">Share</a> -->
       
       
         
@@ -140,7 +271,7 @@
         
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/日志/">日志</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log/">log</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
 
     </footer>
   </div>
@@ -190,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="cios9qphl000br8fui2jbhals" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="cirk4kzfx000t6ofu9e767sop" class="article-share-link">Share</a> -->
       
       
         
@@ -259,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cios9qphl000gr8fukx8ixtjg" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="cirk4kzgd000y6ofushbrg8z2" class="article-share-link">Share</a> -->
       
       
         
@@ -331,7 +462,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cios9qphl000jr8fu3impldcv" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cirk4kzgd00116oful7kcm7fe" class="article-share-link">Share</a> -->
       
       
         
@@ -393,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cios9qpi2000qr8fu7blm4pfw" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cirk4kzgd00186ofupihhstav" class="article-share-link">Share</a> -->
       
       
         
@@ -449,7 +580,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cios9qpi6000tr8fuxbjd6my3" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cirk4kzgd001b6ofuinbll19x" class="article-share-link">Share</a> -->
       
       
         
@@ -509,7 +640,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cios9qpic000ur8fuhb7l1zo9" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cirk4kzgv001c6ofu5p23u6bp" class="article-share-link">Share</a> -->
       
       
         
@@ -571,7 +702,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cios9qpig000xr8futkjcvllx" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cirk4kzgy001f6ofuw4jdlx0g" class="article-share-link">Share</a> -->
       
       
         
@@ -586,129 +717,9 @@
 
 
   
-    <article id="post-xiangqi-renge" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2009-04-12-xiangqi-renge.html" class="article-date">
-  <time datetime="2009-04-11T16:00:00.000Z" itemprop="datePublished">2009-04-12</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2009-04-12-xiangqi-renge.html">象棋人格</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2009-04-12-xiangqi-renge.html" class="article-date">
-  <time datetime="2009-04-11T16:00:00.000Z" itemprop="datePublished">2009-04-12</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天学院举办了一场象棋棋王争霸赛，我报名参赛了。第一轮对手有事没来弃权直接进局。第二轮跟一个人下的时候我一开始就主动进攻，很快就占据主动，死死压住对手。到中局的时候，他开始晃脚做小动作了。我知道他被我压的焦躁起来了（其实，我已经进入一个更严重的状态）。对这个我有经验，离成功不远了呢。我下棋一直是这样，喜欢一开始就主动攻击，占据有力形势。而且，下棋的时候思考很少，利用的是瞬间智慧的闪光，没走一步用的时间嘟是很少的。走完一步就开始悠闲地看对手或者周围的景物。我喜欢那种悠闲地看对手认真思考的感觉。好像真的就一切嘟掌握在我手中，好像对手被我控制牵着鼻子走。就在我吃着棒棒糖看手上的纹路的时候（对手每次嘟思考很久让我等的花儿嘟谢了），对手一招炮打堵头士让我无语。就这样，一步就让我那么好的局势白费了。认输！多么简单的一步棋，甚至初学者嘟可以看出来的一步棋！被我忽略。。<br>
-        
-          <p class="article-more-link">
-            <a href="/2009-04-12-xiangqi-renge.html#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="cios9qpig0010r8fumt9snn00" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2009-04-12-xiangqi-renge.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article id="post-tian-cheng-zuo" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2009-02-21-tian-cheng-zuo.html" class="article-date">
-  <time datetime="2009-02-20T16:00:00.000Z" itemprop="datePublished">2009-02-21</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2009-02-21-tian-cheng-zuo.html">天秤座</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2009-02-21-tian-cheng-zuo.html" class="article-date">
-  <time datetime="2009-02-20T16:00:00.000Z" itemprop="datePublished">2009-02-21</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>天平座的爱情</strong>  天平在爱情方面是一个为别人而活的星座。天平的被动更是让很多天平们错过了自己的真爱。天平不懂得拒绝，天平面对一个自己明明不喜欢的人，只要那人能主动积极一点，那天平是不会拒绝的，因为天平觉得拒绝会伤害你。为了不伤害你，天平只有牺牲自己。或者，天平会为你对他哪怕是一句关心的话而感动，就为了感谢你这句关心的话而和你在一起，因为天平永远都是追求平衡的，他认为你付出了哪怕是一句关心的话他就应该回报你，而不是真的因为爱你才和你在一起。(感动不等于爱)而且天平将“责任“二字看得太重，却又未认识到“责任“的真正精髓所在，以至于用了一种对自己极其残酷的方式给“责任“下着定义。天平不爱对方，却要坚持对对方不离不弃。这是一个力求公平的天平的善良抉择，更是一个近乎愚蠢的抉择。这是天平的悲哀。只能说天平懂得负责任，却真的不理解“责任“。可是懂得负责也变成了一种错误吗？天平认为责任比爱情重要，却未想过幸福也同样重要。你完全有理由责备天平，但是在你责备天平的同时可曾想过其实最可悲的正是天平。天平的要求真的不高，只是需要有人理解自己而已。但是，谁又能理解天平呢？<br>
-        
-          <p class="article-more-link">
-            <a href="/2009-02-21-tian-cheng-zuo.html#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="cios9qpig0012r8fur0ysumiw" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -724,7 +735,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vps/">vps</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -733,7 +744,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/日志/">日志</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态链接库/">动态链接库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -742,7 +753,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/python/" style="font-size: 10px;">python</a> <a href="/tags/日志/" style="font-size: 10px;">日志</a>
+      <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/vps/" style="font-size: 10px;">vps</a> <a href="/tags/动态链接库/" style="font-size: 10px;">动态链接库</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a>
     </div>
   </div>
 
@@ -754,6 +765,14 @@
       <ul>
         
           <li>
+            <a href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html">SSH通过SCP命令上传文件夹到linux系统的vps</a>
+          </li>
+        
+          <li>
+            <a href="/2016-05-31-python-excel.html">Python调用dll动态链接库操作excel</a>
+          </li>
+        
+          <li>
             <a href="/2016-05-29-python-log.html">Python logging 模块封装</a>
           </li>
         
@@ -763,14 +782,6 @@
         
           <li>
             <a href="/2016-05-21-oracle-cold-backup.html">Oracle冷备与恢复</a>
-          </li>
-        
-          <li>
-            <a href="/2016-05-02-hexo-img-solution.html">Hexo怎么优雅地插入图片</a>
-          </li>
-        
-          <li>
-            <a href="/2015-09-28-juban.html">羁绊</a>
           </li>
         
       </ul>
