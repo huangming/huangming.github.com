@@ -77,6 +77,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-dokuwiki-nginx" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-12-17-dokuwiki-nginx.html" class="article-date">
+  <time datetime="2016-12-17T12:56:06.000Z" itemprop="datePublished">2016-12-17</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/www/">www</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-12-17-dokuwiki-nginx.html">Windows下用Nginx部署DokuWiki</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-12-17-dokuwiki-nginx.html" class="article-date">
+  <time datetime="2016-12-17T12:56:06.000Z" itemprop="datePublished">2016-12-17</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/www/">www</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.dokuwiki.org/dokuwiki#">DokuWiki</a> 是一个使用，用途多样的开源 Wiki 软件，并且不需要数据库。部署Dokuwiki需要一个支持PHP的Webserver。通过nginx+php可以简单部署使用。<br><a href="http://nginx.org/en/">Nginx</a> (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP服务器。<br>本文环境：<code>windows10 64位</code>+<code>nginx1.11.7</code>+<code>php-5.6.29-Win32-VC11-x64</code></p>
+<h2 id="下载解压软件">下载解压软件</h2><p>用到的软件均是绿色版，不用安装解压即可使用： </p>
+<pre><code><span class="bullet">* </span>[<span class="link_label">php-5.6.29-Win32-VC11-x64.zip</span>](<span class="link_url">http://windows.php.net/downloads/releases/php-5.6.29-Win32-VC11-x64.zip</span>) 解压到 <span class="code">`E:\OneDrive\www\php`</span>
+<span class="bullet">* </span>[<span class="link_label">nginx-1.11.7.zip</span>](<span class="link_url">http://nginx.org/download/nginx-1.11.7.zip</span>) 解压到 <span class="code">`E:\OneDrive\www\nginx-1.11.7`</span>
+<span class="bullet">* </span>[<span class="link_label">DokuWiki</span>](<span class="link_url">https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz</span>) 解压到 <span class="code">`E:\OneDrive\www\dokuwiki`</span>
+<span class="bullet">* </span>[<span class="link_label">RunHiddenConsole</span>](<span class="link_url">http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip</span>)(此程序用于隐藏nginx运行的窗口) 解压到 <span class="code">`E:\OneDrive\www\RunHiddenConsole.exe`</span>
+</code></pre>
+        
+          <p class="article-more-link">
+            <a href="/2016-12-17-dokuwiki-nginx.html#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-12-17-dokuwiki-nginx.html" data-id="ciwyxnpr50004s8fueu8ral8b" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-12-17-dokuwiki-nginx.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dokuwiki/">dokuwiki</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/wiki/">wiki</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article id="post-cloud-notes-2012" class="article article-type-post" itemscope itemprop="blogPost">
   <!-- <div class="article-meta"> -->
   <!--   <a href="/2016-12-03-cloud-notes-2012.html" class="article-date">
@@ -135,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-12-03-cloud-notes-2012.html" data-id="ciw8tmqns0004r8fubputvvqw" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-12-03-cloud-notes-2012.html" data-id="ciwyxnprh000ds8fugyut9jv4" class="article-share-link">Share</a> -->
       
       
         
@@ -157,7 +225,11 @@
   <!--   <a href="/2016-08-18-oracle-auto-backup-and-restore.html" class="article-date">
   <time datetime="2016-08-18T10:41:36.000Z" itemprop="datePublished">2016-08-18</time>
 </a> -->
-  <!--    -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+ -->
   <!-- </div> -->
   <div class="article-inner">
     
@@ -166,7 +238,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016-08-18-oracle-auto-backup-and-restore.html">oracle自动备份恢复</a>
+      <a class="article-title" href="/2016-08-18-oracle-auto-backup-and-restore.html">oracle自动备份同步</a>
     </h1>
   
 
@@ -175,16 +247,38 @@
   <time datetime="2016-08-18T10:41:36.000Z" itemprop="datePublished">2016-08-18</time>
 </a>
           
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/database/">database</a>
+  </div>
+
         </div>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+        <p>oracle的简单导入导出工具一般有 <code>exp/imp</code> 跟 <code>expdp/impdp</code>。</p>
+<ul>
+<li>exp无法导出空表结构</li>
+<li>exp可以导出long类型的数据，expdp不可以。long类型现在在慢慢被淘汰中。</li>
+<li>exp是客户端工具，expdp是服务器端工具，expdp还可以并发，exp不可以</li>
+</ul>
+<p>使用exp导出而不是expdp的情况是无法直接访问数据库主机，也无法在建立dblink，这个时候只能使用exp导出。大部分情况还是用 expdp/impdp。exp无法导出空表不注意的话是很麻烦的，曾经做同步就因为这个原因导致应用无法使用，虽然网上也有一些解决办法，但是都需要对源库做一些变更，这对生产服务器来说还是很麻烦的，毕竟操作了就有风险要负责任。下面是用expdp/impdp自动同步生产跟测试库的范例。</p>
+<h2 id="环境">环境</h2><p>源库跟目的库的Oracle大版本要一致，并且数据库SID要一样。<br>本文测试环境：</p>
+<ul>
+<li>源库操作系统 <code>windows server 2008 R2 x64</code><br>源库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+<li>目的库操作系统 <code>win7 x64</code> <code>win10 x64</code> <code>windows server 2008 R2 x64</code> 均测试成功<br>目的库数据库版本 <code>11g Enterprise Edition Release 11.2.0.1.0 - 64bit</code></li>
+</ul>
+<p>查看版本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> banner <span class="keyword">from</span> sys.v_$<span class="keyword">version</span>;</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2016-08-18-oracle-auto-backup-and-restore.html#more">Read More</a>
+          </p>
         
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-08-18-oracle-auto-backup-and-restore.html" data-id="ciw8tmqns0007r8fue44n6dh6" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-08-18-oracle-auto-backup-and-restore.html" data-id="ciwyxnprk000gs8fuqdy4n1sh" class="article-share-link">Share</a> -->
       
       
         
@@ -192,7 +286,7 @@
         
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backup/">backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/database/">database</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle热备/">oracle热备</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backup/">backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/expdp/">expdp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/impdp/">impdp</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle热备/">oracle热备</a></li></ul>
 
     </footer>
   </div>
@@ -246,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-08-06-python-zhengze-pachong-qiubai.html" data-id="ciw8tmqns000gr8fuwmzwn0jc" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-08-06-python-zhengze-pachong-qiubai.html" data-id="ciwyxnprw000ts8fu1avd9s09" class="article-share-link">Share</a> -->
       
       
         
@@ -305,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html" data-id="ciw8tmqo9000pr8fuha2laasm" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html" data-id="ciwyxnps10012s8fu8jeywtj6" class="article-share-link">Share</a> -->
       
       
         
@@ -371,7 +465,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-31-python-excel.html" data-id="ciw8tmqoe000yr8fu6uyurxyp" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-31-python-excel.html" data-id="ciwyxnpsu001bs8fuxqfza1x3" class="article-share-link">Share</a> -->
       
       
         
@@ -443,7 +537,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-29-python-log.html" data-id="ciw8tmqoe0017r8fur2g0fnhf" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-29-python-log.html" data-id="ciwyxnpsz001ks8fu26v149qr" class="article-share-link">Share</a> -->
       
       
         
@@ -501,7 +595,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="ciw8tmqoe001cr8fu037jp2e3" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-25-oracle-rebuild-temp-tablespace.html" data-id="ciwyxnpt2001ps8fu4r9om1sa" class="article-share-link">Share</a> -->
       
       
         
@@ -570,7 +664,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="ciw8tmqoe001gr8fueoz16f5j" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-21-oracle-cold-backup.html" data-id="ciwyxnpt6001ss8fuk11r8z2d" class="article-share-link">Share</a> -->
       
       
         
@@ -642,7 +736,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="ciw8tmqoe001jr8fuj0cpwk9u" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="ciwyxnptc001vs8fud8owtsvc" class="article-share-link">Share</a> -->
       
       
         
@@ -652,66 +746,6 @@
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
 
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article id="post-juban" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2015-09-28-juban.html" class="article-date">
-  <time datetime="2015-09-28T08:57:24.000Z" itemprop="datePublished">2015-09-28</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015-09-28-juban.html">羁绊</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2015-09-28-juban.html" class="article-date">
-  <time datetime="2015-09-28T08:57:24.000Z" itemprop="datePublished">2015-09-28</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>距离上一篇日志，已经间隔四年之久。当初年少轻狂的我厌恶喧嚣的QQ，乐此不疲的翻墙出去看外面的世界，听外面的人聊天。在当时看来，朋友已经成为一种羁绊，想要远离一切，独自去行走，寻找人存在更深的意义，当然更多的是——去追寻所谓的自由。于是渐渐疏离，斩断羁绊。我像是一条鼠目寸光的蛇，可怜兮兮地维护着身边看的到的友谊却又冷血地斩断上一个窝点的羁绊。<br>
-        
-          <p class="article-more-link">
-            <a href="/2015-09-28-juban.html#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="ciw8tmqou001qr8fuan80daqa" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2015-09-28-juban.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
     </footer>
   </div>
 </article>
@@ -737,7 +771,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vps/">vps</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Vim/">Vim</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/blog/">blog</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/diary/">diary</a><span class="category-list-count">33</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/other/">other</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vps/">vps</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/www/">www</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -746,7 +780,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/database/">database</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle热备/">oracle热备</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云笔记/">云笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态链接库/">动态链接库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dokuwiki/">dokuwiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expdp/">expdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impdp/">impdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle热备/">oracle热备</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云笔记/">云笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态链接库/">动态链接库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -755,7 +789,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/database/" style="font-size: 10px;">database</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/oracle热备/" style="font-size: 10px;">oracle热备</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/vps/" style="font-size: 10px;">vps</a> <a href="/tags/云笔记/" style="font-size: 10px;">云笔记</a> <a href="/tags/动态链接库/" style="font-size: 10px;">动态链接库</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a>
+      <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/dokuwiki/" style="font-size: 10px;">dokuwiki</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/expdp/" style="font-size: 10px;">expdp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/impdp/" style="font-size: 10px;">impdp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/oracle热备/" style="font-size: 10px;">oracle热备</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/vps/" style="font-size: 10px;">vps</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/云笔记/" style="font-size: 10px;">云笔记</a> <a href="/tags/动态链接库/" style="font-size: 10px;">动态链接库</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a>
     </div>
   </div>
 
@@ -767,11 +801,15 @@
       <ul>
         
           <li>
+            <a href="/2016-12-17-dokuwiki-nginx.html">Windows下用Nginx部署DokuWiki</a>
+          </li>
+        
+          <li>
             <a href="/2016-12-03-cloud-notes-2012.html">无意翻到当年的云笔记</a>
           </li>
         
           <li>
-            <a href="/2016-08-18-oracle-auto-backup-and-restore.html">oracle自动备份恢复</a>
+            <a href="/2016-08-18-oracle-auto-backup-and-restore.html">oracle自动备份同步</a>
           </li>
         
           <li>
@@ -780,10 +818,6 @@
         
           <li>
             <a href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html">SSH通过SCP命令上传文件夹到linux系统的vps</a>
-          </li>
-        
-          <li>
-            <a href="/2016-05-31-python-excel.html">Python调用dll动态链接库操作excel</a>
           </li>
         
       </ul>
