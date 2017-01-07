@@ -77,6 +77,78 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-hexo-img-solution" class="article article-type-post" itemscope itemprop="blogPost">
+  <!-- <div class="article-meta"> -->
+  <!--   <a href="/2016-05-02-hexo-img-solution.html" class="article-date">
+  <time datetime="2016-05-02T02:05:47.000Z" itemprop="datePublished">2016-05-02</time>
+</a> -->
+  <!--   
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+ -->
+  <!-- </div> -->
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016-05-02-hexo-img-solution.html">Hexo怎么优雅地插入图片</a>
+    </h1>
+  
+
+        <div class="article-meta">
+          <a href="/2016-05-02-hexo-img-solution.html" class="article-date">
+  <time datetime="2016-05-02T02:05:47.000Z" itemprop="datePublished">2016-05-02</time>
+</a>
+          
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/blog/">blog</a>
+  </div>
+
+        </div>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>发现懒得更新博客的一个很大原因是，写一个图文博文实在是有点麻烦。这两天研究了下如何优雅的在写<a href="http://hexo.io">hexo</a>博客的时候优雅地插入图片。</p>
+<h2 id="环境">环境</h2><p>我的环境:<code>win10</code> <code>gvim7.4</code> <code>hexo3.1.1</code>, 此方案对环境无要求。 </p>
+<p>用<a href="http://www.vim.org/">gvim</a> 编写markdown。</p>
+<h2 id="开始">开始</h2><h3 id="最终结果">最终结果</h3><ul>
+<li>在执行 <code>hexo new [layout] &lt;title&gt;</code> 后，自动在一个设定的目录创建以 <code>&lt;title&gt;</code> 命名的子目录，然后把文章用到的截图全部放到这个文件夹。通过工具自动同步到图床。图床的存储路径必须满足统一前缀。例如，我的截图是 <code>youpath/title/name.png</code> ,上传到图床后，网络路径必须是 <code>http://yoursite/title/name.png</code> 类型。</li>
+<li>在gvim写作的时候，每次保存会自动转换:<ol>
+<li><code>![pic4](4.png)</code> 替换为 <code>![pic4](http://yoursite/title/4.png)</code></li>
+<li><code>![pic4][4]</code> 自动在文章末尾增加 <code>![4](http://yoursite/title/4.png)</code></li>
+</ol>
+</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2016-05-02-hexo-img-solution.html#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!-- <a data-url="http://huangming.github.io/2016-05-02-hexo-img-solution.html" data-id="cixmol31u001xewfu90tav1z3" class="article-share-link">Share</a> -->
+      
+      
+        
+          <a href="http://huangming.github.io/2016-05-02-hexo-img-solution.html#disqus_thread" class="article-comment-link">Comments</a>
+        
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+  </div>
+</article>
+
+
+
+  
     <article id="post-juban" class="article article-type-post" itemscope itemprop="blogPost">
   <!-- <div class="article-meta"> -->
   <!--   <a href="/2015-09-28-juban.html" class="article-date">
@@ -122,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="ciwyynxt70022bofue3eh2urg" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-09-28-juban.html" data-id="cixmol31u0024ewfuaxb3lsc1" class="article-share-link">Share</a> -->
       
       
         
@@ -178,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="ciwyynxtb0025bofudjc7w979" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2015-07-10-hello-world.html" data-id="cixmol32b0027ewfuo3j4a7ah" class="article-share-link">Share</a> -->
       
       
         
@@ -238,7 +310,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="ciwyynxti0026bofumyppgwgu" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-04-25-vimrc.html" data-id="cixmol32e0028ewfuwv9hn3tw" class="article-share-link">Share</a> -->
       
       
         
@@ -300,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="ciwyynxtk0029bofurpy5hki2" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2012-03-11-qq-kongjian-qianyi.html" data-id="cixmol32g002bewfu18l76dq6" class="article-share-link">Share</a> -->
       
       
         
@@ -360,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="ciwyynxtn002cbofuxj78no4b" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-04-12-xiangqi-renge.html" data-id="cixmol32g002eewfudl1zs66y" class="article-share-link">Share</a> -->
       
       
         
@@ -420,7 +492,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="ciwyynxtp002ebofua6myuhaw" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2009-02-21-tian-cheng-zuo.html" data-id="cixmol32g002gewfu7bucksr0" class="article-share-link">Share</a> -->
       
       
         
@@ -490,7 +562,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-12-01-10-nian-ganyan.html" data-id="ciwyynxts002gbofu00a3w4ox" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2008-12-01-10-nian-ganyan.html" data-id="cixmol32g002iewfusnkx86s0" class="article-share-link">Share</a> -->
       
       
         
@@ -546,7 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-10-03-jintian-tianqi-bucuo.html" data-id="ciwyynxtv002ibofu608ujprw" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2008-10-03-jintian-tianqi-bucuo.html" data-id="cixmol32g002kewfu7ovw0log" class="article-share-link">Share</a> -->
       
       
         
@@ -613,76 +685,11 @@
       
     </div>
     <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-09-27-naojing-jizhuanwan.html" data-id="ciwyynxu0002kbofu6ifkas4t" class="article-share-link">Share</a> -->
+      <!-- <a data-url="http://huangming.github.io/2008-09-27-naojing-jizhuanwan.html" data-id="cixmol32g002mewfug8wi7bea" class="article-share-link">Share</a> -->
       
       
         
           <a href="http://huangming.github.io/2008-09-27-naojing-jizhuanwan.html#disqus_thread" class="article-comment-link">Comments</a>
-        
-      
-      
-    </footer>
-  </div>
-</article>
-
-
-
-  
-    <article id="post-toukan-ben-zhugong-xizao" class="article article-type-post" itemscope itemprop="blogPost">
-  <!-- <div class="article-meta"> -->
-  <!--   <a href="/2008-09-26-toukan-ben-zhugong-xizao.html" class="article-date">
-  <time datetime="2008-09-25T16:00:00.000Z" itemprop="datePublished">2008-09-26</time>
-</a> -->
-  <!--   
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
- -->
-  <!-- </div> -->
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2008-09-26-toukan-ben-zhugong-xizao.html">偷看本主公洗澡的下场</a>
-    </h1>
-  
-
-        <div class="article-meta">
-          <a href="/2008-09-26-toukan-ben-zhugong-xizao.html" class="article-date">
-  <time datetime="2008-09-25T16:00:00.000Z" itemprop="datePublished">2008-09-26</time>
-</a>
-          
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/diary/">diary</a>
-  </div>
-
-        </div>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>某日，张飞偷看刘备洗澡，被罚扫厕所1个月  </p>
-<p>注:凡是把”主公”看成”公主”的必须回帖!!  </p>
-<p>大家愿赌服输啊，凡是看错的自觉回帖啊  </p>
-<p>面壁去!!! </p>
-<h2 id="评论:">评论:</h2><ul>
-<li><a href="http://user.qzone.qq.com/552311925" target="_blank" rel="external">蓝水晶之泪</a><time>2008-10-24 20:04:37</time></li>
-<li>你自己才该去面壁吧。难道你想偷看公主洗澡？哈哈哈哈 </li>
-<li><a href="http://user.qzone.qq.com/415116400" target="_blank" rel="external">柔情♂丘比特</a><time>2008-11-04 18:38:14</time></li>
-<li>操，我看你写这个就是为了让大家回帖，攒人气用的，太无耻了</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <!-- <a data-url="http://huangming.github.io/2008-09-26-toukan-ben-zhugong-xizao.html" data-id="ciwyynxu3002mbofub0rpuj1a" class="article-share-link">Share</a> -->
-      
-      
-        
-          <a href="http://huangming.github.io/2008-09-26-toukan-ben-zhugong-xizao.html#disqus_thread" class="article-comment-link">Comments</a>
         
       
       
@@ -720,7 +727,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dokuwiki/">dokuwiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expdp/">expdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impdp/">impdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle热备/">oracle热备</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云笔记/">云笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态链接库/">动态链接库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">1</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/backup/">backup</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dokuwiki/">dokuwiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/">excel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/expdp/">expdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/impdp/">impdp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log/">log</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle/">oracle</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oracle热备/">oracle热备</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/">ssh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vps/">vps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/wiki/">wiki</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云笔记/">云笔记</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/动态链接库/">动态链接库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则/">正则</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爬虫/">爬虫</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自动化/">自动化</a><span class="tag-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -729,7 +736,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/dokuwiki/" style="font-size: 10px;">dokuwiki</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/expdp/" style="font-size: 10px;">expdp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/impdp/" style="font-size: 10px;">impdp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/oracle热备/" style="font-size: 10px;">oracle热备</a> <a href="/tags/python/" style="font-size: 20px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/vps/" style="font-size: 10px;">vps</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/云笔记/" style="font-size: 10px;">云笔记</a> <a href="/tags/动态链接库/" style="font-size: 10px;">动态链接库</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a>
+      <a href="/tags/backup/" style="font-size: 10px;">backup</a> <a href="/tags/dokuwiki/" style="font-size: 10px;">dokuwiki</a> <a href="/tags/excel/" style="font-size: 10px;">excel</a> <a href="/tags/expdp/" style="font-size: 10px;">expdp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/impdp/" style="font-size: 10px;">impdp</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/log/" style="font-size: 10px;">log</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/nginx/" style="font-size: 10px;">nginx</a> <a href="/tags/oracle/" style="font-size: 20px;">oracle</a> <a href="/tags/oracle热备/" style="font-size: 10px;">oracle热备</a> <a href="/tags/python/" style="font-size: 15px;">python</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/vps/" style="font-size: 10px;">vps</a> <a href="/tags/wiki/" style="font-size: 10px;">wiki</a> <a href="/tags/云笔记/" style="font-size: 10px;">云笔记</a> <a href="/tags/动态链接库/" style="font-size: 10px;">动态链接库</a> <a href="/tags/正则/" style="font-size: 10px;">正则</a> <a href="/tags/爬虫/" style="font-size: 10px;">爬虫</a> <a href="/tags/自动化/" style="font-size: 10px;">自动化</a>
     </div>
   </div>
 
@@ -739,6 +746,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016-12-27-oracle-ora00020.html">Oracle无法登陆:ORA-00020</a>
+          </li>
         
           <li>
             <a href="/2016-12-17-dokuwiki-nginx.html">Windows下用Nginx部署DokuWiki</a>
@@ -756,10 +767,6 @@
             <a href="/2016-08-06-python-zhengze-pachong-qiubai.html">Python爬虫正则表达式抓取糗百笑话</a>
           </li>
         
-          <li>
-            <a href="/2016-06-25-ssh-upload-dir-to-linux-vps-by-scp.html">SSH通过SCP命令上传文件夹到linux系统的vps</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -769,7 +776,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2016 Mingo<br>
+      &copy; 2017 Mingo<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

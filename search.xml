@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[Oracle无法登陆:ORA-00020]]></title>
+      <url>http://huangming.github.io/2016-12-27-oracle-ora00020.html</url>
+      <content type="html"><![CDATA[<p>转自：<a href="http://blog.itpub.net/22621861/viewspace-1280235/" target="_blank" rel="external">http://blog.itpub.net/22621861/viewspace-1280235/</a></p>
+<p>登录Oracle数据库，结果报ORA-00020: maximum number of processes (%s) exceeded错误。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> username,<span class="keyword">count</span>(sid) <span class="keyword">from</span> v$<span class="keyword">session</span> <span class="keyword">group</span> <span class="keyword">by</span> username;</span></span><br><span class="line">USERNAME                       COUNT(SID)</span><br><span class="line"><span class="comment">------------------------------ ----------</span></span><br><span class="line">                                       21</span><br><span class="line">SYSMAN                                124</span><br><span class="line">SYS                                     1</span><br></pre></td></tr></table></figure>
+<p>发现SYSMAN用户有大量会话数，后发现SYSMAN主要用的PROGRAM是OMS。</p>
+<p>查阅OMS相关信息，得知其是由Enterprise Management产生的。</p>
+<p>关闭EM，CMD下执行:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emctl stop dbconsole</span><br></pre></td></tr></table></figure>
+<p>确保下次启动默认不启动EM，需要在Windows服务中关闭OracleDBConsoleORCL服务的自动启动。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Windows下用Nginx部署DokuWiki]]></title>
       <url>http://huangming.github.io/2016-12-17-dokuwiki-nginx.html</url>
       <content type="html"><![CDATA[<p><a href="https://www.dokuwiki.org/dokuwiki#" target="_blank" rel="external">DokuWiki</a> 是一个使用，用途多样的开源 Wiki 软件，并且不需要数据库。部署Dokuwiki需要一个支持PHP的Webserver。通过nginx+php可以简单部署使用。<br><a href="http://nginx.org/en/" target="_blank" rel="external">Nginx</a> (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP服务器。<br>本文环境：<code>windows10 64位</code>+<code>nginx1.11.7</code>+<code>php-5.6.29-Win32-VC11-x64</code></p>

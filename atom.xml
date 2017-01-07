@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://huangming.github.io/"/>
-  <updated>2016-12-19T07:32:29.000Z</updated>
+  <updated>2016-12-27T02:11:22.000Z</updated>
   <id>http://huangming.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Oracle无法登陆:ORA-00020</title>
+    <link href="http://huangming.github.io/2016-12-27-oracle-ora00020.html"/>
+    <id>http://huangming.github.io/2016-12-27-oracle-ora00020.html</id>
+    <published>2016-12-27T04:03:57.000Z</published>
+    <updated>2016-12-27T02:11:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>转自：<a href="http://blog.itpub.net/22621861/viewspace-1280235/" target="_blank" rel="external">http://blog.itpub.net/22621861/viewspace-1280235/</a></p>
+<p>登录Oracle数据库，结果报ORA-00020: maximum number of processes (%s) exceeded错误。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> username,<span class="keyword">count</span>(sid) <span class="keyword">from</span> v$<span class="keyword">session</span> <span class="keyword">group</span> <span class="keyword">by</span> username;</span></span><br><span class="line">USERNAME                       COUNT(SID)</span><br><span class="line"><span class="comment">------------------------------ ----------</span></span><br><span class="line">                                       21</span><br><span class="line">SYSMAN                                124</span><br><span class="line">SYS                                     1</span><br></pre></td></tr></table></figure>
+<p>发现SYSMAN用户有大量会话数，后发现SYSMAN主要用的PROGRAM是OMS。</p>
+<p>查阅OMS相关信息，得知其是由Enterprise Management产生的。</p>
+<p>关闭EM，CMD下执行:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emctl stop dbconsole</span><br></pre></td></tr></table></figure>
+<p>确保下次启动默认不启动EM，需要在Windows服务中关闭OracleDBConsoleORCL服务的自动启动。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;转自：&lt;a href=&quot;http://blog.itpub.net/22621861/viewspace-1280235/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.itpub.net/22621861/viewspace-12
+    
+    </summary>
+    
+    
+      <category term="oracle" scheme="http://huangming.github.io/tags/oracle/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows下用Nginx部署DokuWiki</title>
@@ -826,36 +854,6 @@
     <summary type="html">
     
       数学计算题
-    
-    </summary>
-    
-      <category term="diary" scheme="http://huangming.github.io/categories/diary/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>偷看本主公洗澡的下场</title>
-    <link href="http://huangming.github.io/2008-09-26-toukan-ben-zhugong-xizao.html"/>
-    <id>http://huangming.github.io/2008-09-26-toukan-ben-zhugong-xizao.html</id>
-    <published>2008-09-25T16:00:00.000Z</published>
-    <updated>2012-07-19T14:47:28.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>某日，张飞偷看刘备洗澡，被罚扫厕所1个月  </p>
-<p>注:凡是把”主公”看成”公主”的必须回帖!!  </p>
-<p>大家愿赌服输啊，凡是看错的自觉回帖啊  </p>
-<p>面壁去!!! </p>
-<h2 id="评论:">评论:</h2><ul>
-<li><a href="http://user.qzone.qq.com/552311925" target="_blank" rel="external">蓝水晶之泪</a><time>2008-10-24 20:04:37</time></li>
-<li>你自己才该去面壁吧。难道你想偷看公主洗澡？哈哈哈哈 </li>
-<li><a href="http://user.qzone.qq.com/415116400" target="_blank" rel="external">柔情♂丘比特</a><time>2008-11-04 18:38:14</time></li>
-<li>操，我看你写这个就是为了让大家回帖，攒人气用的，太无耻了</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      just for fun
     
     </summary>
     
