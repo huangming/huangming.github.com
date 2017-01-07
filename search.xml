@@ -30,30 +30,25 @@
 </ul>
 <a id="more"></a>
 <h2 id="修改PHP配置">修改PHP配置</h2><p>将php.ini-dist或php.ini-development配置文件重命名为php.ini（该文件中分号开始行为注释内容），然后做如下设置：</p>
-<pre><code><span class="number">1</span>. <span class="variable">extension_dir =</span> <span class="string">"C:/php5/ext"</span>
-
-<span class="number">2</span>. 取消下列设置的注释：
-
-　　<span class="variable">extension=</span>php_curl.dll
-　　<span class="variable">extension=</span>php_gd2.dll
-　　<span class="variable">extension=</span>php_mbstring.dll
-　　<span class="variable">extension=</span>php_mysql.dll
-　　<span class="variable">extension=</span>php_pdo_mysql.dll
-　　<span class="variable">extension=</span>php_pdo_odbc.dll
-　　<span class="variable">extension=</span>php_xmlrpc.dll
-
-<span class="number">3</span>. 配置Session功能：
-
-      在使用session功能时，必须配置session文件在服务器上的保存目录，否则无法使用session，在Windows <span class="number">7</span>上新建一个可读写的目录文件夹，此目录最好独立于WEB主程序目录之外，在D盘根目录上建立了phpsessiontmp目录，然后在php.ini配置文件中找到 ;session.<span class="variable">save_path =</span> <span class="string">"/tmp"</span>  改成  session.<span class="variable">save_path =</span> <span class="string">"D:/phpsessiontmp"</span>
-
-<span class="number">4</span>. 配置PHP的文件上传功能
-
-      同session一样，在使用PHP文件上传功能时，我们必须要指定一个临时文件夹以完成文件上传功能，否则文件上传功能会失败，我们仍然需要在Windows <span class="number">7</span>上建立一个可读写的目录文件夹，此处我在D盘根目录上建立了phpfileuploadtmp目录，然后在php.ini配置文件中找到 ;<span class="variable">upload_tmp_dir =</span> 改成 <span class="variable">upload_tmp_dir =</span> <span class="string">"D:/phpfileuploadtmp"</span>
-
-<span class="number">5</span>. 修改date.timezone
-
-;date.<span class="variable">timezone =</span> 改成 date.<span class="variable">timezone =</span> Asia/Shanghai
-</code></pre><h2 id="修改Nginx配置">修改Nginx配置</h2><p><a href="https://www.dokuwiki.org/install:nginx" target="_blank" rel="external">DokuWiki with nginx on Windows</a> 有关于nginx的配置内容。<br>修改 <code>E:\OneDrive\www\nginx-1.11.1\conf\nginx.conf</code> 文件:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#E:\OneDrive\www\nginx-1.11.1\conf\nginx.conf&#10;#user  nobody;&#10;worker_processes  1;&#10;events &#123;&#10;    worker_connections  1024;&#10;&#125;&#10;&#10;http &#123;&#10;    include       mime.types;&#10;    default_type  application/octet-stream;&#10;&#10;    #log_format  main  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;&#10;    #                  &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;&#10;    #                  &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;;&#10;&#10;    #access_log  logs/access.log  main;&#10;&#10;    sendfile        on;&#10;    #tcp_nopush     on;&#10;&#10;    #keepalive_timeout  0;&#10;    keepalive_timeout  65;&#10;&#10;    #gzip  on;&#10;&#10;    server &#123;&#10;        location ~ ^/dokuwiki/.*\.php &#123;&#10;            root           E:/OneDrive/www;&#9;         &#10;            fastcgi_pass   127.0.0.1:9000;&#10;            fastcgi_param  SCRIPT_FILENAME    E:/OneDrive/www$fastcgi_script_name;&#10;            fastcgi_param  QUERY_STRING       $query_string;&#10;            include        fastcgi_params;&#10;        &#125;&#10;        # serve static files&#10;        location ~ ^/dokuwiki/lib/  &#123;&#10;            root         E:/OneDrive/www;&#9;&#9;&#10;            expires 30d;&#10;        &#125;&#10;         &#10;        location ~ ^/dokuwiki/conf/ &#123; deny all; &#125;&#10;        location ~ ^/dokuwiki/data/ &#123; deny all; &#125;&#10;        location ~ /\.ht            &#123; deny all; &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li><p>extension_dir = “C:/php5/ext”</p>
+</li>
+<li><p>取消下列设置的注释：</p>
+</li>
+</ol>
+<p>　　extension=php_curl.dll<br>　　extension=php_gd2.dll<br>　　extension=php_mbstring.dll<br>　　extension=php_mysql.dll<br>　　extension=php_pdo_mysql.dll<br>　　extension=php_pdo_odbc.dll<br>　　extension=php_xmlrpc.dll</p>
+<ol>
+<li><p>配置Session功能：</p>
+<p>   在使用session功能时，必须配置session文件在服务器上的保存目录，否则无法使用session，在Windows 7上新建一个可读写的目录文件夹，此目录最好独立于WEB主程序目录之外，在D盘根目录上建立了phpsessiontmp目录，然后在php.ini配置文件中找到 ;session.save_path = “/tmp”  改成  session.save_path = “D:/phpsessiontmp”</p>
+</li>
+<li><p>配置PHP的文件上传功能</p>
+<p>   同session一样，在使用PHP文件上传功能时，我们必须要指定一个临时文件夹以完成文件上传功能，否则文件上传功能会失败，我们仍然需要在Windows 7上建立一个可读写的目录文件夹，此处我在D盘根目录上建立了phpfileuploadtmp目录，然后在php.ini配置文件中找到 ;upload_tmp_dir = 改成 upload_tmp_dir = “D:/phpfileuploadtmp”</p>
+</li>
+<li><p>修改date.timezone</p>
+</li>
+</ol>
+<p>;date.timezone = 改成 date.timezone = Asia/Shanghai</p>
+<h2 id="修改Nginx配置">修改Nginx配置</h2><p><a href="https://www.dokuwiki.org/install:nginx" target="_blank" rel="external">DokuWiki with nginx on Windows</a> 有关于nginx的配置内容。<br>修改 <code>E:\OneDrive\www\nginx-1.11.1\conf\nginx.conf</code> 文件:<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#E:\OneDrive\www\nginx-1.11.1\conf\nginx.conf&#10;#user  nobody;&#10;worker_processes  1;&#10;events &#123;&#10;    worker_connections  1024;&#10;&#125;&#10;&#10;http &#123;&#10;    include       mime.types;&#10;    default_type  application/octet-stream;&#10;&#10;    #log_format  main  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;&#10;    #                  &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;&#10;    #                  &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;;&#10;&#10;    #access_log  logs/access.log  main;&#10;&#10;    sendfile        on;&#10;    #tcp_nopush     on;&#10;&#10;    #keepalive_timeout  0;&#10;    keepalive_timeout  65;&#10;&#10;    #gzip  on;&#10;&#10;    server &#123;&#10;        location ~ ^/dokuwiki/.*\.php &#123;&#10;            root           E:/OneDrive/www;&#9;         &#10;            fastcgi_pass   127.0.0.1:9000;&#10;            fastcgi_param  SCRIPT_FILENAME    E:/OneDrive/www$fastcgi_script_name;&#10;            fastcgi_param  QUERY_STRING       $query_string;&#10;            include        fastcgi_params;&#10;        &#125;&#10;        # serve static files&#10;        location ~ ^/dokuwiki/lib/  &#123;&#10;            root         E:/OneDrive/www;&#9;&#9;&#10;            expires 30d;&#10;        &#125;&#10;         &#10;        location ~ ^/dokuwiki/conf/ &#123; deny all; &#125;&#10;        location ~ ^/dokuwiki/data/ &#123; deny all; &#125;&#10;        location ~ /\.ht            &#123; deny all; &#125;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
 <h2 id="编写启动批处理">编写启动批处理</h2><p><a href="https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/" target="_blank" rel="external">这里</a>有关于NGINX 跟 PHP 在 Windows 平台通过 FastCGI 对接的例子，此页面也有 RunHiddenConsole 的下载</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">REM E:\OneDrive\www\php.bat</span></span><br><span class="line"><span class="keyword">ECHO</span> Starting PHP FastCGI...</span><br><span class="line"><span class="keyword">set</span> <span class="built_in">PATH</span>=E:\OneDrive\www\PHP;<span class="envvar">%PATH%</span></span><br><span class="line">RunHiddenConsole.exe E:\OneDrive\www\php\php-cgi.exe -b <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">9000</span></span><br><span class="line"><span class="keyword">ECHO</span> Starting nginx...</span><br><span class="line"><span class="built_in">cd</span> /d E:\OneDrive\www\nginx-<span class="number">1</span>.<span class="number">11</span>.<span class="number">1</span> &amp;&amp; <span class="built_in">start</span> nginx.exe</span><br></pre></td></tr></table></figure>
 <h2 id="运行">运行</h2><p>双击 <code>E:\OneDrive\www\php.bat</code> 会看到命令行一闪而过。<br>打开浏览器，访问 </p>
