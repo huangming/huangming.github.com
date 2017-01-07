@@ -48,15 +48,17 @@
     <link href="http://huangming.github.io/2016-12-17-dokuwiki-nginx.html"/>
     <id>http://huangming.github.io/2016-12-17-dokuwiki-nginx.html</id>
     <published>2016-12-17T12:56:06.000Z</published>
-    <updated>2016-12-19T07:32:29.000Z</updated>
+    <updated>2017-01-07T04:52:22.019Z</updated>
     
     <content type="html"><![CDATA[<p><a href="https://www.dokuwiki.org/dokuwiki#" target="_blank" rel="external">DokuWiki</a> 是一个使用，用途多样的开源 Wiki 软件，并且不需要数据库。部署Dokuwiki需要一个支持PHP的Webserver。通过nginx+php可以简单部署使用。<br><a href="http://nginx.org/en/" target="_blank" rel="external">Nginx</a> (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP服务器。<br>本文环境：<code>windows10 64位</code>+<code>nginx1.11.7</code>+<code>php-5.6.29-Win32-VC11-x64</code></p>
 <h2 id="下载解压软件">下载解压软件</h2><p>用到的软件均是绿色版，不用安装解压即可使用： </p>
-<pre><code><span class="bullet">* </span>[<span class="link_label">php-5.6.29-Win32-VC11-x64.zip</span>](<span class="link_url">http://windows.php.net/downloads/releases/php-5.6.29-Win32-VC11-x64.zip</span>) 解压到 <span class="code">`E:\OneDrive\www\php`</span>
-<span class="bullet">* </span>[<span class="link_label">nginx-1.11.7.zip</span>](<span class="link_url">http://nginx.org/download/nginx-1.11.7.zip</span>) 解压到 <span class="code">`E:\OneDrive\www\nginx-1.11.7`</span>
-<span class="bullet">* </span>[<span class="link_label">DokuWiki</span>](<span class="link_url">https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz</span>) 解压到 <span class="code">`E:\OneDrive\www\dokuwiki`</span>
-<span class="bullet">* </span>[<span class="link_label">RunHiddenConsole</span>](<span class="link_url">http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip</span>)(此程序用于隐藏nginx运行的窗口) 解压到 <span class="code">`E:\OneDrive\www\RunHiddenConsole.exe`</span>
-</code></pre><a id="more"></a>
+<ul>
+<li><a href="http://windows.php.net/downloads/releases/php-5.6.29-Win32-VC11-x64.zip" target="_blank" rel="external">php-5.6.29-Win32-VC11-x64.zip</a> 解压到 <code>E:\OneDrive\www\php</code></li>
+<li><a href="http://nginx.org/download/nginx-1.11.7.zip" target="_blank" rel="external">nginx-1.11.7.zip</a> 解压到 <code>E:\OneDrive\www\nginx-1.11.7</code></li>
+<li><a href="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz" target="_blank" rel="external">DokuWiki</a> 解压到 <code>E:\OneDrive\www\dokuwiki</code></li>
+<li><a href="http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip" target="_blank" rel="external">RunHiddenConsole</a>(此程序用于隐藏nginx运行的窗口) 解压到 <code>E:\OneDrive\www\RunHiddenConsole.exe</code></li>
+</ul>
+<a id="more"></a>
 <h2 id="修改PHP配置">修改PHP配置</h2><p>将php.ini-dist或php.ini-development配置文件重命名为php.ini（该文件中分号开始行为注释内容），然后做如下设置：</p>
 <pre><code><span class="number">1</span>. <span class="variable">extension_dir =</span> <span class="string">"C:/php5/ext"</span>
 
@@ -85,19 +87,22 @@
 <h2 id="编写启动批处理">编写启动批处理</h2><p><a href="https://www.nginx.com/resources/wiki/start/topics/examples/phpfastcgionwindows/" target="_blank" rel="external">这里</a>有关于NGINX 跟 PHP 在 Windows 平台通过 FastCGI 对接的例子，此页面也有 RunHiddenConsole 的下载</p>
 <figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">REM E:\OneDrive\www\php.bat</span></span><br><span class="line"><span class="keyword">ECHO</span> Starting PHP FastCGI...</span><br><span class="line"><span class="keyword">set</span> <span class="built_in">PATH</span>=E:\OneDrive\www\PHP;<span class="envvar">%PATH%</span></span><br><span class="line">RunHiddenConsole.exe E:\OneDrive\www\php\php-cgi.exe -b <span class="number">127</span>.<span class="number">0</span>.<span class="number">0</span>.<span class="number">1</span>:<span class="number">9000</span></span><br><span class="line"><span class="keyword">ECHO</span> Starting nginx...</span><br><span class="line"><span class="built_in">cd</span> /d E:\OneDrive\www\nginx-<span class="number">1</span>.<span class="number">11</span>.<span class="number">1</span> &amp;&amp; <span class="built_in">start</span> nginx.exe</span><br></pre></td></tr></table></figure>
 <h2 id="运行">运行</h2><p>双击 <code>E:\OneDrive\www\php.bat</code> 会看到命令行一闪而过。<br>打开浏览器，访问 </p>
-<pre><code><span class="bullet">* </span>[<span class="link_label">http://127.0.0.1/dokuwiki/install.php</span>](<span class="link_url">http://127.0.0.1/dokuwiki/install.php</span>)
-<span class="bullet">* </span>[<span class="link_label">http://127.0.0.1/dokuwiki/doku.php</span>](<span class="link_url">http://127.0.0.1/dokuwiki/doku.php</span>)
-</code></pre>]]></content>
+<ul>
+<li><a href="http://127.0.0.1/dokuwiki/install.php" target="_blank" rel="external">http://127.0.0.1/dokuwiki/install.php</a></li>
+<li><a href="http://127.0.0.1/dokuwiki/doku.php" target="_blank" rel="external">http://127.0.0.1/dokuwiki/doku.php</a></li>
+</ul>
+]]></content>
     
     <summary type="html">
     
       &lt;p&gt;&lt;a href=&quot;https://www.dokuwiki.org/dokuwiki#&quot;&gt;DokuWiki&lt;/a&gt; 是一个使用，用途多样的开源 Wiki 软件，并且不需要数据库。部署Dokuwiki需要一个支持PHP的Webserver。通过nginx+php可以简单部署使用。&lt;br&gt;&lt;a href=&quot;http://nginx.org/en/&quot;&gt;Nginx&lt;/a&gt; (“engine x”) 是一个高性能的HTTP和反向代理服务器，也是一个IMAP/POP3/SMTP服务器。&lt;br&gt;本文环境：&lt;code&gt;windows10 64位&lt;/code&gt;+&lt;code&gt;nginx1.11.7&lt;/code&gt;+&lt;code&gt;php-5.6.29-Win32-VC11-x64&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;下载解压软件&quot;&gt;下载解压软件&lt;/h2&gt;&lt;p&gt;用到的软件均是绿色版，不用安装解压即可使用： &lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;php-5.6.29-Win32-VC11-x64.zip&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;http://windows.php.net/downloads/releases/php-5.6.29-Win32-VC11-x64.zip&lt;/span&gt;) 解压到 &lt;span class=&quot;code&quot;&gt;`E:\OneDrive\www\php`&lt;/span&gt;
-&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;nginx-1.11.7.zip&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;http://nginx.org/download/nginx-1.11.7.zip&lt;/span&gt;) 解压到 &lt;span class=&quot;code&quot;&gt;`E:\OneDrive\www\nginx-1.11.7`&lt;/span&gt;
-&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;DokuWiki&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz&lt;/span&gt;) 解压到 &lt;span class=&quot;code&quot;&gt;`E:\OneDrive\www\dokuwiki`&lt;/span&gt;
-&lt;span class=&quot;bullet&quot;&gt;* &lt;/span&gt;[&lt;span class=&quot;link_label&quot;&gt;RunHiddenConsole&lt;/span&gt;](&lt;span class=&quot;link_url&quot;&gt;http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip&lt;/span&gt;)(此程序用于隐藏nginx运行的窗口) 解压到 &lt;span class=&quot;code&quot;&gt;`E:\OneDrive\www\RunHiddenConsole.exe`&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://windows.php.net/downloads/releases/php-5.6.29-Win32-VC11-x64.zip&quot;&gt;php-5.6.29-Win32-VC11-x64.zip&lt;/a&gt; 解压到 &lt;code&gt;E:\OneDrive\www\php&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://nginx.org/download/nginx-1.11.7.zip&quot;&gt;nginx-1.11.7.zip&lt;/a&gt; 解压到 &lt;code&gt;E:\OneDrive\www\nginx-1.11.7&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz&quot;&gt;DokuWiki&lt;/a&gt; 解压到 &lt;code&gt;E:\OneDrive\www\dokuwiki&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://redmine.lighttpd.net/attachments/660/RunHiddenConsole.zip&quot;&gt;RunHiddenConsole&lt;/a&gt;(此程序用于隐藏nginx运行的窗口) 解压到 &lt;code&gt;E:\OneDrive\www\RunHiddenConsole.exe&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
